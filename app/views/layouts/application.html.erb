@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="/>
+		<meta name="keywords" content="/>
     <title>Jibunseki</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-light header" id="nav">
+        <%= link_to root_path do %>
+          <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-3 ml-auto">
+            <li class="nav-item">
+              <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <%= yield %>
+      <div class="row text-center footer">
+        <div class="col-12 copyright">
+          <h2><%= embedded_svg("logo.svg", class: "footer-logo") %></h2>
+          <p>copyright<span>&copy;</span>ごんしば</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
