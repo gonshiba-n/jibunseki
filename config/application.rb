@@ -10,6 +10,9 @@ module Jibunseki
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    # CSS, JavaScriptファイルは生成しない
+    g.assets false
+    g.test_framework false
 
     #日本時間設定
     config.time_zone = 'Asia/Tokyo'
