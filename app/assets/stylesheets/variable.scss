@@ -1,0 +1,16 @@
+// ここからメディアクエリ
+$pc: 768px; // PC
+$sp: 767px; // スマホ
+@mixin pc {
+    @media (max-width: ($pc)) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+// ここまでメディアクエリ
