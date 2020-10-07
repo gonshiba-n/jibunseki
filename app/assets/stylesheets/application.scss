@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap";
+@import "./default.scss";
+@import "./variable";
+
+// ここからナビバー設定
+.navbar-light .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30'
+    xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(88, 202, 180, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+}
+
+// ここまでナビバー設定
+// header
+.header {
+    width: 100%;
+    position: fixed;
+    font-weight: bold;
+    z-index: 2;
+    .header-logo {
+        width: 120px;
+        height: 45px;
+    }
+    ul {
+        font-size: 18px;
+        @include sp {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 0 #000;
+            padding: 5% 0 5% 0;
+        }
+    }
+}
+.bg-transparent{
+    background-color: transparent;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    transition: all  0.8s ease;
+}
+
+.bg-black{
+    background-color: rgba(52, 58, 64, 0.8);
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -o-transition: all 2s ease;
+    transition: all  2s ease;
+}
+
+
+
+// footer
+.footer {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #343a40 !important;
+    padding: 30px 3%;
+    .copyright {
+        .footer-logo {
+            width: 120px;
+            height: 45px;
+            margin-bottom: 2%;
+        }
+        p {
+            color: #fff;
+            font-size: 18px;
+        }
+    }
+}

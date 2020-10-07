@@ -1,0 +1,24 @@
+// 文字サイズ
+$h2: 36px;
+$h3: 24px;
+$p: 18px;
+
+// じぶんセキのイメージカラー
+$main_color: #58CAB4;
+
+// ここからメディアクエリ
+$pc: 768px; // PC
+$sp: 767px; // スマホ
+@mixin pc {
+    @media (min-width: ($pc)) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+// ここまでメディアクエリ
