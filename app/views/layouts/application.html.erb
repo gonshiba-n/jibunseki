@@ -18,25 +18,27 @@
 
   <body>
     <div class="container-fluid">
-      <nav class="navbar navbar-expand-md navbar-light header" id="nav">
-        <%= link_to root_path do %>
-          <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
-        <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <div class="row" id="nav">
+        <nav class="navbar navbar-expand-md navbar-light header" id="bg-chenge">
+          <%= link_to root_path do %>
+            <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-3 ml-auto">
-            <li class="nav-item">
-              <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
-            </li>
-          </ul>
-        </div>
-      </nav>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-3 ml-auto">
+              <li class="nav-item">
+                <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
       <%= yield %>
       <div class="row text-center footer">
         <div class="col-12 copyright">

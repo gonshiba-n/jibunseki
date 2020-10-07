@@ -35,7 +35,6 @@
 // header
 .header {
     width: 100%;
-    background-color: transparent;
     position: fixed;
     font-weight: bold;
     z-index: 2;
@@ -53,6 +52,23 @@
         }
     }
 }
+.bg-transparent{
+    background-color: transparent;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    transition: all  0.8s ease;
+}
+
+.bg-black{
+    background-color: rgba(52, 58, 64, 0.8);
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -o-transition: all 2s ease;
+    transition: all  2s ease;
+}
+
+
 
 // footer
 .footer {
