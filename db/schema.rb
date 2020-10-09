@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_035154) do
     t.string "name", limit: 30, null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "remember_token", null: false
+    t.string "remember_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_users_on_name"
