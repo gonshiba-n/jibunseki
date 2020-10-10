@@ -6,13 +6,14 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = current_user
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存
   def create
     @user = User.new(user_params)
     if @user.save
+      login(@user)
       redirect_to user_path(@user.id), notice:"#{@user.name}さん！登録が完了しました。"
     else
       render template: "static_pages/signup"
@@ -20,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    logout
+    redirect_to root_path
   end
 
   private

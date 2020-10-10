@@ -6,18 +6,14 @@ class ApplicationController < ActionController::Base
 	#cookieからトークンを取得して暗号化
 	# cookieと同じトークンを持つuserを取得
 	def current_user
-    remember_token = User.encrypt(cookies[:user_remember_token])
+    remember_token = User.encrypt(session[:user_remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
-	end
-
-	def crrent_user?
-		
 	end
 
 	# ログイン
 	def login(user)
 		remember_token = User.new_remember_token
-		cookies.permanent[:user_remember_token] = remember_token
+		session[:user_remember_token] = remember_token
 		user.update!(remember_token: User.encrypt(remember_token))
 		@cuurent_user = user
 	end
@@ -25,7 +21,7 @@ class ApplicationController < ActionController::Base
 	# ログアウト/クッキー削除
 	def logout
 		@current_user = nil
-    cookies.delete(:user_remember_token)
+		reset_sessions
 	end
 
 	# 値があればtrue
