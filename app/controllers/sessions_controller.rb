@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   # ログイン処理
   def create
-    if @user.authenticate(session_params[:password])
+    if @user&.authenticate(session_params[:password])
       login(@user)
       redirect_to user_path(@user.id), notice:"#{@user.name}さん！ログインしました。"
     else

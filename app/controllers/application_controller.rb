@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :current_user
-  before_action :require_login!
+	before_action :require_login!
 	helper_method :logged_in?
 
 	#cookieからトークンを取得して暗号化
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
 	# ログインしていなければ、ルートパスへ返す
 	def require_login!
-    redirect_to root_path unless logged_in?
+		redirect_to root_path unless logged_in?
   end
 
 end
