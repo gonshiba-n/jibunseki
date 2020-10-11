@@ -30,10 +30,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-3 ml-auto">
               <li class="nav-item">
-                <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
+                <% if logged_in? %>
+                  <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white' %>
+                <% else %>
+                  <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
+                <% if logged_in? %>
+                  <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white' %>
+                <% else %>
+                  <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
+                <% end %>
               </li>
             </ul>
           </div>

@@ -21,8 +21,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    logout
-    redirect_to root_path
+
   end
 
   private

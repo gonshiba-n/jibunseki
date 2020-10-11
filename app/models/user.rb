@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	def self.new_remember_token
 		SecureRandom.urlsafe_base64
 	end
-  # 乱数を暗号化(ハッシュ値生成)
+    # 乱数を暗号化(ハッシュ値生成)
 	def self.encrypt(token)
 		Digest::SHA256.hexdigest(token.to_s)
 	end

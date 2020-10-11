@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login!, only: [:create]
-  before_action :set_user
+  skip_before_action :require_login!, only: [:create, :destroy]
+  before_action :set_user, only: [:create]
 
   # ログイン処理
   def create
@@ -16,13 +16,13 @@ class SessionsController < ApplicationController
   # ログアウト処理
   def destroy
     logout
-    redirect_to login_path
+    redirect_to root_path, notice:"ログアウトしました。"
   end
 
   private
 
   def set_user
-    @user = User.find_by!(email: session_params[:email])
+    @user = User.find_by(email: session_params[:email])
   rescue
     flash[:danger] = 'メールアドレスとパスワードの組み合わせが誤っています'
     redirect_to login_path

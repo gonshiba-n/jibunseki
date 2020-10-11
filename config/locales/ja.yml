@@ -1,6 +1,19 @@
 ---
 ja:
   activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        created_at: 登録日時
+        updated_at: 更新日時
+        birthday: 生年月日
+        email: メールアドレス
+        salon_id: サロン
+        password: パスワード
+        password_confirmation: 再確認用パスワード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -17,7 +30,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -43,7 +56,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月

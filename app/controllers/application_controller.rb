@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 	# ログアウト/クッキー削除
 	def logout
 		@current_user = nil
-		reset_sessions
+		reset_session
 	end
 
 	# 値があればtrue
