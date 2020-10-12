@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
 	# ログインしていなければ、ルートパスへ返す
 	def require_login!
 		redirect_to root_path unless logged_in?
-  end
+	end
 
 end
