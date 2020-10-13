@@ -4,7 +4,7 @@
 		<% if @user.errors.present? %>
 			<ul> <%# エラー内容出力 %>
 				<% @user.errors.full_messages.each do |message| %>
-					<li class="mb-2"><%= message %></li>
+					<li class="mb-2 error"><%= message %></li>
 				<% end %>
 			</ul>
 		<% end %>
