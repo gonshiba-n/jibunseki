@@ -16,19 +16,19 @@ RSpec.describe "StaticPages", type: :system do
 			end
 
 			it "ヘッダーのsignupリンクが表示されていること" do
-				expect(page).to have_selector(".header-signup"), href: static_pages_signup_path
+				expect(page).to have_selector(".header-signup"), href: new_user_path
 			end
 
 			it "catch-copyセクションのsignupリンクが表示されていること" do
-				expect(page).to have_link "なりたいじぶんを見つける", href: static_pages_signup_path
+				expect(page).to have_link "なりたいじぶんを見つける", href: new_user_path
 			end
 
 			it "ヘッダーのloginリンクが表示されていること" do
-				expect(page).to have_link "Login", href: static_pages_login_path
+				expect(page).to have_link "Login", href: login_path
 			end
 
 			it "startセクションのsignupリンクが表示されていること" do
-				expect(page).to have_selector(".section-signup"), href: static_pages_signup_path
+				expect(page).to have_selector(".section-signup"), href: new_user_path
 			end
 		end
 	end

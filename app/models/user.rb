@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	has_secure_password validations: false
+	has_secure_password validations: true
 
 	# バリデーション
 	validates :name, presence: true, length: { maximum: 30 }
