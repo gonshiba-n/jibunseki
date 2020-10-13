@@ -10,6 +10,26 @@ RSpec.describe "StaticPages", type: :system do
 			it "じぶんセキの文字列が存在すること" do
 				expect(page).to have_content 'じぶん'
 			end
+
+			it "Logoのリンクが存在すること" do
+				expect(page).to have_selector(".header-logo"), href: root_path
+			end
+
+			it "ヘッダーのsignupリンクが表示されていること" do
+				expect(page).to have_selector(".header-signup"), href: static_pages_signup_path
+			end
+
+			it "catch-copyセクションのsignupリンクが表示されていること" do
+				expect(page).to have_link "なりたいじぶんを見つける", href: static_pages_signup_path
+			end
+
+			it "ヘッダーのloginリンクが表示されていること" do
+				expect(page).to have_link "Login", href: static_pages_login_path
+			end
+
+			it "startセクションのsignupリンクが表示されていること" do
+				expect(page).to have_selector(".section-signup"), href: static_pages_signup_path
+			end
 		end
 	end
 end

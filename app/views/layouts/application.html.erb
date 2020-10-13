@@ -33,7 +33,7 @@
                 <% if logged_in? %>
                   <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white' %>
                 <% else %>
-                  <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white' %>
+                  <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white header-signup' %>
                 <% end %>
               </li>
               <li class="nav-item">
