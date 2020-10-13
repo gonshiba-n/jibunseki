@@ -33,14 +33,14 @@
                 <% if logged_in? %>
                   <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white' %>
                 <% else %>
-                  <%= link_to "Signup", static_pages_signup_path, class: 'nav-link text-white header-signup' %>
+                  <%= link_to "Signup", new_user_path, class: 'nav-link text-white header-signup' %>
                 <% end %>
               </li>
               <li class="nav-item">
                 <% if logged_in? %>
                   <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white' %>
                 <% else %>
-                  <%= link_to "Login", static_pages_login_path, class: 'nav-link text-white' %>
+                  <%= link_to "Login", login_path, class: 'nav-link text-white' %>
                 <% end %>
               </li>
             </ul>

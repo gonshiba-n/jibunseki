@@ -6,10 +6,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def signup
-    @user = User.new
-  end
-
   def login
     @user = User.new
   end

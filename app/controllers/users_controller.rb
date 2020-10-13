@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login!, only: [:create]
+  skip_before_action :require_login!, only: [:new, :create]
 
   def new
     @user = User.new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to user_path(@user.id), notice:"#{@user.name}さん！登録が完了しました。"
     else
-      render template: "static_pages/signup"
+      render :new
     end
   end
 
