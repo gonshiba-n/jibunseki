@@ -31,16 +31,16 @@
             <ul class="navbar-nav mr-3 ml-auto">
               <li class="nav-item">
                 <% if logged_in? %>
-                  <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white' %>
+                  <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white header-user_name' %>
                 <% else %>
                   <%= link_to "Signup", new_user_path, class: 'nav-link text-white header-signup' %>
                 <% end %>
               </li>
               <li class="nav-item">
                 <% if logged_in? %>
-                  <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white' %>
+                  <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white header-logout' %>
                 <% else %>
-                  <%= link_to "Login", login_path, class: 'nav-link text-white' %>
+                  <%= link_to "Login", login_path, class: 'nav-link text-white header-login' %>
                 <% end %>
               </li>
             </ul>

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
   let!(:user) {FactoryBot.create(:user)}
+
   describe "GET /sessions" do
     context "正常なPOSTリクエストの場合" do
       it "ログイン画面のリクエストが成功すること" do
@@ -20,6 +21,13 @@ RSpec.describe "Sessions", type: :request do
         post users_path, params: {user: FactoryBot.attributes_for(:user, :invalid)}
         expect(response.body).to include 'パスワードは6文字以上で入力してください'
       end
+    end
+  end
+
+  describe "DELETE/sessions" do
+    it "ログアウト" do
+      delete logout_path
+      expect(response).to redirect_to root_path
     end
   end
 end

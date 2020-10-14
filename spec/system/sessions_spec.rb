@@ -15,9 +15,7 @@ RSpec.describe "Sessions", type: :system do
 
     context "ユーザーログイン機能" do
       it "正常なユーザーログイン処理" do
-        fill_in "メールアドレス",	with: user.email
-        fill_in "パスワード",	with: user.password
-        click_button "Login"
+        login_for_app(user)
 
         @user = User.find_by(name: user.name)
         expect(current_path).to eq user_path(@user.id)
