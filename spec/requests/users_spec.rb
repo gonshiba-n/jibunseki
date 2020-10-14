@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /users/new" do
+  describe "サインアップ画面 GET /users/new" do
     it "サインアップ画面のリクエストが成功すること" do
       get new_user_path
       expect(response).to have_http_status(200)
     end
   end
 
-  describe "POST/users/create" do
+  describe "ユーザー登録処理 POST/users/create" do
     context "正常なPOSTリクエストの場合" do
       it "リクエストが成功すること" do
           post users_path, params: {user: FactoryBot.attributes_for(:user)}
