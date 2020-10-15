@@ -1,0 +1,9 @@
+@import "./variable";
+
+.user_work_space{
+  padding-top: 10%;
+  .wcm-work-space{
+    margin: 0 auto;
+    border: 1px solid $main_color;
+  }
+}

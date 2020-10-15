@@ -1,4 +1,69 @@
-<div class="mt-5">
-  <%= render partial: 'layouts/flash' %>
-  <%= @user.name %>
+<div class="row user_work_space">
+  <div class="flash">
+    <%= render partial: 'layouts/flash' %>
+  </div>
+
+  <section class="col-12 wcm-seat">
+    <div class="row">
+      <div class="col-12 col-md-11 m-auto">
+        <h2>WCMシート</h2>
+      </div>
+      <div class="col-12 col-md-11 wcm-work-space">
+        <div class="row">
+          <div class="col-6 wcm">
+            <div class="will">
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+            <div class="can">
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+            </div>
+            <div class="must">
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </div>
+            <button type="button" class="btn btn-success">タグを編集</button>
+          </div>
+
+          <div class="col-6 wcm-result">
+            <div class="base-tag">
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </div>
+            <div class="behavioral-index">
+              <h3>WCMからの行動指標</h3>
+              <div>
+                <p>私は〇〇をしたい。その理由は、〇〇である。（Willベースタグ）
+                    今まで、～～という経験をしてきた。～～といったスキルもある。（Canベースタグ）
+                    今後は～～することが求められる。そうしたスキル・経験を身に付けて行動していく。（Mustベースタグ)
+                </p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-success">行動指針を編集</button>
+          </div>
+        </div>
+      </div>
+      <a>→他のユーザーのWCMを見る</a>
+    </div>
+  <section>
+
+  <section class="col-12 wcm-target">
+    <div>
+      
+    </div>
+  </section>
 </div>
