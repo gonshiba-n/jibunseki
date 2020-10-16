@@ -1,9 +1,80 @@
 @import "./variable";
 
+.nav-item{
+  a{
+    color: black!important;
+  }
+}
+
 .user_work_space{
-  padding-top: 10%;
+  padding: 10% 3%;
   .wcm-work-space{
     margin: 0 auto;
     border: 1px solid $main_color;
+    .will{
+      position: relative;
+      width: 50%;
+      min-width: 200px;
+      height: auto;
+      border: 1px solid cadetblue;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0 auto;
+      &:before{
+        content: "";
+        display: block!important;
+        padding-top: 100%!important;
+      }
+      .will-tags{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      }
+      .will-tag{
+        margin: 10% 0;
+        text-align: center;
+      }
+    }
+  }
+  .wcm-target{
+    margin: 5% 0;
+    border-top: 1px solid $main_color;
+    border-bottom: 1px solid $main_color;
+  }
+
+  // 検索ボックス
+  .search_container{
+    box-sizing: border-box;
+  }
+  .search_container input[type="text"]{
+    border: 1px solid #999;
+    padding: 3px 5px;
+    border-radius: 20px;
+    height: 2.0em;
+    width: 245px;
+    overflow: hidden;
+  }
+  .search_container input[type="text"]:focus {
+    outline: 0;
+  }
+  .search_container input[type="submit"]{
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    border: none;
+    background: none;
+    color: #3879D9;
+    outline : none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.corporate-analysis{
+  .table{
+    min-width: 800px;
   }
 }
