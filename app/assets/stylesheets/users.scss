@@ -1,80 +1,150 @@
 @import "./variable";
 
-.nav-item{
-  a{
-    color: black!important;
+// user_showページ===========================================
+.btn{
+  font-size: 1rem;
+  @include sp{
+    font-size: 0.8rem;
   }
+}
+
+.h2{
+  font-size: 30px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+.h3{
+  font-size: $h3;
+  font-weight: bold;
+  padding: 15px 0;
 }
 
 .user_work_space{
-  padding: 10% 3%;
-  .wcm-work-space{
+  padding: 100px 3% 0 3%;
+}
+
+// ここからwcmワークスペース
+.wcm-work-space{
+  margin: 0 auto;
+  padding: 3% 0;
+  border: 1px solid $main_color;
+  @include sp{
     margin: 0 auto;
-    border: 1px solid $main_color;
-    .will{
-      position: relative;
-      width: 50%;
-      min-width: 200px;
-      height: auto;
-      border: 1px solid cadetblue;
-      border-radius: 50%;
-      padding: 0;
-      margin: 0 auto;
-      &:before{
-        content: "";
-        display: block!important;
-        padding-top: 100%!important;
-      }
-      .will-tags{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-      }
-      .will-tag{
-        margin: 10% 0;
-        text-align: center;
-      }
-    }
-  }
-  .wcm-target{
-    margin: 5% 0;
     border-top: 1px solid $main_color;
     border-bottom: 1px solid $main_color;
   }
+}
 
-  // 検索ボックス
-  .search_container{
+// (will,can,must)-tags
+@each $name, $val in $wcm_colors {
+  .#{$name}-tags{
+    margin-bottom: 3%;
     box-sizing: border-box;
-  }
-  .search_container input[type="text"]{
-    border: 1px solid #999;
-    padding: 3px 5px;
-    border-radius: 20px;
-    height: 2.0em;
-    width: 245px;
-    overflow: hidden;
-  }
-  .search_container input[type="text"]:focus {
-    outline: 0;
-  }
-  .search_container input[type="submit"]{
-    cursor: pointer;
-    font-family: FontAwesome;
-    font-size: 1.3em;
-    border: none;
-    background: none;
-    color: #3879D9;
-    outline : none;
-    display: inline-block;
-    vertical-align: middle;
+    border: 2px solid ($val);
   }
 }
 
-.corporate-analysis{
-  .table{
-    min-width: 800px;
+.tag{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3% 0;
+}
+
+.base-tag{
+  margin: 2% auto;
+  display: flex;
+  justify-content: space-around;
+  .btn{
+    margin:0 1%;
   }
 }
+
+.behavioral-index{
+  margin: 30px 0;
+  @include sp{
+    margin: 15px 0;
+  }
+  p{
+    padding-top: 15px;
+    line-height: 30px;
+  }
+}
+
+// ここまでwcmワークスペース
+
+// ここからwcmターゲット
+.wcm-target{
+  margin-bottom: 4%;
+  border-top: 1px solid $main_color;
+  border-bottom: 1px solid $main_color;
+}
+
+.progress-meter{
+  padding: 30px 0;
+  width: 80%;
+  h3{
+    padding: 15px 0;
+  }
+}
+
+.target{
+  margin-top: 10px;
+  .btn{
+  width: 15%;
+  }
+}
+
+.target-edit{
+  width: 100%;
+  text-align: right;
+  margin:  20px 0;
+  padding: 0 15px;
+}
+
+// ここまでwcmターゲット
+
+// ここから企業分析
+.corporate-analysis{
+  margin-bottom: 4%;
+}
+
+.table{
+  min-width: 800px;
+  margin: 20px 0;
+}
+
+// 検索ボックス
+.search_container{
+  box-sizing: border-box;
+}
+.search_container input[type="text"]{
+  border: 1px solid #999;
+  padding: 3px 5px;
+  border-radius: 20px;
+  height: 2.0em;
+  width: 245px;
+  overflow: hidden;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #3879D9;
+  outline : none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.corporate-edit{
+  text-align: right;
+  margin:  20px 0;
+  padding: 0 15px;
+}
+// ここまで企業分析
+

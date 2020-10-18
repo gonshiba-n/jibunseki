@@ -6,6 +6,17 @@ $p: 18px;
 // じぶんセキのイメージカラー
 $main_color: #58CAB4;
 
+// will,can,mustのイメージカラー
+$will_color: #81d8deff;
+$can_color: #50e00aff;
+$must_color: #fa8f14ff;
+
+$wcm_colors: (
+    will:( #81d8deff),
+    can:( #50e00aff),
+    must:( #fa8f14ff)
+);
+
 // ここからメディアクエリ
 $pc: 768px; // PC
 $sp: 767px; // スマホ
