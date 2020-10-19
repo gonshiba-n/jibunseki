@@ -2,6 +2,7 @@
   <div class="col-12 flash">
     <%= render partial: 'layouts/flash' %>
   </div>
+  <%= render partial: 'wcm_tags.html.erb' %>
 
   <section class="col-12 wcm-seat">
     <div class="row">
@@ -14,7 +15,9 @@
                 <p>Will</p>
                 <div class="will-tags tags">
                   <div class="will-tag tag">
-                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wcm-tagsModal">
+                      primary
+                    </button>
                     <button type="button" class="btn btn-primary">Primary</button>
                   </div>
                   <div class="will-tag tag">
