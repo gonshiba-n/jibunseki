@@ -18,35 +18,7 @@
 
   <body>
     <div class="container-fluid">
-      <div class="row" id="nav">
-        <nav class="navbar navbar-expand-md navbar-light header" id="bg-chenge">
-          <%= link_to root_path do %>
-            <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
-          <% end %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-3 ml-auto">
-              <li class="nav-item">
-                <% if logged_in? %>
-                  <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-white header-user_name' %>
-                <% else %>
-                  <%= link_to "Signup", new_user_path, class: 'nav-link text-white header-signup' %>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <% if logged_in? %>
-                  <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white header-logout' %>
-                <% else %>
-                  <%= link_to "Login", login_path, class: 'nav-link text-white header-login' %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <%= render partial: 'layouts/header_nav' %>
       <%= yield %>
       <div class="row text-center footer">
         <div class="col-12 copyright">

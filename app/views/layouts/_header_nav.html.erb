@@ -1,0 +1,46 @@
+<% if logged_in? %>
+  <div class="row">
+    <nav class="navbar navbar-expand-md navbar-light header">
+      <%= link_to root_path do %>
+        <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-3 ml-auto">
+          <li class="nav-item">
+              <%= link_to @current_user.name, user_path(@current_user.id), class: 'nav-link text-dark header-user_name' %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-dark header-logout' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<% else %>
+  <div class="row" id="nav">
+    <nav class="navbar navbar-expand-md navbar-light header" id="bg-chenge">
+      <%= link_to root_path do %>
+        <h1><%= embedded_svg("logo.svg", class: "header-logo") %></h1>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-3 ml-auto">
+          <li class="nav-item">
+              <%= link_to "Signup", new_user_path, class: 'nav-link text-white header-signup' %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Login", login_path, class: 'nav-link text-white header-login' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<% end %>
+
