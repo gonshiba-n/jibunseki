@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password validations: true
+	has_many :questions, dependent: :destroy
+	has_many :answers, dependent: :destroy
 
 	# バリデーション
 	validates :name, presence: true, length: { maximum: 30 }

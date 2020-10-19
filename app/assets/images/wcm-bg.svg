@@ -7,34 +7,37 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="wcm-bg.svg"
-   inkscape:version="1.0rc1 (09960d6, 2020-04-09)"
-   id="svg1408"
-   version="1.1"
-   viewBox="0 0 500 500"
+   inkscape:export-ydpi="29.586367"
+   inkscape:export-xdpi="29.586367"
+   inkscape:export-filename="/Users/gonshiba/Desktop/jibunseki/app/assets/images/wcm-bg.png"
+   width="500mm"
    height="500mm"
-   width="500mm">
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg1408"
+   inkscape:version="1.0rc1 (09960d6, 2020-04-09)"
+   sodipodi:docname="wcm-bg.svg">
   <defs
      id="defs1402" />
   <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="23"
-     inkscape:window-x="187"
-     inkscape:window-height="775"
-     inkscape:window-width="1107"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="px"
-     inkscape:cy="1156.9633"
-     inkscape:cx="553.84296"
-     inkscape:zoom="0.17878113"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.15197919"
+     inkscape:cx="553.84296"
+     inkscape:cy="1156.9633"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1107"
+     inkscape:window-height="775"
+     inkscape:window-x="187"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata1405">
     <rdf:RDF>
@@ -43,52 +46,52 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
+     inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
-     inkscape:label="レイヤー 1">
+     id="layer1">
     <path
-       d="M 254.7508,279.03732 A 131.83282,131.83627 0 0 1 122.32737,147.98775 131.83282,131.83627 0 0 1 253.18009,15.36973 131.83282,131.83627 0 0 1 385.98548,146.03218 131.83282,131.83627 0 0 1 255.52042,279.03161"
-       sodipodi:arc-type="arc"
-       sodipodi:open="true"
-       sodipodi:end="1.5604606"
-       sodipodi:start="1.5662986"
-       sodipodi:ry="131.83627"
-       sodipodi:rx="131.83282"
-       sodipodi:cy="147.20238"
-       sodipodi:cx="254.15785"
-       sodipodi:type="arc"
+       style="opacity:1;fill:#2fb8ff;fill-opacity:0.00531915;stroke:#81d8de;stroke-width:1.59349;stroke-miterlimit:0;stroke-dasharray:none"
        id="path1971"
-       style="opacity:1;fill:#2fb8ff;fill-opacity:0.00531915;stroke:#81d8de;stroke-width:2.00003;stroke-miterlimit:0;stroke-dasharray:none" />
+       sodipodi:type="arc"
+       sodipodi:cx="251.35414"
+       sodipodi:cy="158.75002"
+       sodipodi:rx="105.03653"
+       sodipodi:ry="105.03654"
+       sodipodi:start="1.5662986"
+       sodipodi:end="1.5604606"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 251.82657,263.78549 A 105.03653,105.03654 0 0 1 146.31948,159.37574 105.03653,105.03654 0 0 1 250.57512,53.716367 105.03653,105.03654 0 0 1 356.38653,157.8177 105.03653,105.03654 0 0 1 252.43975,263.78094" />
     <path
-       style="opacity:1;fill:#ffff00;fill-opacity:0.00265957;stroke:#50e00a;stroke-width:1.99999999;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+       d="M 172.45157,422.53547 A 105.03652,105.03654 0 0 1 66.944483,318.12572 105.03652,105.03654 0 0 1 171.20012,212.46635 105.03652,105.03654 0 0 1 277.01153,316.56768 105.03652,105.03654 0 0 1 173.06475,422.53093"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       sodipodi:end="1.5604606"
+       sodipodi:start="1.5662986"
+       sodipodi:ry="105.03654"
+       sodipodi:rx="105.03652"
+       sodipodi:cy="317.5"
+       sodipodi:cx="171.97914"
+       sodipodi:type="arc"
        id="path1971-6"
-       sodipodi:type="arc"
-       sodipodi:cx="149.47278"
-       sodipodi:cy="309.30515"
-       sodipodi:rx="131.83266"
-       sodipodi:ry="131.8327"
-       sodipodi:start="1.5662986"
-       sodipodi:end="1.5604606"
-       sodipodi:open="true"
-       sodipodi:arc-type="arc"
-       d="M 150.06572,441.13651 A 131.83266,131.8327 0 0 1 17.642461,310.0905 131.83266,131.8327 0 0 1 148.49502,177.47607 131.83266,131.8327 0 0 1 281.30024,308.13498 131.83266,131.8327 0 0 1 150.83534,441.13081" />
+       style="opacity:1;fill:#ffff00;fill-opacity:0.00265958;stroke:#50e00a;stroke-width:1.59348;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       d="M 351.98162,442.61643 A 131.83266,131.8327 0 0 1 219.55835,311.57042 131.83266,131.8327 0 0 1 350.41091,178.95599 131.83266,131.8327 0 0 1 483.21614,309.6149 131.83266,131.8327 0 0 1 352.75123,442.61073"
-       sodipodi:arc-type="arc"
-       sodipodi:open="true"
-       sodipodi:end="1.5604606"
-       sodipodi:start="1.5662986"
-       sodipodi:ry="131.8327"
-       sodipodi:rx="131.83266"
-       sodipodi:cy="310.78506"
-       sodipodi:cx="351.38867"
-       sodipodi:type="arc"
+       style="opacity:1;fill:#ffff00;fill-opacity:0.00265958;stroke:#fa8f14;stroke-width:1.59348;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
        id="path1971-6-8"
-       style="opacity:1;fill:#ffff00;fill-opacity:0.00265958;stroke:#fa8f14;stroke-width:2;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+       sodipodi:type="arc"
+       sodipodi:cx="330.72913"
+       sodipodi:cy="317.50003"
+       sodipodi:rx="105.03651"
+       sodipodi:ry="105.03655"
+       sodipodi:start="1.5662986"
+       sodipodi:end="1.5604606"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 331.20155,422.53552 A 105.03651,105.03655 0 0 1 225.69448,318.12575 105.03651,105.03655 0 0 1 329.95011,212.46637 105.03651,105.03655 0 0 1 435.76149,316.56771 105.03651,105.03655 0 0 1 331.81474,422.53097" />
   </g>
 </svg>
