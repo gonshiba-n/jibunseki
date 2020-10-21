@@ -10,30 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_131728) do
+ActiveRecord::Schema.define(version: 2020_10_20_164700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "answers", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
+    t.text "question_body"
+    t.text "tag"
     t.string "wcm", null: false
-    t.text "answer_body"
     t.boolean "base_tag", default: false, null: false
     t.bigint "user_id"
-    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "wcm", null: false
-    t.text "question_body"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_questions_on_user_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,7 +36,5 @@ ActiveRecord::Schema.define(version: 2020_10_19_131728) do
     t.index ["name"], name: "index_users_on_name"
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
-  add_foreign_key "questions", "users"
+  add_foreign_key "tags", "users"
 end

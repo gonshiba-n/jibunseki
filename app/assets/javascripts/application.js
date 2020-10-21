@@ -24,4 +24,4 @@ function initialize() {
 };
 
 // DOM読み込み後にイニシャライズ
-document.addEventListener('turbolinks:load', initialize.bind(this));
+document.addEventListener("turbolinks:load", initialize.bind(this));

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 		remember_token = User.new_remember_token
 		session[:user_remember_token] = remember_token
 		user.update!(remember_token: User.encrypt(remember_token))
-		@cuurent_user = user
+		@current_user = user
 	end
 
 	# ログアウト/クッキー削除

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login!, only: [:new, :create]
 
   def index
-
+    @user = User.new
   end
 
   def new
@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @tag = Tag.new
+    @will_tag = @current_user.tag.where(wcm: 'will')
+    @can_tag = @current_user.tag.where(wcm: 'can')
+    @must_tag = @current_user.tag.where(wcm: 'must')
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存

@@ -1,4 +1,3 @@
-
 // ナビゲーションli色変更
 let navObj
 let sections

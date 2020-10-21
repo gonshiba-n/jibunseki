@@ -147,3 +147,38 @@
 }
 // ここまで企業分析
 
+// ここからwill_edit
+  .nav-tabs{
+    border-bottom: 1px solid $main_color;
+  }
+
+  .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: $main_color $main_color #fff;
+  }
+
+.tags-edit{
+  margin: 0 auto;
+  .tags, .edit, .new{
+    padding: 20px 0;
+    border-bottom: 1px solid $main_color;
+    .form-control{
+      margin: 10px 0;
+    }
+  }
+
+  .tags{
+    margin-top: 10px;
+  }
+
+
+
+}
+.modal-btn{
+  font-size: 0.8rem;
+  border-radius: 30px;
+  margin: 10px;
+  min-width: 80px;
+}
+// ここまでwill_edit
