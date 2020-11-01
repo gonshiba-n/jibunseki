@@ -41,7 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # テスト関連
   gem 'rspec-rails'
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'factory_bot_rails'
@@ -63,7 +62,7 @@ group :development do
 end
 
 group :test do
-
+  gem 'capybara', '>= 2.15'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,3 +71,4 @@ gem "sass-rails", "~>5.0"
 gem "bootstrap"
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem 'webpacker', '~> 5.0'
