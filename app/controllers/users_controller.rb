@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @tag = Tag.new
-    @will_tag = @current_user.tag.where(wcm: 'will')
-    @can_tag = @current_user.tag.where(wcm: 'can')
-    @must_tag = @current_user.tag.where(wcm: 'must')
+    @will_tags = @current_user.tag.where(wcm: 'will')
+    @can_tags = @current_user.tag.where(wcm: 'can')
+    @must_tags = @current_user.tag.where(wcm: 'must')
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存

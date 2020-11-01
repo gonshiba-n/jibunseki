@@ -15,13 +15,3 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap
-//= require_tree .
-
-// イニシャライズ
-function initialize() {
-	registerDOM();
-	bindEvent();
-};
-
-// DOM読み込み後にイニシャライズ
-document.addEventListener("turbolinks:load", initialize.bind(this));

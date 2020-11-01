@@ -1,3 +1,12 @@
+// DOM読み込み後にイニシャライズ
+document.addEventListener("turbolinks:load", initialize.bind(this));
+
+// イニシャライズ
+function initialize() {
+  registerDOM();
+  bindEvent();
+};
+
 // ナビゲーションli色変更
 let navObj
 let sections
@@ -5,8 +14,8 @@ let sections
 // ナビのクラス変更 バックグラウンド色変更
 function navColorChange() {
   let navbg = document.getElementById("bg-chenge");
-
   if (navObj.offsetHeight + window.pageYOffset < sections[0].offsetHeight) {
+    console.log(sections[0].offsetHeight)
     navbg.classList.add("bg-transparent");
     navbg.classList.remove("bg-black");
   } else {
@@ -18,7 +27,7 @@ function navColorChange() {
 // イベント発火管理
 function bindEvent() {
   if (navObj !== null && sections.length > 1){
-  window.addEventListener("scroll", event => navColorChange());
+    window.addEventListener("scroll", event => navColorChange());
   };
 };
 

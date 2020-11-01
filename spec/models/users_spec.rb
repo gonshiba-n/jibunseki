@@ -4,9 +4,21 @@ RSpec.describe User, type: :model do
   let(:user) {FactoryBot.create(:user)}
   let(:other_user) {FactoryBot.create(:user)}
 
-  context "バリデーション" do
+  describe "#valid?" do
+    subject { user.valid? }
+
+    it { is_expected.to be_valid }
+
     it "バリデーションが有効である" do
       expect(user).to be_valid
+    end
+
+    context "名前が空白の場合" do
+      let(:user) {FactoryBot.build(:user, name: nil)}
+      it do
+        is_expected.not_to be_valid
+        expect(user.errors[:name]).to include("を入力してください")
+      end
     end
 
     it "名前が空白なら無効であること" do
