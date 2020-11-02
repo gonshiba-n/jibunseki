@@ -7,6 +7,7 @@
     "import-glob-loader": "^1.1.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "postcss-svgo": "^4.0.2",
     "rails-ujs": "^5.2.4-4"
   },
   "devDependencies": {
