@@ -103,6 +103,4 @@
 		<%= link_to "Signup", new_user_path, data: {"turbolinks" => false}, class: 'btn btn-outline-success btn-lg section-signup' %>
 	</div>
 </section>
-<% content_for(:javascript) do %>
-	<%= javascript_include_tag 'static_pages' %>
-<% end %>
+<%= javascript_pack_tag 'src/index' %>

@@ -1,5 +1,15 @@
 {
   "name": "jibunseki",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "5.2.1",
+    "bootstrap": "^4.5.3",
+    "import-glob-loader": "^1.1.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "rails-ujs": "^5.2.4-4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }

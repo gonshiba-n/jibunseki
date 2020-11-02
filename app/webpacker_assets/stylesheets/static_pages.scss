@@ -13,7 +13,7 @@ h2 .section-title{
 
 // ここからcatch_copy
 .catch-copy{
-    background: url("top-bg") no-repeat center center;
+    background: url('../images/top-bg.jpg') no-repeat center center;
     background-size: cover;
     height: auto;
     padding: 15% 0 15% 0;
@@ -130,7 +130,7 @@ h2 .section-title{
 
 .signup{
     padding: 100px 0;
-    background: url("stepup") no-repeat center center;
+    background: url("../images/stepup.jpg") no-repeat center center;
     background-size: cover;
     form{
         font-weight: bold;
@@ -163,7 +163,7 @@ h2 .section-title{
 
 .login{
     padding: 160px 0;
-    background: url("stepup") no-repeat center center;
+    background: url("../images/stepup.jpg") no-repeat center center;
     background-size: cover;
     form{
         font-weight: bold;

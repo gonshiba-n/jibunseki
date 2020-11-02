@@ -14,9 +14,12 @@
  *= require_tree .
  */
 
-@import "bootstrap";
 @import "./default.scss";
 @import "./variable";
+@import "./default.scss";
+@import "./static_pages.scss";
+@import "./users";
+@import "~bootstrap/scss/bootstrap";
 
 // ここからナビバー設定
 .navbar-light .navbar-toggler {
