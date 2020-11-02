@@ -10,8 +10,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
   </head>
@@ -38,9 +37,9 @@
               </li>
               <li class="nav-item">
                 <% if logged_in? %>
-                  <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link text-white header-logout' %>
+                  <%= link_to "Logout", logout_path, data: {"turbolinks" => false}, method: :delete, class: 'nav-link text-white header-logout' %>
                 <% else %>
-                  <%= link_to "Login", login_path, class: 'nav-link text-white header-login' %>
+                  <%= link_to "Login", login_path, data: {"turbolinks" => false}, class: 'nav-link text-white header-login' %>
                 <% end %>
               </li>
             </ul>
