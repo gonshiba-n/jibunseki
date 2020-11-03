@@ -6,7 +6,6 @@ RSpec.describe "StaticPages", type: :system do
 			before do
 				visit root_path
 			end
-
 			it "じぶんセキの文字列が存在すること" do
 				expect(page).to have_content 'じぶん'
 			end

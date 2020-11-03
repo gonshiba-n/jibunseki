@@ -14,6 +14,16 @@ module Jibunseki
     config.generators do |g|
       g.assets false
       g.test_framework false
+      #ジェネレート時にRSpecのテストファイルも作成
+      g.test_framework :rspec,
+      #テストデータベースにレコードを作成するファイルの作成をスキップ
+      fixtures: false,
+      #ビュースペックを作成しないことを指定
+      view_specs: false,
+      #ヘルパーファイル用のスペックを作成しないことを指定
+      helper_specs: false,
+      #ルーディング用のスペックファイルの作成を省略
+      routing_specs: false
     end
 
     #日本時間設定
