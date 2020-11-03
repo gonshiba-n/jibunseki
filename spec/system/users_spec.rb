@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  describe "ユーザー登録ページ" do
+  describe "new ユーザー登録ページ" do
     before do
       visit new_user_path
     end
@@ -49,4 +49,15 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
+
+  # describe "show ユーザーワークスペース" do
+  #   let(:user) { FactoryBot.create(:user) }
+  #   before do
+  #     visit user_path(user.id)
+  #   end
+  #   context "表示確認" do
+      
+  #   end
+    
+  # end
 end
