@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Sessions", type: :system do
   describe "ユーザーログインページ" do
-    let!(:user) {FactoryBot.create(:user)}
+    let(:user) {FactoryBot.create(:user)}
     before do
       visit login_path
     end
