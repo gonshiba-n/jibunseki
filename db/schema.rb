@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_164700) do
+ActiveRecord::Schema.define(version: 2020_11_04_123551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "tags", force: :cascade do |t|
-    t.text "question_body"
-    t.text "tag"
+    t.text "question_body", null: false
+    t.text "tag", null: false
     t.string "wcm", null: false
     t.boolean "base_tag", default: false, null: false
     t.bigint "user_id"
