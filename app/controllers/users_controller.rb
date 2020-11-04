@@ -21,14 +21,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      redirect_to user_path(@user.id), notice:"#{@user.name}さん！登録が完了しました。"
+      redirect_to user_path(@user.id), notice: "#{@user.name}さん！登録が完了しました。"
     else
       render :new
     end
   end
 
   def destroy
-
   end
 
   private

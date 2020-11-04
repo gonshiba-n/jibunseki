@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Sessions", type: :system do
   describe "ユーザーログインページ" do
-    let(:user) {FactoryBot.create(:user)}
+    let(:user) { FactoryBot.create(:user) }
 
     context "表示確認" do
       it "Loginの文字列が表示されていること" do
@@ -22,8 +22,8 @@ RSpec.describe "Sessions", type: :system do
 
       it "異常なユーザーログイン処理" do
         visit login_path
-        fill_in "メールアドレス",	with: " "
-        fill_in "パスワード",	with: " "
+        fill_in "メールアドレス", with: " "
+        fill_in "パスワード", with: " "
         click_button "Login"
 
         expect(page).to have_content 'メールアドレスとパスワードの組み合わせが誤っています'

@@ -15,10 +15,10 @@ RSpec.describe "Users", type: :system, js: true do
   #   describe "ユーザー登録機能" do
   #     context "有効なユーザー" do
   #       it "ユーザー登録が行われること" do
-  #         fill_in "ユーザー名",	with: "test_user"
-  #         fill_in "メールアドレス",	with: "test@test.com"
-  #         fill_in "パスワード",	with: "password"
-  #         fill_in "パスワード再確認",	with: "password"
+  #         fill_in "ユーザー名",  with: "test_user"
+  #         fill_in "メールアドレス",  with: "test@test.com"
+  #         fill_in "パスワード",  with: "password"
+  #         fill_in "パスワード再確認",  with: "password"
   #         click_button "Signup"
   #         @user = User.find_by(name: 'test_user')
   #         expect(current_path).to eq user_path(@user.id)
@@ -27,10 +27,10 @@ RSpec.describe "Users", type: :system, js: true do
   #     end
   #     context "無効なユーザー" do
   #       it "ユーザー登録が行われずに、エラー分が返されること" do
-  #         fill_in "ユーザー名",	with: " "
-  #         fill_in "メールアドレス",	with: " "
-  #         fill_in "パスワード",	with: " "
-  #         fill_in "パスワード再確認",	with: " "
+  #         fill_in "ユーザー名",  with: " "
+  #         fill_in "メールアドレス",  with: " "
+  #         fill_in "パスワード",  with: " "
+  #         fill_in "パスワード再確認",  with: " "
   #         click_button "Signup"
   #         expect(page).to have_content "名前を入力してください"
   #         expect(page).to have_content "メールアドレスを入力してください"
@@ -40,10 +40,10 @@ RSpec.describe "Users", type: :system, js: true do
   #     end
 
   #     it "passwordが一致しなければエラー文が返されること" do
-  #       fill_in "ユーザー名",	with: "test_user"
-  #       fill_in "メールアドレス",	with: "test@test.com"
-  #       fill_in "パスワード",	with: "password"
-  #       fill_in "パスワード再確認",	with: "password_confirmation"
+  #       fill_in "ユーザー名",  with: "test_user"
+  #       fill_in "メールアドレス",  with: "test@test.com"
+  #       fill_in "パスワード",  with: "password"
+  #       fill_in "パスワード再確認",  with: "password_confirmation"
   #       click_button "Signup"
 
   #       expect(page).to have_content "再確認用パスワードとパスワードの入力が一致しません"
@@ -53,6 +53,7 @@ RSpec.describe "Users", type: :system, js: true do
 
   describe "show ユーザーワークスペース" do
     let!(:user) { FactoryBot.create(:user) }
+
     before do
       will_tag = FactoryBot.create(:tag, user: user)
       can_tag = FactoryBot.create(:tag, :can, user: user)
@@ -69,7 +70,6 @@ RSpec.describe "Users", type: :system, js: true do
     end
 
     describe "WCMシート" do
-
       it "タグが存在していること" do
         expect(page).to have_selector(".will-tag button")
       end
@@ -87,7 +87,7 @@ RSpec.describe "Users", type: :system, js: true do
       it "WCM行動指標が行事されていること"
 
       it "他ユーザーのWCMリンクが存在すること"
-      #モーダル
+      # モーダル
       it "タグをクリックするとモーダルが表示されること" do
         click_modal
         expect(page).to have_content "WCMタグ編集"
@@ -122,8 +122,8 @@ RSpec.describe "Users", type: :system, js: true do
         click_modal
         expect(page).to have_button "更新"
       end
-      #有効なタグ編集
-      #無効ななタグ編集
+      # 有効なタグ編集
+      # 無効ななタグ編集
 
       it "新規作成の質問テキストエリアが表示されていること"
 
@@ -142,8 +142,8 @@ RSpec.describe "Users", type: :system, js: true do
       context "有効なタグ登録" do
         it "タグが作成されること" do
           click_modal
-          fill_in "質問の新規作成",	with: "NewQuestion"
-          fill_in "解答タグの新規作成",	with: "NewTag"
+          fill_in "質問の新規作成", with: "NewQuestion"
+          fill_in "解答タグの新規作成", with: "NewTag"
           click_button "作成"
           @tag = user.tag.find_by(tag: 'NewTag')
           click_modal
@@ -151,7 +151,7 @@ RSpec.describe "Users", type: :system, js: true do
         end
       end
 
-      #無効なタグ登録
+      # 無効なタグ登録
       context "無効なタグ作成" do
         it "タグが作成されずにエラー文を返すこと"
       end

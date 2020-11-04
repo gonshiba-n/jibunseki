@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def create
     if @user&.authenticate(session_params[:password])
       login(@user)
-      redirect_to user_path(@user.id), notice:"#{@user.name}さん！ログインしました。"
+      redirect_to user_path(@user.id), notice: "#{@user.name}さん！ログインしました。"
     else
       flash[:danger] = 'メールアドレスとパスワードの組み合わせが誤っています'
       redirect_to login_path
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   # ログアウト処理
   def destroy
     logout
-    redirect_to root_path, notice:"ログアウトしました。"
+    redirect_to root_path, notice: "ログアウトしました。"
   end
 
   private
