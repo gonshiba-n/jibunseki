@@ -6,6 +6,8 @@ class Tag < ApplicationRecord
   validate :wcm, :wcm_check
   # validate :base_tag, :base_tag_check
 
+  private
+
   def wcm_check
     unless wcm == "will" || wcm == "can" || wcm == "must"
       errors.add(:wcm, "不正な値を検出しました")
@@ -13,11 +15,8 @@ class Tag < ApplicationRecord
   end
 
   def base_tag_check
-    #変更したタグであれば
-    #新しいタグであれば
-    # base_tag_in_database(true)
-    #ユーザーの作成したタグがwill,can,mustで振り分け
+    # ユーザーの作成したタグがwill,can,mustで振り分け
 
-    #base_tagのtrueだけをDBから抽出し１よりもカウントが大きければエラー
+    # base_tagのtrueだけをDBから抽出し１よりもカウントが大きければエラー
   end
 end

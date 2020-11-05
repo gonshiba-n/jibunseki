@@ -20,3 +20,4 @@ Rails.start()
 import '../stylesheets/application'
 import 'bootstrap'
 import 'jquery'
+import '../src/user_show'

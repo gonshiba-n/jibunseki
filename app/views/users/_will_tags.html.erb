@@ -5,7 +5,9 @@
       表示タグ
     </h3>
     <div class="tags-container">
-      <%= render partial: 'will_tag_ajax.html.erb' %>
+      <% @will_tags.each do |t| %>
+        <button type="button" value="<%= t.tag %>" class="btn btn-primary modal-btn show-btn will" id="tag<%= t.id %>" data-question="<%= t.question_body %>"><%= t.tag %></button>
+      <% end %>
     </div>
     <div class="col-12 text-right">
       <%= link_to "選択削除", tag_delete_user_path, method: :delete, class: 'btn btn-success', id: 'select-delete' %>
@@ -17,10 +19,12 @@
       <i class="fas fa-pen-square"></i>
       編集
     </h3>
-    <button type="button" class="btn btn-secondary d-block modal-btn" id="blank-tag">none</button>
-    <label for="textarea1">質問の編集:</label>
-    <textarea id="textarea1" class="form-control" id="edit-textarea"></textarea>
-    <input class="form-control" type="text" placeholder="解答タグのの編集" id="edit-textfield">
+    <div id="blank-tag-container">
+      <button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>
+    </div>
+    <label for="edit-textarea">質問の編集:</label>
+    <textarea id="edit-textarea" class="form-control"></textarea>
+    <input class="form-control" type="text" placeholder="解答タグの編集" id="edit-textfield">
     <div class="col-12 text-right">
       <button type="button" class="btn btn-success">更新</button>
     </div>
