@@ -19,5 +19,10 @@ FactoryBot.define do
       tag { 'must_tag' }
       wcm { 'must' }
     end
+
+    trait :none do
+      tag { 'none' }
+      wcm { 'none' }
+    end
   end
 end
