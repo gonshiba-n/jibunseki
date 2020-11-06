@@ -22,12 +22,14 @@
     <div id="blank-tag-container">
       <button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>
     </div>
-    <label for="edit-textarea">質問の編集:</label>
-    <textarea id="edit-textarea" class="form-control"></textarea>
-    <input class="form-control" type="text" placeholder="解答タグの編集" id="edit-textfield">
-    <div class="col-12 text-right">
-      <button type="button" class="btn btn-success">更新</button>
-    </div>
+    <%= form_with model: @tag, url: tag_edit_user_path do |f| %>
+      <%= f.label :name, "質問の編集:", for: "edit-textarea" %>
+      <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
+      <%= f.text_field :tag, placeholder: "解答タグの編集", class: "form-control", id: "edit-textfield" %>
+      <div class="col-12 text-right">
+        <%= f.submit "更新", class: 'btn btn-success' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col-12 new">

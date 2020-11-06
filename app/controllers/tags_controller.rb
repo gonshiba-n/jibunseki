@@ -9,6 +9,7 @@ class TagsController < ApplicationController
   end
 
   def update
+    
   end
 
   def destroy

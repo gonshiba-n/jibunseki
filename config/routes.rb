@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       post 'tag_new' => 'tags#create'
+      post 'tag_edit' => 'tags#update'
       delete 'tag_delete' => 'tags#destroy'
     end
   end
