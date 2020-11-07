@@ -15,11 +15,19 @@ function selectTagChange(tag) {
   let editTextField = document.getElementById("edit-textfield")
 
   // 選択タグを編集項目へ反映
-  blankTagContainer.innerHTML = `<button type="button" class="${tag.className}" id="${tag.id}">${tag.value}</button>`
-  editTextArea.value = `${tag.dataset.question}`
-  editTextField.value = `${tag.value}`
-
+  if (tag.dataset.flag === "true") {
+    blankTagContainer.innerHTML = '<button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>'
+    editTextArea.value = ""
+    editTextField.value = ""
+    tag.removeAttribute("data-flag");
+  }else{
+    blankTagContainer.innerHTML = `<button type="button" class="${tag.className}" id="${tag.id}">${tag.value}</button>`
+    editTextArea.value = `${tag.dataset.question}`
+    editTextField.value = `${tag.value}`
+    tag.setAttribute("data-flag", true);
+  }
 }
+
 
 // DOM要素を変数に格納
 function registerDOM() {
@@ -35,3 +43,6 @@ function initialize() {
 
 // DOM読み込み後にイニシャライズ
 document.addEventListener("DOMContentLoaded", initialize.bind(this));
+
+// 要素にデータ属性（カウント）を付与
+// カウントが１以上ならnoneに変更
