@@ -1,0 +1,3 @@
+<% will_tags.each do |t| %>
+  <button type="button" value="<%= t.tag %>" class="btn btn-primary modal-btn show-btn will" id="<%= t.id %>" data-question="<%= t.question_body %>"><%= t.tag %></button>
+<% end %>

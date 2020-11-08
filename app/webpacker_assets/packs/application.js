@@ -17,7 +17,9 @@ const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs'
 Rails.start()
-import '../stylesheets/application'
+import Turbolinks from 'turbolinks'
+Turbolinks.start()
 import 'bootstrap'
 import 'jquery'
+import '../stylesheets/application'
 import '../src/user_show'

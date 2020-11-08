@@ -9,7 +9,14 @@ class TagsController < ApplicationController
   end
 
   def update
-    
+    @tag = @current_user.tag.find(tags_params[:id])
+    @tag.update(tags_params)
+    respond_to do |format|
+      format.js
+    end
+    @will_tags = @current_user.tag.where(wcm: "will")
+    @can_tags = @current_user.tag.where(wcm: "can")
+    @must_tags = @current_user.tag.where(wcm: "must")
   end
 
   def destroy
