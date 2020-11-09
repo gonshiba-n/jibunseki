@@ -4,7 +4,7 @@
       <i class="far fa-eye"></i>
       表示タグ
     </h3>
-    <div class="tags-container" id="tc">
+    <div class="tags-container" id="tagContainer">
       <%= render partial: "tags/tags_show", locals: { will_tags: @will_tags } %>
     </div>
     <div class="col-12 text-right">
@@ -26,7 +26,7 @@
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
       <%= f.text_field :tag, placeholder: "解答タグの編集", class: "form-control", id: "edit-textfield" %>
       <div class="col-12 text-right">
-        <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit", disabled: true %>
+        <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit", disabled: true, onclick: "editEnter()" %>
       </div>
     <% end %>
   </div>

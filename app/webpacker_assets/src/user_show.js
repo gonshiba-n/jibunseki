@@ -1,3 +1,5 @@
+// グローバル 変数として定義
+let tagContainer
 let tags
 let blankTag
 let blankTagContainer
@@ -5,17 +7,10 @@ let editTextArea
 let editTextField
 let hidden_field
 let editSubmit
-let count = 0
 
-// イベント管理
-function bindEvent() {
-  tags.forEach(function(tag) {
-    tag.addEventListener("click", event => selectTagChange(tag));
-  });
-};
 
+// 選択タグを編集項目へ反映する
 function selectTagChange(tag) {
-  // 選択タグを編集項目へ反映
   if (tag.dataset.flag === "true") {
     blankTagContainer.innerHTML = '<button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>'
     editTextArea.value = ""
@@ -33,9 +28,36 @@ function selectTagChange(tag) {
   }
 }
 
+// 更新後のタグに編集部分のタグの表示を合わせる
+function ConvertNewTag () {
+  let tag = blankTagContainer.childNodes[0].id
+  let targetTag = tags.namedItem(tag);
+  if (tag === targetTag.id){
+    blankTagContainer.innerHTML = `<button type="button" class="${targetTag.className}" id="${targetTag.id}">${targetTag.value}</button>`
+  }
+}
+
+// イベント発火ここから
+window.bindEvent = function () {
+  let tag = event.target
+  initialize()
+  selectTagChange(tag)
+}
+
+// タグのajax更新完了後に編集タグの置き換えを行うために時間遅延させた。別途仕様を考える
+window.editEnter = function () {
+  setTimeout('delayedConversion();', 300);
+}
+delayedConversion = function() {
+  initialize()
+  ConvertNewTag()
+}
+// イベント発火ここまで
+
 // DOM要素を変数に格納
 function registerDOM() {
-  tags = document.querySelectorAll(".show-btn");
+  tagContainer = document.getElementById("tagContainer")
+  tags = tagContainer.children
   blankTag = document.getElementById("blank-tag");
   blankTagContainer = document.getElementById("blank-tag-container")
   editTextArea = document.getElementById("edit-textarea")
@@ -47,11 +69,4 @@ function registerDOM() {
 // 初期化
 function initialize() {
   registerDOM()
-  bindEvent()
 }
-
-// DOM読み込み後にイニシャライズ
-document.addEventListener('turbolinks:load', function () {
-  initialize()
-  console.log("a")
-})
