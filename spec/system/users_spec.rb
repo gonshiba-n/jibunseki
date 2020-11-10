@@ -75,37 +75,14 @@ RSpec.describe "Users", type: :system, js: true do
         expect(page).to have_selector(".will-tag button")
       end
 
-      it "Willタグの色が適性であること"
-
-      it "Canタグの色が適性であること"
-
-      it "Mustタグの色が適性であること"
-
       it "ベースタグが表示されていること" do
         expect(page).to have_selector(".base-tag button")
       end
 
-      it "WCM行動指標が行事されていること"
-
-      it "他ユーザーのWCMリンクが存在すること"
-
-      # モーダル
       it "タグをクリックするとモーダルが表示されること" do
         click_modal
         expect(page).to have_content "WCMタグ編集"
       end
-
-      it "WillページにはCan,Mustタグは存在しないこと" do
-        click_modal
-        click_link "Will"
-        expect(page).to have_button "will_tag"
-        expect(page).to have_no_button "can_tag"
-        expect(page).to have_no_button "must_tag"
-      end
-
-      it "CanページにはWill,Mustタグは存在しないこと"
-
-      it "MustページにはWill,Canタグは存在しないこと"
 
       it "選択削除ボタンがあること" do
         click_modal
@@ -140,33 +117,43 @@ RSpec.describe "Users", type: :system, js: true do
         expect(page).to have_button "更新"
       end
 
-      it "タグの更新後に表示タグと編集タグが更新後の値に変化すること" do
-        click_modal
-        click_button "will_tag"
-        fill_in "edit-textfield",	with: "update_tag"
-        click_button "更新"
-        show_tag = find(".tags-container button")
-        edit_tag = find("#blank-tag-container button")
-        sleep 0.5
-        expect(show_tag).to have_content "update_tag"
-        expect(edit_tag).to have_content "update_tag"
+      context "有効なタグ更新" do
+        it "タグの更新後に表示タグと編集タグが更新後の値に変化すること" do
+          click_modal
+          click_button "will_tag"
+          fill_in "edit-textfield", with: "update_tag"
+          click_button "更新"
+          show_tag = find(".tags-container button")
+          edit_tag = find("#blank-tag-container button")
+          sleep 0.5
+          expect(show_tag).to have_content "update_tag"
+          expect(edit_tag).to have_content "update_tag"
+        end
       end
 
-      # 有効なタグ編集
-      # 無効ななタグ編集
-
-      it "新規作成の質問テキストエリアが表示されていること"
-
-      it "新規作成の解答タグテキストフィールドが存在していること"
-
-      it "保存ボタンが存在していること" do
-        click_modal
-        expect(page).to have_button "保存"
+      context "無効なタグ更新" do
+        it "タグの更新がエラーになりエラーを返すこと" do
+          click_modal
+          click_button "will_tag"
+          fill_in "edit-textarea", with: ""
+          fill_in "edit-textfield", with: ""
+          click_button "更新"
+          expect(page).to have_content "質問文を入力してください"
+          expect(page).to have_content "タグを入力してください"
+        end
+          it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
+            click_modal
+            click_button "will_tag"
+            fill_in "edit-textarea", with: "NewQuestion"
+            fill_in "edit-textfield", with: "#{"a" * 11}"
+            click_button "更新"
+            expect(page).to have_content "タグは10文字以内で入力してください"
+          end
       end
 
-      it "キャンセルボタンが存在していること" do
+      it "閉じるボタンが存在していること" do
         click_modal
-        expect(page).to have_button "キャンセル"
+        expect(page).to have_button "閉じる"
       end
 
       context "有効なタグ登録" do
@@ -175,15 +162,26 @@ RSpec.describe "Users", type: :system, js: true do
           fill_in "質問の新規作成", with: "NewQuestion"
           fill_in "解答タグの新規作成", with: "NewTag"
           click_button "作成"
-          @tag = user.tag.find_by(tag: 'NewTag')
-          click_modal
-          expect(page).to have_content(@tag.tag)
+          expect(page).to have_button "NewTag"
         end
       end
 
-      # 無効なタグ登録
       context "無効なタグ作成" do
-        it "タグが作成されずにエラー文を返すこと"
+        it "タグが作成されずにエラー文を返すこと" do
+          click_modal
+          fill_in "質問の新規作成", with: ""
+          fill_in "解答タグの新規作成", with: ""
+          click_button "作成"
+          expect(page).to have_content "質問文を入力してください"
+          expect(page).to have_content "タグを入力してください"
+        end
+        it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
+          click_modal
+          fill_in "質問の新規作成", with: "NewQuestion"
+          fill_in "解答タグの新規作成", with: "#{"a" * 11}"
+          click_button "作成"
+          expect(page).to have_content "タグは10文字以内で入力してください"
+        end
       end
     end
   end

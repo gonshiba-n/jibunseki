@@ -17,7 +17,7 @@
       <i class="fas fa-pen-square"></i>
       編集
     </h3>
-    <div class="js-message-errors"></div>
+    <div class="edit-js-message-errors"></div>
     <div id="blank-tag-container">
       <button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>
     </div>
@@ -37,11 +37,11 @@
       <i class="fas fa-plus-square"></i>
       新規作成
     </h3>
-    <%= render partial: "layouts/errors", locals: { instance: @tag } %>
-    <%= form_with model: @tag, url: tag_new_user_path(@current_user.id), local: true do |f| %>
-      <%= f.label :name, '質問の新規作成', for: 'tag-new-text-area' %>
-      <%= f.text_area :question_body, class: 'form-control', id: 'tag-new-text-area' %>
-      <%= f.text_field :tag, placeholder: '解答タグの新規作成', class: 'form-control', id: 'tag-new-text-field' %>
+    <div class="create-js-message-errors"></div>
+    <%= form_with model: @tag, url: tag_new_user_path(@current_user.id) do |f| %>
+      <%= f.label :name, '質問の新規作成', for: 'create-textarea' %>
+      <%= f.text_area :question_body, class: 'form-control', id: 'create-textarea' %>
+      <%= f.text_field :tag, placeholder: '解答タグの新規作成', class: 'form-control', id: 'create-textfield' %>
       <%= f.hidden_field :wcm, value: 'will' %>
       <div class="col-12 text-right">
         <%= f.submit "作成", class: 'btn btn-success' %>

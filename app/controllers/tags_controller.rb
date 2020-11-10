@@ -1,11 +1,14 @@
 class TagsController < ApplicationController
   def create
     @tag = @current_user.tag.new(tags_params)
-    if @tag.save
-      redirect_to user_path(@current_user.id), notice: "#{@current_user.name}さん！タグを作成しました。"
-    else
-      redirect_to user_path(@current_user.id), notice: "#{@current_user.name}さん！タグを作成できませんでした。"
+    respond_to do |format|
+      if @tag.save
+        format.js
+      else
+        format.js { render :create_errors }
+      end
     end
+    set_tags
   end
 
   def update
@@ -14,12 +17,10 @@ class TagsController < ApplicationController
       if @tag.update(tags_params)
         format.js
       else
-        format.js{render :errors}
+        format.js { render :edit_errors }
       end
     end
-    @will_tags = @current_user.tag.where(wcm: "will")
-    @can_tags = @current_user.tag.where(wcm: "can")
-    @must_tags = @current_user.tag.where(wcm: "must")
+    set_tags
   end
 
   def destroy
@@ -32,5 +33,11 @@ class TagsController < ApplicationController
 
   def tags_params
     params.require(:tag).permit(:id, :question_body, :tag, :wcm)
+  end
+
+  def set_tags
+    @will_tags = @current_user.tag.where(wcm: "will")
+    @can_tags = @current_user.tag.where(wcm: "can")
+    @must_tags = @current_user.tag.where(wcm: "must")
   end
 end

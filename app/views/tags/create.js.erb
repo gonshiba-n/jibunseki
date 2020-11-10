@@ -1,0 +1,10 @@
+$('#tagContainer').html("<%= j(render partial: "tags_show", locals: { instance: @will_tags }) %>");
+$('.js-message-errors').empty();
+
+function initForm() {
+  let textarea = document.getElementById("create-textarea")
+  let textfield = document.getElementById("create-textfield")
+  textarea.value = ""
+  textfield.value = ""
+}
+initForm()

@@ -161,7 +161,7 @@
 .tags-edit{
   margin: 0 auto;
   .tags, .edit, .new{
-    padding: 20px 0;
+    padding: 20px 2%;
     border-bottom: 1px solid $main_color;
     .form-control{
       margin: 10px 0;
@@ -171,9 +171,6 @@
   .tags{
     margin-top: 10px;
   }
-
-
-
 }
 .modal-btn{
   font-size: 0.8rem;
