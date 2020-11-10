@@ -64,6 +64,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem "launchy"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

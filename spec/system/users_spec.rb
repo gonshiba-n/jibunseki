@@ -56,9 +56,9 @@ RSpec.describe "Users", type: :system, js: true do
     let!(:user) { FactoryBot.create(:user) }
 
     before do
-      will_tag = FactoryBot.create(:tag, user: user)
-      can_tag = FactoryBot.create(:tag, :can, user: user)
-      must_tag = FactoryBot.create(:tag, :must, user: user)
+      @will_tag = FactoryBot.create(:tag, user: user)
+      @can_tag = FactoryBot.create(:tag, :can, user: user)
+      @must_tag = FactoryBot.create(:tag, :must, user: user)
       login_for_app(user)
     end
 
@@ -112,18 +112,46 @@ RSpec.describe "Users", type: :system, js: true do
         expect(page).to have_link "選択削除"
       end
 
-      it "編集タグはnoneタグになっていること"
-
-      it "タグを選択すると編集タグが選択タグに切り替わること"
-
-      it "編集のテキストエリアが表示されていること"
-
-      it "編集の解答タグのテキストフィールドが存在していること"
+      it "編集タグはnoneタグになっていること" do
+        click_modal
+        expect(page).to have_button "none"
+      end
 
       it "編集の更新のボタンが存在していること" do
         click_modal
+        expect(page).to have_button "更新", disabled: true
+      end
+
+      it "タグを選択すると更新ボタンが有効になること" do
+        click_modal
+        click_button "will_tag"
         expect(page).to have_button "更新"
       end
+
+      it "タグを選択すると編集タグが選択タグに切り替わること" do
+        click_modal
+        click_button "will_tag"
+        edit_tag = find("#blank-tag-container button")
+        textarea = find("#edit-textarea")
+        textfield = find("#edit-textfield")
+        expect(edit_tag).to have_content "#{@will_tag.tag}"
+        expect(textarea.value).to match "#{@will_tag.question_body}"
+        expect(textfield.value).to match "#{@will_tag.tag}"
+        expect(page).to have_button "更新"
+      end
+
+      it "タグの更新後に表示タグと編集タグが更新後の値に変化すること" do
+        click_modal
+        click_button "will_tag"
+        fill_in "edit-textfield",	with: "update_tag"
+        click_button "更新"
+        show_tag = find(".tags-container button")
+        edit_tag = find("#blank-tag-container button")
+        sleep 0.5
+        expect(show_tag).to have_content "update_tag"
+        expect(edit_tag).to have_content "update_tag"
+      end
+
       # 有効なタグ編集
       # 無効ななタグ編集
 
@@ -164,3 +192,5 @@ end
 def click_modal
   click_button "primary1"
 end
+
+# save_and_open_page

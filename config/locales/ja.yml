@@ -3,6 +3,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      tag: タグ
     attributes:
       user:
         id: ID
@@ -14,21 +15,18 @@ ja:
         salon_id: サロン
         password: パスワード
         password_confirmation: 再確認用パスワード
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-    models:
-      tag: タグ
-    attributes:
       tag:
         id: ID
         question_body: 質問文
         tag: タグ
         wcm: Will,Can,Must
         base_tag: ベースタグ
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
     - 日
