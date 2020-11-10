@@ -28,7 +28,7 @@ function selectTagChange(tag) {
   }
 }
 
-// 更新後のタグに編集部分のタグの表示を合わせる
+// // 更新後のタグに編集部分のタグの表示を合わせる
 function ConvertNewTag () {
   let tag = blankTagContainer.childNodes[0].id
   let targetTag = tags.namedItem(tag);

@@ -5,7 +5,7 @@
       表示タグ
     </h3>
     <div class="tags-container" id="tagContainer">
-      <%= render partial: "tags/tags_show", locals: { will_tags: @will_tags } %>
+      <%= render partial: "tags/tags_show", locals: { instance: @will_tags } %>
     </div>
     <div class="col-12 text-right">
       <%= link_to "選択削除", tag_delete_user_path, method: :delete, class: 'btn btn-success', id: 'select-delete' %>
@@ -17,10 +17,11 @@
       <i class="fas fa-pen-square"></i>
       編集
     </h3>
+    <div class="js-message-errors"></div>
     <div id="blank-tag-container">
       <button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>
     </div>
-    <%= form_with model: @tag, url: tag_edit_user_path do |f| %>
+    <%= form_with model: @tag, url: tag_edit_user_path, class: "js-form" do |f| %>
       <%= f.hidden_field :id %>
       <%= f.label :name, "質問の編集:", for: "edit-textarea" %>
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
@@ -36,6 +37,7 @@
       <i class="fas fa-plus-square"></i>
       新規作成
     </h3>
+    <%= render partial: "layouts/errors", locals: { instance: @tag } %>
     <%= form_with model: @tag, url: tag_new_user_path(@current_user.id), local: true do |f| %>
       <%= f.label :name, '質問の新規作成', for: 'tag-new-text-area' %>
       <%= f.text_area :question_body, class: 'form-control', id: 'tag-new-text-area' %>

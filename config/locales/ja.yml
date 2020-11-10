@@ -20,6 +20,15 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      tag: タグ
+    attributes:
+      tag:
+        id: ID
+        question_body: 質問文
+        tag: タグ
+        wcm: Will,Can,Must
+        base_tag: ベースタグ
   date:
     abbr_day_names:
     - 日

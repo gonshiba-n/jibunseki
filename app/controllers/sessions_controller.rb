@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to user_path(@user.id), notice: "#{@user.name}さん！ログインしました。"
     else
-      flash[:danger] = 'メールアドレスとパスワードの組み合わせが誤っています'
+      flash[:danger] = '・メールアドレスとパスワードの組み合わせが誤っています'
       redirect_to login_path
     end
   end

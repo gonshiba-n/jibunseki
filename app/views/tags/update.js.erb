@@ -1,1 +1,2 @@
-$('#tagContainer').html("<%= j(render partial: "tags_show", locals: { will_tags: @will_tags }) %>");
+$('#tagContainer').html("<%= j(render partial: "tags_show", locals: { instance: @will_tags }) %>");
+$('.js-message-errors').empty();

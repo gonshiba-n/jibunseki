@@ -10,9 +10,12 @@ class TagsController < ApplicationController
 
   def update
     @tag = @current_user.tag.find(tags_params[:id])
-    @tag.update(tags_params)
     respond_to do |format|
-      format.js
+      if @tag.update(tags_params)
+        format.js
+      else
+        format.js{render :errors}
+      end
     end
     @will_tags = @current_user.tag.where(wcm: "will")
     @can_tags = @current_user.tag.where(wcm: "can")
