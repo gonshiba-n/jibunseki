@@ -4,12 +4,15 @@
       <i class="far fa-eye"></i>
       表示タグ
     </h3>
-    <div class="tags-container" id="tagContainer">
-      <%= render partial: "tags/tags_show", locals: { instance: @will_tags } %>
-    </div>
-    <div class="col-12 text-right">
-      <%= link_to "選択削除", tag_delete_user_path, method: :delete, class: 'btn btn-success', id: 'select-delete' %>
-    </div>
+    <%= form_with model: @tag, url: tag_delete_user_path, method: :delete, local: true do |f| %>
+      <div class="tags-container" id="tagContainer">
+        <%= render partial: "tags/tags_show", locals: { instance: @will_tags, f: f } %>
+      </div>
+      <div class="col-12 text-right">
+        <a class="btn btn-success" id="select-delete" data-display="false" onclick="selectDisplay()">選択</a>
+        <%= f.submit "削除",class: 'btn btn-secondary d-none', id: 'deleteTagsBtn' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col-12 edit">

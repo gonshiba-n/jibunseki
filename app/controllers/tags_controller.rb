@@ -35,6 +35,11 @@ class TagsController < ApplicationController
     params.require(:tag).permit(:id, :question_body, :tag, :wcm)
   end
 
+  def select_content_params
+  ids = params.require(:tag).permit(tags_ids: [])
+  ids.values[0]
+  end
+
   def set_tags
     @will_tags = @current_user.tag.where(wcm: "will")
     @can_tags = @current_user.tag.where(wcm: "can")
