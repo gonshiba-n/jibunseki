@@ -24,9 +24,18 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find(params[:id])
-    @tag.destroy
-    redirect_to user_path(@current_user.id), notice: "#{@current_user.name}さん！タグを削除しました。"
+    select_tags = select_tags_params
+    respond_to do |format|
+      select_tags.each do |tag|
+        @tag = Tag.find(tag)
+        if @tag.destroy
+          format.js
+        else
+          format.js { render :edit_errors}
+        end
+      end
+    end
+    set_tags
   end
 
   private
@@ -35,7 +44,7 @@ class TagsController < ApplicationController
     params.require(:tag).permit(:id, :question_body, :tag, :wcm)
   end
 
-  def select_content_params
+  def select_tags_params
   ids = params.require(:tag).permit(tags_ids: [])
   ids.values[0]
   end
@@ -45,4 +54,5 @@ class TagsController < ApplicationController
     @can_tags = @current_user.tag.where(wcm: "can")
     @must_tags = @current_user.tag.where(wcm: "must")
   end
+
 end

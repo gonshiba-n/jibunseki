@@ -1,45 +1,21 @@
-// グローバル 変数として定義
+// グローバル変数定義
 let tagContainer,
     tags,
-    blankTag,
     blankTagContainer,
+    selectBtn,
+    deleteBtn,
+    blankTag,
     editTextArea,
     editTextField,
     hidden_field,
-    editSubmit,
-    selectBtn
+    editSubmit
 
-
-// 選択タグを編集項目へ反映する
-function selectTagChange(tag) {
-  if (tag.dataset.flag === "true") {
-    blankTagContainer.innerHTML = '<button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>'
-    editTextArea.value = ""
-    editTextField.value = ""
-    tag.removeAttribute("data-flag")
-    hidden_field.removeAttribute("value")
-    editSubmit.disabled = true
-  }else{
-    hidden_field.value = `${Number(tag.id)}`
-    blankTagContainer.innerHTML = `<button type="button" class="${tag.className}" id="${tag.id}">${tag.value}</button>`
-    editTextArea.value = `${tag.dataset.question}`
-    editTextField.value = `${tag.value}`
-    tag.setAttribute("data-flag", true)
-    editSubmit.disabled = false
-  }
-}
-// 更新後のタグに編集部分のタグの表示を合わせる
-function ConvertNewTag () {
-  let tag = blankTagContainer.childNodes[0].id
-  let targetTag = tags.namedItem(tag);
-  if (tag === targetTag.id){
-    blankTagContainer.innerHTML = `<button type="button" class="${targetTag.className}" id="${targetTag.id}">${targetTag.value}</button>`
-  }
-}
+// ==========表示タグセクションここから==========
 
 // チェックボックスとボタンをリンクしてトグル化
 function checkBoxLink(tag) {
   let checkBox = document.getElementById(`checkbox${tag.id}`)
+
   if (checkBox.checked) {
     checkBox.checked = false
   }else{
@@ -59,19 +35,30 @@ function deleteBtnToggle() {
     }
   })
 }
-
+// 選択ボタンの削除ボタン表示トグル
 function deleteToggle() {
-  let deleteTagsBtn = document.getElementById("deleteTagsBtn")
-
   if (selectBtn.dataset.display === "true") {
-    deleteTagsBtn.classList.remove("d-none")
+    deleteBtn.classList.remove("d-none")
   } else {
-    deleteTagsBtn.classList.add("d-none")
-    }
+    deleteBtn.classList.add("d-none")
+  }
 }
 
+// 削除後のリセット
+function resetEdit() {
+  blankTagContainer.innerHTML = '<button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>'
+  editTextArea.value = ""
+  editTextField.value = ""
+  hidden_field.removeAttribute("value")
+  editSubmit.disabled = true
+  deleteBtn.classList.add("d-none")
+  selectBtn.text = "選択"
+}
+
+// チェックボックスの表示トグル
 function checkBoxToggle() {
   let checkBox = document.querySelectorAll(".checkbox-select")
+
   checkBox.forEach(function(t){
     if (selectBtn.dataset.display === "true"){
       t.classList.remove("d-none")
@@ -80,35 +67,76 @@ function checkBoxToggle() {
     }
   })
 }
+// ==========表示タグセクションここまで==========
 
-// イベント発火ここから
+// ==========編集セクションここから==========
 
-// タグを条件分岐でイベント変更 data-branchをフラグとする
-window.bindEvent = function () {
-  let tag = event.target
-  initialize()
-  if (tag.dataset.branch === "select-tag-change") {
-    return selectTagChange(tag)
-  }else{
-    return checkBoxLink(tag)
+// 選択タグを編集項目へ反映する
+function tagChange(tag) {
+  if (tag.dataset.flag === "true") {
+    blankTagContainer.innerHTML = '<button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>'
+    editTextArea.value = ""
+    editTextField.value = ""
+    tag.removeAttribute("data-flag")
+    hidden_field.removeAttribute("value")
+    editSubmit.disabled = true
+  } else {
+    hidden_field.value = `${Number(tag.id)}`
+    blankTagContainer.innerHTML = `<button type="button" class="${tag.className}" id="${tag.id}">${tag.value}</button>`
+    editTextArea.value = `${tag.dataset.question}`
+    editTextField.value = `${tag.value}`
+    tag.setAttribute("data-flag", true)
+    editSubmit.disabled = false
   }
 }
 
-// data-branch変更
+// 更新後のタグに編集部分のタグの表示を合わせる
+function ConvertNewTag() {
+  let noUpdatedTag = blankTagContainer.childNodes[0].id
+  let updateTag = tags.namedItem(noUpdatedTag);
+  if (noUpdatedTag === updateTag.id) {
+    blankTagContainer.innerHTML = `<button type="button" class="${updateTag.className}" id="${updateTag.id}">${updateTag.value}</button>`
+  }
+}
 
-window.selectDisplay = function () {
-  target = event.target
-  if(target.dataset.display === "false"){
-    target.dataset.display = "true"
+// ==========編集セクションここまで==========
+
+// ==========イベント発火ここから==========
+
+// 表示セクション タグを条件分岐でイベント変更 data-branchをフラグとする
+window.bindEvent = function () {
+  let target = event.target
+  initialize()
+  if (target.dataset.branch === "select-tag-change") {
+    return tagChange(target)
   }else{
-    target.dataset.display = "false"
+    return checkBoxLink(target)
+  }
+}
+
+// 選択ボタン トグル関連
+window.selectDisplay = function () {
+  let displayTarget = event.target
+  if (displayTarget.dataset.display === "false"){
+    displayTarget.dataset.display = "true"
+    displayTarget.text = "解除"
+  }else{
+    displayTarget.dataset.display = "false"
+    displayTarget.text = "選択"
   }
   initialize()
   deleteBtnToggle()
   deleteToggle()
   checkBoxToggle()
 }
-// タグのajax更新完了後に編集タグの置き換えを行うために時間遅延させた。別途仕様を考える
+
+// 削除ボタン
+window.deleteEnter = function () {
+  initialize()
+  resetEdit()
+}
+
+// 編集セクション タグのajax更新完了後に編集タグの置き換えを行うために時間遅延させた。別途仕様を考える
 window.editEnter = function () {
   setTimeout('delayedConversion();', 300);
 }
@@ -116,25 +144,23 @@ delayedConversion = function() {
   initialize()
   ConvertNewTag()
 }
-// イベント発火ここまで
 
 
+// ==========イベント発火ここまで==========
 
+// ==========初期化ここから==========
 
-// DOM要素を変数に格納
-function registerDOM() {
+function initialize() {
   tagContainer = document.getElementById("tagContainer")
   tags = tagContainer.children
-  blankTag = document.getElementById("blank-tag");
+  selectBtn = document.getElementById("select-btn")
+  deleteBtn = document.getElementById("delete-btn")
   blankTagContainer = document.getElementById("blank-tag-container")
+  blankTag = document.getElementById("blank-tag");
   editTextArea = document.getElementById("edit-textarea")
   editTextField = document.getElementById("edit-textfield")
   hidden_field = document.getElementById("tag_id")
   editSubmit = document.getElementById("edit-submit")
-  selectBtn = document.getElementById("select-delete")
 }
 
-// 初期化
-function initialize() {
-  registerDOM()
-}
+// ==========初期化ここまで==========
