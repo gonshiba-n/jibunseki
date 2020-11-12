@@ -19,4 +19,8 @@ class Tag < ApplicationRecord
 
     # base_tagのtrueだけをDBから抽出し１よりもカウントが大きければエラー
   end
+
+  def limit_check
+    # タグの数が６以下なら保存
+  end
 end

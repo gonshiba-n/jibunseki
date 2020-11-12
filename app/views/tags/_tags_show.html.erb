@@ -1,3 +1,10 @@
+<% if flash[:success].present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 <% instance.each do |t| %>
   <input type="checkbox" class="checkbox-select d-none" id="checkbox<%= t.id %>" value="<%= t.id %>" name="tag[tags_ids][]">
   <button type="button" value="<%= t.tag %>" class="btn btn-primary modal-btn show-btn will" id="<%= t.id %>" data-question="<%= t.question_body %>" data-flag="false" data-branch="select-tag-change" onclick="bindEvent();"><%= t.tag %></button>
