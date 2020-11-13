@@ -30,6 +30,8 @@ RSpec.describe Tag, type: :model do
 
       it "ベースタグはwill,can,mustでひとつずつ以上tureを保持しないこと"
 
+      it "Will,Can,Mustで6件ずつ以上は登録できないこと"
+
       it "wcmにwill,can,must以外のデータであればエラーを返すこと" do
         tag = FactoryBot.build(:tag, :none)
         tag.valid?

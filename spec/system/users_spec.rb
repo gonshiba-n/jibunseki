@@ -167,10 +167,9 @@ RSpec.describe "Users", type: :system, js: true do
         it "削除ボタンを押すと削除されること" do
           click_modal
           click_button "選択"
-          tag = find_button("will_tag")
           check "tag1"
           click_button "削除"
-          expect(page).to_not have_content "will_tag"
+          expect(page).not_to have_content "will_tag"
           expect(page).to have_content "タグを削除しました。"
         end
       end
@@ -184,7 +183,8 @@ RSpec.describe "Users", type: :system, js: true do
           expect(page).to have_content "質問文を入力してください"
           expect(page).to have_content "タグを入力してください"
         end
-        it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
+
+        it "作成タグ入力が１０文字を超えないこと" do
           click_modal
           fill_in "質問の新規作成", with: "NewQuestion"
           fill_in "解答タグの新規作成", with: "#{"a" * 11}"
@@ -201,7 +201,8 @@ RSpec.describe "Users", type: :system, js: true do
           expect(page).to have_content "質問文を入力してください"
           expect(page).to have_content "タグを入力してください"
         end
-        it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
+
+        it "編集タグ入力が１０文字を超えないこと" do
           click_modal
           click_button "will_tag"
           fill_in "edit-textarea", with: "NewQuestion"
@@ -209,6 +210,7 @@ RSpec.describe "Users", type: :system, js: true do
           click_button "更新"
           expect(page).to have_content "タグは10文字以内で入力してください"
         end
+
         it "削除ボタンを押すと削除されること" do
           click_modal
           click_button "選択"

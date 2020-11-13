@@ -4,7 +4,8 @@ class Tag < ApplicationRecord
   validates :question_body, presence: true, length: { maximum: 50 }
   validates :tag, presence: true, length: { maximum: 10 }
   validate :wcm, :wcm_check
-  # validate :base_tag, :base_tag_check
+  validate :base_tag, :base_tag_check
+  validate :limit_check
 
   private
 
@@ -15,12 +16,45 @@ class Tag < ApplicationRecord
   end
 
   def base_tag_check
-    # ユーザーの作成したタグがwill,can,mustで振り分け
-
-    # base_tagのtrueだけをDBから抽出し１よりもカウントが大きければエラー
+    case base_tag
+    when "will"
+      tags = Tag.where(user_id: user_id, wcm: "will", base_tag: true)
+      if tags >= 1
+        errors.add(:base_tag, "の登録は、1件までです")
+      end
+    when "must"
+      tags = Tag.where(user_id: user_id, wcm: "must", base_tag: true)
+      if tags >= 1
+        errors.add(:base_tag, "の登録は、1件までです")
+      end
+    when "can"
+      tags = Tag.where(user_id: user_id, wcm: "can", base_tag: true)
+      if tags >= 1
+        errors.add(:base_tag, "の登録は、1件までです")
+      end
+    end
   end
 
+  # タグの数が６以下なら保存
   def limit_check
-    # タグの数が６以下なら保存
+    case wcm
+    when "will"
+      tags = Tag.where(user_id: user_id, wcm: "will")
+      if tags.count >= 6
+        errors.add(:wcm, "のタグの登録は、それぞれ６件までです")
+      end
+    when "must"
+      tags = Tag.where(user_id: user_id, wcm: "must")
+      if tags.count >= 6
+        errors.add(:wcm, "のタグの登録は、それぞれ６件までです")
+      end
+    when "can"
+      tags = Tag.where(user_id: user_id, wcm: "can")
+      if tags.count >= 6
+        errors.add(:wcm, "のタグの登録は、それぞれ６件までです")
+      end
+    else
+      errors.add(:wcm, "不正な値です")
+    end
   end
 end
