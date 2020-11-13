@@ -64,6 +64,7 @@ function checkBoxToggle() {
       t.classList.remove("d-none")
     }else{
       t.classList.add("d-none")
+      t.checked = false
     }
   })
 }
@@ -93,7 +94,7 @@ function tagChange(tag) {
 // 更新後のタグに編集部分のタグの表示を合わせる
 function ConvertNewTag() {
   let noUpdatedTag = blankTagContainer.childNodes[0].id
-  let updateTag = tags.namedItem(noUpdatedTag);
+  let updateTag = tags.namedItem(noUpdatedTag)
   if (noUpdatedTag === updateTag.id) {
     blankTagContainer.innerHTML = `<button type="button" class="${updateTag.className}" id="${updateTag.id}">${updateTag.value}</button>`
   }
@@ -119,10 +120,10 @@ window.selectDisplay = function () {
   let displayTarget = event.target
   if (displayTarget.dataset.display === "false"){
     displayTarget.dataset.display = "true"
-    displayTarget.text = "解除"
+    displayTarget.value = "解除"
   }else{
     displayTarget.dataset.display = "false"
-    displayTarget.text = "選択"
+    displayTarget.value = "選択"
   }
   initialize()
   deleteBtnToggle()
@@ -138,7 +139,7 @@ window.deleteEnter = function () {
 
 // 編集セクション タグのajax更新完了後に編集タグの置き換えを行うために時間遅延させた。別途仕様を考える
 window.editEnter = function () {
-  setTimeout('delayedConversion();', 300);
+  setTimeout('delayedConversion()', 300);
 }
 delayedConversion = function() {
   initialize()
@@ -156,7 +157,7 @@ function initialize() {
   selectBtn = document.getElementById("select-btn")
   deleteBtn = document.getElementById("delete-btn")
   blankTagContainer = document.getElementById("blank-tag-container")
-  blankTag = document.getElementById("blank-tag");
+  blankTag = document.getElementById("blank-tag")
   editTextArea = document.getElementById("edit-textarea")
   editTextField = document.getElementById("edit-textfield")
   hidden_field = document.getElementById("tag_id")

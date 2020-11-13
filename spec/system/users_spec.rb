@@ -84,9 +84,28 @@ RSpec.describe "Users", type: :system, js: true do
         expect(page).to have_content "WCMタグ編集"
       end
 
-      it "選択削除ボタンがあること" do
+      it "選択ボタンがあること" do
         click_modal
-        expect(page).to have_link "選択削除"
+        expect(page).to have_button "選択"
+      end
+
+      it "選択ボタンを押すと削除ボタンが出ること" do
+        click_modal
+        click_button "選択"
+        expect(page).to have_button "削除"
+      end
+
+      it "選択ボタンを押すとボタンのテキストが選択から解除に変化すること" do
+        click_modal
+        click_button "選択"
+        btn = find_by_id("select-btn")
+        expect(btn).to have_attributes(value: "解除")
+      end
+
+      it "選択ボタンを押すとタグの横にチェックボックスが出ること" do
+        click_modal
+        click_button "選択"
+        expect(page).to have_field("tag1")
       end
 
       it "編集タグはnoneタグになっていること" do
@@ -117,56 +136,46 @@ RSpec.describe "Users", type: :system, js: true do
         expect(page).to have_button "更新"
       end
 
-      context "有効なタグ更新" do
-        it "タグの更新後に表示タグと編集タグが更新後の値に変化すること" do
-          click_modal
-          click_button "will_tag"
-          fill_in "edit-textfield", with: "update_tag"
-          click_button "更新"
-          show_tag = find(".tags-container button")
-          edit_tag = find("#blank-tag-container button")
-          sleep 0.5
-          expect(show_tag).to have_content "update_tag"
-          expect(edit_tag).to have_content "update_tag"
-        end
-      end
-
-      context "無効なタグ更新" do
-        it "タグの更新がエラーになりエラーを返すこと" do
-          click_modal
-          click_button "will_tag"
-          fill_in "edit-textarea", with: ""
-          fill_in "edit-textfield", with: ""
-          click_button "更新"
-          expect(page).to have_content "質問文を入力してください"
-          expect(page).to have_content "タグを入力してください"
-        end
-          it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
-            click_modal
-            click_button "will_tag"
-            fill_in "edit-textarea", with: "NewQuestion"
-            fill_in "edit-textfield", with: "#{"a" * 11}"
-            click_button "更新"
-            expect(page).to have_content "タグは10文字以内で入力してください"
-          end
-      end
-
       it "閉じるボタンが存在していること" do
         click_modal
         expect(page).to have_button "閉じる"
       end
 
-      context "有効なタグ登録" do
+      context "有効なタグCRUD処理" do
         it "タグが作成されること" do
           click_modal
           fill_in "質問の新規作成", with: "NewQuestion"
           fill_in "解答タグの新規作成", with: "NewTag"
           click_button "作成"
           expect(page).to have_button "NewTag"
+          expect(page).to have_content "タグを作成しました。"
+        end
+
+        it "タグの更新後に表示タグと編集タグが更新後の値に変化すること" do
+          click_modal
+          click_button "will_tag"
+          fill_in "edit-textfield", with: "update_tag"
+          click_button "更新"
+          show_tag = find(".tags-container .show-btn")
+          edit_tag = find("#blank-tag-container button")
+          sleep 0.5
+          expect(page).to have_content "タグを更新しました。"
+          expect(show_tag).to have_content "update_tag"
+          expect(edit_tag).to have_content "update_tag"
+        end
+
+        it "削除ボタンを押すと削除されること" do
+          click_modal
+          click_button "選択"
+          tag = find_button("will_tag")
+          check "tag1"
+          click_button "削除"
+          expect(page).to_not have_content "will_tag"
+          expect(page).to have_content "タグを削除しました。"
         end
       end
 
-      context "無効なタグ作成" do
+      context "無効なタグCRUD処理" do
         it "タグが作成されずにエラー文を返すこと" do
           click_modal
           fill_in "質問の新規作成", with: ""
@@ -181,6 +190,30 @@ RSpec.describe "Users", type: :system, js: true do
           fill_in "解答タグの新規作成", with: "#{"a" * 11}"
           click_button "作成"
           expect(page).to have_content "タグは10文字以内で入力してください"
+        end
+
+        it "タグの更新がエラーになりエラーを返すこと" do
+          click_modal
+          click_button "will_tag"
+          fill_in "edit-textarea", with: ""
+          fill_in "edit-textfield", with: ""
+          click_button "更新"
+          expect(page).to have_content "質問文を入力してください"
+          expect(page).to have_content "タグを入力してください"
+        end
+        it "タグの入力長さが１０文字を超えたらエラーを返すこと" do
+          click_modal
+          click_button "will_tag"
+          fill_in "edit-textarea", with: "NewQuestion"
+          fill_in "edit-textfield", with: "#{"a" * 11}"
+          click_button "更新"
+          expect(page).to have_content "タグは10文字以内で入力してください"
+        end
+        it "削除ボタンを押すと削除されること" do
+          click_modal
+          click_button "選択"
+          click_button "削除"
+          expect(page).to have_content "タグを選択してください"
         end
       end
     end
