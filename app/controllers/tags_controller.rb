@@ -43,6 +43,25 @@ class TagsController < ApplicationController
     set_tags
   end
 
+  def will_page
+    @tag = @current_user.tag.new
+    @transition_value = params[:transition_value]
+    case @transition_value
+    when "will"
+      @will_tags = @current_user.tag.where(wcm:"will")
+      respond_to do |format|
+        format.js { render template: "users/ajax/transition_destination"}
+      end
+    when "can"
+      @can_tags = @current_user.tag.where("can")
+      respond_to do |format|
+        format.js { render template: "users/ajax/transition_destination" }
+      end
+    else
+      puts "何もない"
+    end
+  end
+
   private
 
   def tags_params

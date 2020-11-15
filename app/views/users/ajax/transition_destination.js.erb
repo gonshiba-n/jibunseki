@@ -1,0 +1,5 @@
+<% if @transition_value == "will" %>
+  $('#wcm-container').html("<%= j(render partial: "users/will_tags", locals: { instance: @will_tags }) %>");
+<% else %>
+  $('#wcm-container').html("<%= j(render partial: "users/can_tags", locals: { instance: @can_tags }) %>");
+<% end %>
