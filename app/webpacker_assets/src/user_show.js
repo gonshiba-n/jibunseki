@@ -52,7 +52,7 @@ function resetEdit() {
   hidden_field.removeAttribute("value")
   editSubmit.disabled = true
   deleteBtn.classList.add("d-none")
-  selectBtn.text = "選択"
+  selectBtn.value = "選択"
 }
 
 // チェックボックスの表示トグル

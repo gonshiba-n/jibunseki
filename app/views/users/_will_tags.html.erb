@@ -6,7 +6,7 @@
     </h3>
     <%= form_with model: @tag, url: tag_delete_user_path, method: :delete do |f| %>
       <div class="tags-container" id="tagContainer">
-        <%= render partial: "tags/tags_show", locals: { instance: @will_tags, f: f } %>
+        <%= render partial: "tags/tags_show", locals: { instance: @tags, f: f } %>
       </div>
       <div class="col-12 text-right">
         <input type="button" class="btn btn-success" id="select-btn" value="選択" data-display="false" onclick="selectDisplay()">
@@ -45,7 +45,7 @@
       <%= f.label :name, '質問の新規作成', for: 'create-textarea' %>
       <%= f.text_area :question_body, class: 'form-control', id: 'create-textarea' %>
       <%= f.text_field :tag, placeholder: '解答タグの新規作成', class: 'form-control', id: 'create-textfield' %>
-      <%= f.hidden_field :wcm, value: 'will' %>
+      <%= f.hidden_field :wcm, value: @transition_value %>
       <div class="col-12 text-right">
         <%= f.submit "作成", class: 'btn btn-success' %>
       </div>

@@ -223,7 +223,7 @@ RSpec.describe "Users", type: :system, js: true do
 end
 
 def click_modal
-  click_button "primary1"
+  click_link "primary1"
 end
 
 # save_and_open_page

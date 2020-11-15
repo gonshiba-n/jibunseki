@@ -15,9 +15,7 @@
                 <p>Will</p>
                 <div class="will-tags tags">
                   <div class="will-tag tag">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wcm-tagsModal">
-                      primary1
-                    </button>
+                    <%= link_to "primary1", page_transition_user_path(transition_value: "will"), type: "button", class: "btn btn-primary nav-link active", data: { toggle: "modal", target: "#wcm-tagsModal"}, role: "tab", aria: { selected: true }, remote: true %>
                     <button type="button" class="btn btn-primary">Primary</button>
                   </div>
                   <div class="will-tag tag">
@@ -35,7 +33,7 @@
                 <p>Can</p>
                 <div class="can-tags tags">
                   <div class="can-tag tag">
-                    <button type="button" class="btn btn-success">Primary</button>
+                    <%= link_to "primary2", page_transition_user_path(transition_value: "can"), type: "button", class: "btn btn-success nav-link active", data: { toggle: "modal", target: "#wcm-tagsModal" }, role: "tab", aria: { selected: true }, remote: true %>
                     <button type="button" class="btn btn-success">Primary</button>
                   </div>
                   <div class="can-tag tag">
@@ -53,7 +51,7 @@
                 <p>Must</p>
                 <div class="must-tags tags">
                   <div class="must-tag tag">
-                    <button type="button" class="btn btn-danger">Primary</button>
+                    <%= link_to "primary3", page_transition_user_path(transition_value: "must"), type: "button", class: "btn btn-danger nav-link active", data: { toggle: "modal", target: "#wcm-tagsModal" }, role: "tab", aria: { selected: true }, remote: true %>
                     <button type="button" class="btn btn-danger">Primary</button>
                   </div>
                   <div class="must-tag tag">

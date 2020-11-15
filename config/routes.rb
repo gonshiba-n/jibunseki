@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy', as: 'logout'
   resources :users do
     member do
-      get 'will_page' => 'tags#will_page', as: 'will_page'
+      get 'page_transition' => 'tags#page_transition', as: 'page_transition'
       post 'tag_new' => 'tags#create'
       post 'tag_edit' => 'tags#update'
       delete 'tag_delete' => 'tags#destroy'
