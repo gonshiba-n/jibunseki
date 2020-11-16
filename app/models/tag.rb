@@ -5,7 +5,7 @@ class Tag < ApplicationRecord
   validates :tag, presence: true, length: { maximum: 10 }
   validate :wcm, :wcm_check
   validate :base_tag, :base_tag_check
-  validate :limit_check
+  validate :limit_check, on: :create
 
   private
 

@@ -13,13 +13,13 @@
       <div class="modal-body">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <%= link_to "Will", page_transition_user_path(transition_value: "will"),class: "nav-link",data: {toggle: "tab"}, role: "tab",aria:{selected: true}, remote: true %>
+              <%= link_to "Will", page_transition_user_path(transition_value: "will"),class: "nav-link",data: {toggle: "tab"}, role: "tab",aria:{selected: true}, id: "will-active", remote: true %>
             </li>
             <li class="nav-item">
-              <%= link_to "Can", page_transition_user_path(transition_value: "can"), class: "nav-link", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, remote: true %>
+              <%= link_to "Can", page_transition_user_path(transition_value: "can"), class: "nav-link", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, id: "can-active", remote: true %>
             </li>
             <li class="nav-item">
-              <%= link_to "Must", page_transition_user_path(transition_value: "must"), class: "nav-link", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, remote: true %>
+              <%= link_to "Must", page_transition_user_path(transition_value: "must"), class: "nav-link", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, id: "must-active", remote: true %>
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">

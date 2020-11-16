@@ -146,6 +146,30 @@ delayedConversion = function() {
   ConvertNewTag()
 }
 
+window.activeLink = function(wcm) {
+  let will = document.getElementById("will-active")
+  let can = document.getElementById("can-active")
+  let must = document.getElementById("must-active")
+  if (wcm === "will") {
+    will.classList.add("active")
+    can.classList.remove("active")
+    must.classList.remove("active")
+  }else if(wcm === "can"){
+    will.classList.remove("active")
+    can.classList.add("active")
+    must.classList.remove("active")
+
+  }else if(wcm === "must"){
+    will.classList.remove("active")
+    can.classList.remove("active")
+    must.classList.add("active")
+  }else{
+    will.classList.add("active")
+    can.classList.remove("active")
+    must.classList.remove("active")
+  }
+}
+
 
 // ==========イベント発火ここまで==========
 

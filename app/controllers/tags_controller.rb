@@ -45,7 +45,8 @@ class TagsController < ApplicationController
 
   def page_transition
     @tag = @current_user.tag.new
-    set_tags
+    @transition_value = params[:transition_value]
+    @tags = @current_user.tag.where(wcm: @transition_value)
     respond_to do |format|
       if @transition_value == "will" || @transition_value == "can" || @transition_value == "must"
         format.js { render template: "users/ajax/transition_destination"}
@@ -65,15 +66,5 @@ class TagsController < ApplicationController
   def select_tags_params
     ids = params.fetch(:tag, {}).permit(tags_ids: [])
     ids.values[0]
-  end
-
-  # def set_tags
-  #   @will_tags = @current_user.tag.where(wcm: "will")
-  #   @can_tags = @current_user.tag.where(wcm: "can")
-  #   @must_tags = @current_user.tag.where(wcm: "must")
-  # end
-  def set_tags
-    @transition_value = params[:transition_value]
-    @tags = @current_user.tag.where(wcm: @transition_value)
   end
 end
