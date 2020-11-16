@@ -14,23 +14,22 @@
               <div class="col-12 col-md-4 will-chart chart">
                 <p>Will</p>
                 <div class="will-tags tags">
-                  <div class="will-tag tag">
-                    <%=
-                      link_to "primary1", page_transition_user_path(transition_value: "will"),
-                      type: "button", class: "btn btn-primary nav-link",
-                      data: { toggle: "modal", target: "#wcm-tagsModal"},
-                      role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
-                    %>
-                    <button type="button" class="btn btn-primary">Primary</button>
-                  </div>
-                  <div class="will-tag tag">
-                    <button type="button" class="btn btn-primary">Primary</button>
-                    <button type="button" class="btn btn-primary">Primary</button>
-                  </div>
-                  <div class="will-tag tag">
-                    <button type="button" class="btn btn-primary">Primary</button>
-                    <button type="button" class="btn btn-primary">Primary</button>
-                  </div>
+                  <% @will_tags.each_slice(2) do |tag1, tag2| %>
+                    <div class="will-tag tag">
+                      <%=
+                        link_to "#{tag1.tag}", page_transition_user_path(transition_value: "will"),
+                        type: "button", class: "btn btn-primary nav-link",
+                        data: { toggle: "modal", target: "#wcm-tagsModal"},
+                        role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
+                      %>
+                      <%=
+                        link_to "#{tag2.tag}", page_transition_user_path(transition_value: "will"),
+                        type: "button", class: "btn btn-primary nav-link",
+                        data: { toggle: "modal", target: "#wcm-tagsModal"},
+                        role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
+                      %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
 
