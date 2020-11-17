@@ -49,7 +49,7 @@ class TagsController < ApplicationController
     @tags = @current_user.tag.where(wcm: @transition_value)
     respond_to do |format|
       if @transition_value == "will" || @transition_value == "can" || @transition_value == "must"
-        format.js { render template: "users/ajax/transition_destination"}
+        format.js { render template: "users/modal/transition_destination"}
       else
         render template: "users/show"
         flash.now[:success] = "不正な遷移指定です"

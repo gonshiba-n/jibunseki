@@ -10,11 +10,20 @@ $main_color: #58CAB4;
 $will_color: #81d8deff;
 $can_color: #50e00aff;
 $must_color: #fa8f14ff;
+$will_hover_color: #168ad6;
+$can_hover_color: #49920e;
+$must_hover_color: #854b08;
 
 $wcm_colors: (
-    will:( #81d8deff),
-    can:( #50e00aff),
-    must:( #fa8f14ff)
+    will: #81d8deff,
+    can: #50e00aff,
+    must: #fa8f14ff
+);
+
+$wcm_hover_colors: (
+    will: #168ad6,
+    can: #49920e,
+    must: #cc7817
 );
 
 // ここからメディアクエリ

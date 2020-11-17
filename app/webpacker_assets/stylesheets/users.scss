@@ -34,9 +34,23 @@
 // (will,can,must)-tags
 @each $name, $val in $wcm_colors {
   .#{$name}-tags{
-    margin-bottom: 3%;
+    margin: 3%;
     box-sizing: border-box;
     border: 2px solid ($val);
+  }
+}
+// (will,can,must)-buttons
+@each $name, $val in $wcm_colors {
+  .#{$name}-color{
+    color: #fff!important;
+    background-color: ($val)!important;
+    border-radius: 30px!important;
+  }
+}
+@each $name, $val in $wcm_hover_colors {
+  .#{$name}-color:hover{
+    color: #fff;
+    background-color: ($val)!important;
   }
 }
 
@@ -46,16 +60,7 @@
   margin: 3% 0;
   .btn{
     border-radius: 30px;
-  }
-}
-
-.base-tag{
-  margin: 2% auto;
-  display: flex;
-  justify-content: space-around;
-  .btn{
-    margin:0 1%;
-    border-radius: 30px;
+    min-width: 100px;
   }
 }
 
@@ -175,7 +180,7 @@
 }
 .modal-btn{
   font-size: 0.8rem;
-  border-radius: 30px;
+  border-radius: 30px!important;
   margin: 10px 10px 10px 0;
   min-width: 80px;
 }

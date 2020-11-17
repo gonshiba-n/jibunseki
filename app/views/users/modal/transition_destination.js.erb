@@ -1,0 +1,10 @@
+<% case @transition_value %>
+<% when "will" %>
+  $('#wcm-container').html("<%= j(render partial: "users/modal/work_space", locals: { instance: @transition_value }) %>");
+<% when "can" %>
+  $('#wcm-container').html("<%= j(render partial: "users/modal/work_space", locals: { instance: @transition_value }) %>");
+<% when "must" %>
+  $('#wcm-container').html("<%= j(render partial: "users/modal/work_space", locals: { instance: @transition_value }) %>");
+<% else %>
+  <% render template: "user/show" %>
+<% end %>

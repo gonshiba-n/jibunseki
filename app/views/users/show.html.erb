@@ -1,107 +1,132 @@
-<div class="row user_work_space">
+<div class="row mx-1 user_work_space">
   <div class="col-12 flash">
     <%= render partial: 'layouts/flash' %>
   </div>
-  <%= render partial: 'wcm_tags.html.erb' %>
+  <%= render partial: 'users/modal/modal_show' %>
 
-  <section class="col-12 wcm-seat">
-    <div class="row">
-      <div class="col-12 row wcm-work-space">
-          <div class="col-6 col-md-12 wcm-chart">
-            <div class="row">
-              <div class="col-12"><h2 class="h2">WCMシート</h2></div>
-
-              <div class="col-12 col-md-4 will-chart chart">
-                <p>Will</p>
-                <div class="will-tags tags">
-                  <% @will_tags.each_slice(2) do |tag1, tag2| %>
-                    <div class="will-tag tag">
-                      <%=
-                        link_to "#{tag1.tag}", page_transition_user_path(transition_value: "will"),
-                        type: "button", class: "btn btn-primary nav-link",
-                        data: { toggle: "modal", target: "#wcm-tagsModal"},
-                        role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
+  <section class="wcm-seat">
+    <div class="row wcm-work-space">
+            <div class="col-12">
+              <h2 class="h2">WCMシート</h2>
+            </div>
+        <div class="col-6 col-md-12 wcm-chart">
+          <div class="row">
+            <div class="col-12 col-md-4 will-chart chart">
+              <p>Will</p>
+              <div class="row mx-md-1 will-tags tags">
+                <% @will_count = 0 %>
+                <% @will_tags.each do |tag| %>
+                  <% @will_count += 1 %>
+                  <div class="col-6 will-tag tag">
+                    <%=
+                      link_to tag.tag, page_transition_user_path(transition_value: "will"),
+                      type: "button", class: "btn will-color nav-link",
+                      data: { toggle: "modal", target: "#wcm-tagsModal"},
+                      role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
+                    %>
+                  </div>
+                <% end %>
+                <% if @will_count <= 6 %>
+                  <% @after_will_count = 6 - @will_count %>
+                  <% @after_will_count.times do %>
+                    <div class="col-6 tag">
+                      <%= link_to "none", page_transition_user_path(transition_value: "will"),
+                                  type: "button", class: "btn btn-secondary nav-link",
+                                  data: { toggle: "modal", target: "#wcm-tagsModal" },
+                                  role: "tab", aria: { selected: true }, onclick: "activeLink('will')", remote: true
                       %>
-                      <%=
-                        link_to "#{tag2.tag}", page_transition_user_path(transition_value: "will"),
-                        type: "button", class: "btn btn-primary nav-link",
-                        data: { toggle: "modal", target: "#wcm-tagsModal"},
-                        role: "tab", aria: { selected: true },onclick: "activeLink('will')" ,remote: true
+                    </div>
+                  <%end%>
+                <%end%>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 can-chart chart">
+              <p>Can</p>
+              <div class="row mx-md-1 can-tags tags">
+                <% @can_count = 0 %>
+                <% @can_tags.each do |tag| %>
+                  <% @can_count += 1 %>
+                  <div class="col-6 can-tag tag">
+                    <%= link_to tag.tag, page_transition_user_path(transition_value: "can"),
+                                type: "button", class: "btn can-color nav-link",
+                                data: { toggle: "modal", target: "#wcm-tagsModal" },
+                                role: "tab", aria: { selected: true }, onclick: "activeLink('can')", remote: true
+                    %>
+                  </div>
+                <% end %>
+                <% if @can_count <= 6 %>
+                  <% @after_can_count = 6 - @can_count %>
+                  <% @after_can_count.times do %>
+                    <div class="col-6 tag">
+                      <%= link_to "none", page_transition_user_path(transition_value: "can"),
+                                  type: "button", class: "btn btn-secondary nav-link",
+                                  data: { toggle: "modal", target: "#wcm-tagsModal" },
+                                  role: "tab", aria: { selected: true }, onclick: "activeLink('can')", remote: true
                       %>
                     </div>
                   <% end %>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-4 can-chart chart">
-                <p>Can</p>
-                <div class="can-tags tags">
-                  <div class="can-tag tag">
-                    <%=
-                      link_to "primary2", page_transition_user_path(transition_value: "can"),
-                      type: "button", class: "btn btn-success nav-link",
-                      data: { toggle: "modal", target: "#wcm-tagsModal" },
-                      role: "tab", aria: { selected: true }, onclick: "activeLink('can')", remote: true
-                    %>
-                    <button type="button" class="btn btn-success">Primary</button>
-                  </div>
-                  <div class="can-tag tag">
-                    <button type="button" class="btn btn-success">Primary</button>
-                    <button type="button" class="btn btn-success">Primary</button>
-                  </div>
-                  <div class="can-tag tag">
-                    <button type="button" class="btn btn-success">Primary</button>
-                    <button type="button" class="btn btn-success">Primary</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-4 must-chart chart">
-                <p>Must</p>
-                <div class="must-tags tags">
-                  <div class="must-tag tag">
-                    <%=
-                      link_to "primary3", page_transition_user_path(transition_value: "must"),
-                      type: "button", class: "btn btn-danger nav-link",
-                      data: { toggle: "modal", target: "#wcm-tagsModal" },
-                      role: "tab", aria: { selected: true },onclick: "activeLink('must')", remote: true
-                    %>
-                    <button type="button" class="btn btn-danger">Primary</button>
-                  </div>
-                  <div class="must-tag tag">
-                    <button type="button" class="btn btn-danger">Primary</button>
-                    <button type="button" class="btn btn-danger">Primary</button>
-                  </div>
-                  <div class="must-tag tag">
-                    <button type="button" class="btn btn-danger">Primary</button>
-                    <button type="button" class="btn btn-danger">Primary</button>
-                  </div>
-                </div>
+                <% end %>
               </div>
             </div>
-          </div>
 
-          <div class="col-6 col-md-12 wcm-result">
-            <h3 class="col-12 h3">ベースタグ</h3>
-            <div class="base-tag">
-              <button type="button" class="btn btn-primary">Primary</button>
-              <button type="button" class="btn btn-success">Warning</button>
-              <button type="button" class="btn btn-danger">Danger</button>
-            </div>
-            <div class="behavioral-index">
-              <h3 class="h3">WCMからの行動指標</h3>
-              <div>
-                <p>私は〇〇をしたい。その理由は、〇〇である。（Willベースタグ）
-                    今まで、～～という経験をしてきた。～～といったスキルもある。（Canベースタグ）
-                    今後は～～することが求められる。そうしたスキル・経験を身に付けて行動していく。（Mustベースタグ)
-                </p>
+            <div class="col-12 col-md-4 must-chart chart">
+              <p>Must</p>
+              <div class="row mx-md-1 must-tags tags">
+                <% @must_count = 0 %>
+                <% @must_tags.each do |tag| %>
+                  <% @must_count += 1 %>
+                  <div class="col-6 must-tag tag">
+                    <%= link_to tag.tag, page_transition_user_path(transition_value: "must"),
+                                type: "button", class: "btn must-color nav-link",
+                                data: { toggle: "modal", target: "#wcm-tagsModal" },
+                                role: "tab", aria: { selected: true }, onclick: "activeLink('must')", remote: true
+                    %>
+                  </div>
+                <% end %>
+                <% if @must_count <= 6 %>
+                  <% @after_must_count = 6 - @must_count %>
+                  <% @after_must_count.times do %>
+                    <div class="col-6 tag">
+                      <%= link_to "none", page_transition_user_path(transition_value: "must"),
+                                  type: "button", class: "btn btn-secondary nav-link",
+                                  data: { toggle: "modal", target: "#wcm-tagsModal" },
+                                  role: "tab", aria: { selected: true }, onclick: "activeLink('must')", remote: true
+                      %>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-right w-100 mt-2 mb-5">
-          <a><i class="fas fa-arrow-right pr-2"></i>他のユーザーのWCMを見る</a>
+
+        <div class="col-6 col-md-12 wcm-result">
+          <h3 class="col-12 h3">ベースタグ</h3>
+          <div class="row">
+            <div class="col-md-4 my-1">
+              <button type="button" class="btn will-color d-block col-12 w-80">Primary</button>
+            </div>
+            <div class="col-md-4 my-1">
+              <button type="button" class="btn can-color d-block col-12 w-80">Warning</button>
+            </div>
+            <div class="col-md-4 my-1">
+              <button type="button" class="btn must-color d-block col-12 w-80">Danger</button>
+            </div>
+          </div>
+          <div class="behavioral-index">
+            <h3 class="h3">WCMからの行動指標</h3>
+            <div>
+              <p>私は〇〇をしたい。その理由は、〇〇である。（Willベースタグ）
+                  今まで、～～という経験をしてきた。～～といったスキルもある。（Canベースタグ）
+                  今後は～～することが求められる。そうしたスキル・経験を身に付けて行動していく。（Mustベースタグ)
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="text-right w-100 mt-2 mb-5">
+        <a><i class="fas fa-arrow-right pr-2"></i>他のユーザーのWCMを見る</a>
       </div>
     </div>
   <section>

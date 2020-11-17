@@ -10,6 +10,6 @@
   <% instance.each do |t| %>
     <label class="d-none" for="checkbox<%= t.id %>">tag<%= @count += 1 %></label>
     <input type="checkbox" class="checkbox-select d-none" id="checkbox<%= t.id %>" value="<%= t.id %>" name="tag[tags_ids][]">
-    <button type="button" value="<%= t.tag %>" class="btn btn-primary modal-btn show-btn will" id="<%= t.id %>" data-question="<%= t.question_body %>" data-flag="false" data-branch="select-tag-change" onclick="bindEvent();"><%= t.tag %></button>
+    <button type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn will" id="<%= t.id %>" data-question="<%= t.question_body %>" data-flag="false" data-branch="select-tag-change" onclick="bindEvent();"><%= t.tag %></button>
   <% end %>
 <% end %>
