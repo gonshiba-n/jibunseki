@@ -1,4 +1,11 @@
 $('#tagContainer').html("<%= j(render partial: "tags_show", locals: { instance: @tags }) %>");
+<% if @tag.wcm == "will" %>
+  $('#will-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags,tags_wcm: "will" }) %>");
+<% elsif @tag.wcm == "can" %>
+  $('#can-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "can" }) %>");
+<% else %>
+  $('#must-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "must" }) %>");
+<% end %>
 $('.js-message-errors').empty();
 
 function initForm() {

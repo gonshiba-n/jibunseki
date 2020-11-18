@@ -29,6 +29,7 @@ class TagsController < ApplicationController
       respond_to do |format|
         select_tags.each do |tag|
           tag = Tag.find(tag)
+          @value = tag.wcm
           @tags = @current_user.tag.where(wcm: tag.wcm)
           if tag.destroy
             format.js { flash.now[:success] = "タグを削除しました。" }
@@ -49,7 +50,7 @@ class TagsController < ApplicationController
     @tags = @current_user.tag.where(wcm: @transition_value)
     respond_to do |format|
       if @transition_value == "will" || @transition_value == "can" || @transition_value == "must"
-        format.js { render template: "users/modal/transition_destination"}
+        format.js { render template: "users/modal/transition_destination" }
       else
         render template: "users/show"
         flash.now[:success] = "不正な遷移指定です"

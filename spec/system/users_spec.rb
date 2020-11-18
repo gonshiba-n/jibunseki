@@ -76,7 +76,9 @@ RSpec.describe "Users", type: :system, js: true do
       end
 
       it "ベースタグが表示されていること" do
-        expect(page).to have_selector(".base-tag button")
+        expect(page).to have_selector("#will_base")
+        expect(page).to have_selector("#can_base")
+        expect(page).to have_selector("#must_base")
       end
 
       it "タグをクリックするとモーダルが表示されること" do
