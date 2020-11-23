@@ -1,0 +1,53 @@
+<%# ベースタグセクションのモーダルビュー %>
+
+<div class="modal fade bd-example-modal-xl"tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="h3">
+          <i class="fas fa-dot-circle"></i>
+          ベースタグの編集
+        </h3>
+      </div>
+      <div class="col-12" id="base-tags-flash">
+
+      </div>
+      <div class="modal-body base-tag-edit">
+        <%= form_with model: @tag, url: base_tag_edit_user_path, class: "row js-form" do |f| %>
+          <div class="col-12">
+            <p>Will</p>
+            <% @will_tags.each do |t| %>
+              <label>
+                <%= f.check_box :base_tag, {type: 'checkbox', multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "will-check", data:{wcm: "will"}}, t.id, false %>
+                <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn will <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+              </label>
+            <% end %>
+          </div>
+          <div class="col-12">
+            <p>Can</p>
+            <% @can_tags.each do |t| %>
+              <label>
+                <%= f.check_box :base_tag, { type: "checkbox", multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "can-check", data:{wcm: "can"}}, t.id, false %>
+                <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn can <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+              </label>
+            <% end %>
+          </div>
+          <div class="col-12">
+            <p>Must</p>
+            <% @must_tags.each do |t| %>
+              <label>
+                <%= f.check_box :base_tag, { type: "checkbox", multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "must-check", data:{wcm: "must"}}, t.id, false %>
+                <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn must <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+              </label>
+            <% end %>
+          </div>
+          <div class="col-12 text-right">
+            <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

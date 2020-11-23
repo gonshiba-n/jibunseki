@@ -40,7 +40,31 @@ class TagsController < ApplicationController
         end
       end
     else
+      @transition_value = params[:transition_value]
+      @tags = @current_user.tag.where(wcm: @transition_value)
       flash.now[:success] = "タグを選択してください"
+    end
+  end
+
+  def update_base_tag
+    new_base_tag = base_tags_params
+    old_base = @current_user.tag.where(base_tag: true)
+    respond_to do |format|
+      if old_base.update(base_tag: false)
+        new_base_tag.each do |id|
+          tag = Tag.find(id)
+          if tag.update(base_tag: true)
+            format.js {flash.now[:success] = "ベースタグをアップデートしました。"}
+          else
+            format.js { render template: "users/show" }
+            flash.now[:alert] = "ベースタグをアップデートできませんでした。"
+          end
+        end
+      else
+        format.js { render template: "users/show" }
+        flash.now[:alert] = "ベースタグをアップデートできませんでした。"
+      end
+      set_tag
     end
   end
 
@@ -61,11 +85,25 @@ class TagsController < ApplicationController
   private
 
   def tags_params
-    params.require(:tag).permit(:id, :question_body, :tag, :wcm)
+    params.require(:tag).permit(:id, :question_body, :tag, :wcm, :base_tag)
   end
 
   def select_tags_params
     ids = params.fetch(:tag, {}).permit(tags_ids: [])
     ids.values[0]
+  end
+
+  def base_tags_params
+    ids = params.fetch(:tag, {}).permit(base_tag: [])
+    ids.values[0]
+  end
+
+  def set_tag
+    @will_tags = @current_user.tag.where(wcm: "will")
+    @can_tags = @current_user.tag.where(wcm: "can")
+    @must_tags = @current_user.tag.where(wcm: "must")
+    @will_base = @current_user.tag.find_by(wcm: "will", base_tag: true)
+    @can_base = @current_user.tag.find_by(wcm: "can", base_tag: true)
+    @must_base = @current_user.tag.find_by(wcm: "must", base_tag: true)
   end
 end

@@ -1,10 +1,12 @@
+<%# WCMセクションのモーダルビュー(メインビュー) %>
+
 <div class="row tags-edit">
   <div class="col-12 tags">
     <h3 class="h3">
       <i class="far fa-eye"></i>
       表示タグ
     </h3>
-    <%= form_with model: @tag, url: tag_delete_user_path, method: :delete do |f| %>
+    <%= form_with model: @tag, url: tag_delete_user_path(transition_value: @transition_value), method: :delete do |f| %>
       <div class="tags-container" id="tagContainer">
         <%= render partial: "tags/tags_show", locals: { instance: @tags, f: f } %>
       </div>
@@ -29,6 +31,9 @@
       <%= f.label :name, "質問の編集:", for: "edit-textarea" %>
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
       <%= f.text_field :tag, placeholder: "解答タグの編集", class: "form-control", id: "edit-textfield" %>
+      <p class="m-0">ベースタグ</p>
+      <label><%= f.radio_button :base_tag, "true" %>する</label>
+      <label><%= f.radio_button :base_tag, "false", checked: true %>しない</label>
       <div class="col-12 text-right">
         <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit", disabled: true, onclick: "editEnter()" %>
       </div>

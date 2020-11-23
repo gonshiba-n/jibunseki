@@ -16,20 +16,8 @@ class Tag < ApplicationRecord
   end
 
   def base_tag_check
-    case base_tag
-    when "will"
-      tags = Tag.where(user_id: user_id, wcm: "will", base_tag: true)
-      if tags >= 1
-        errors.add(:base_tag, "の登録は、1件までです")
-      end
-    when "must"
-      tags = Tag.where(user_id: user_id, wcm: "must", base_tag: true)
-      if tags >= 1
-        errors.add(:base_tag, "の登録は、1件までです")
-      end
-    when "can"
-      tags = Tag.where(user_id: user_id, wcm: "can", base_tag: true)
-      if tags >= 1
+    if Tag.exists?(user_id: user_id, wcm: wcm, base_tag: true)
+      unless Tag.exists?(id: id, base_tag: true)
         errors.add(:base_tag, "の登録は、1件までです")
       end
     end

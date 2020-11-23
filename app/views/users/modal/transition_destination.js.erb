@@ -1,3 +1,4 @@
+<%# nav-tabsからの分岐出力制御 %>
 <% case @transition_value %>
 <% when "will" %>
   $('#wcm-container').html("<%= j(render partial: "users/modal/work_space", locals: { instance: @transition_value }) %>");

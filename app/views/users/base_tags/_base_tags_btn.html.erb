@@ -1,0 +1,11 @@
+<%# users/showのベースタグセクションボタン %>
+
+<div class="col-md-4 my-1">
+  <%= button_tag @will_base.tag, class: "btn will-color d-block col-12 w-80", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+</div>
+<div class="col-md-4 my-1">
+  <%= button_tag @can_base.tag, class: "btn can-color d-block col-12 w-80", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+</div>
+<div class="col-md-4 my-1">
+  <%= button_tag @must_base.tag, class: "btn must-color d-block col-12 w-80", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+</div>

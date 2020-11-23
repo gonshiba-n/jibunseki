@@ -170,6 +170,22 @@ window.activeLink = function(wcm) {
   }
 }
 
+// チェックボックスをラジオボタンのような振る舞いにした
+// window.checkJude = function () {
+//   let target = event.target
+//   let wcm = target.dataset.wcm
+//   let checkBoxs = document.querySelectorAll(`.${wcm}-check`)
+//   if (target.checked = true){
+//     checkBoxs.forEach(function (e){
+//       if (target != e){
+//       e.checked = false
+//       }
+//     })
+//   } else if (target.checked = false) {
+//     target.checked = true
+//   }
+// }
+
 
 // ==========イベント発火ここまで==========
 

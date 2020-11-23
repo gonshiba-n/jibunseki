@@ -3,6 +3,7 @@
     <%= render partial: 'layouts/flash' %>
   </div>
   <%= render partial: 'users/modal/modal_show' %>
+  <%= render partial: 'users/modal/base_tags' %>
 
   <section class="wcm-seat">
     <div class="row wcm-work-space">
@@ -37,7 +38,7 @@
         <div class="col-6 col-md-12 wcm-result">
           <h3 class="col-12 h3">ベースタグ</h3>
           <div class="row" id="base-tags">
-            <%= render partial: "users/base_tags/base_tags" %>
+            <%= render partial: "users/base_tags/base_tags_btn" %>
           </div>
           <div class="behavioral-index">
             <h3 class="h3">WCMからの行動指標</h3>

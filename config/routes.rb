@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'page_transition' => 'tags#page_transition', as: 'page_transition'
       post 'tag_new' => 'tags#create'
       post 'tag_edit' => 'tags#update'
+      post 'base_tag_edit' => 'tags#update_base_tag'
       delete 'tag_delete' => 'tags#destroy'
     end
   end
