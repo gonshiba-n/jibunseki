@@ -50,15 +50,15 @@ class TagsController < ApplicationController
     new_base_tag = base_tags_params
     old_base = @current_user.tag.where(base_tag: true)
     respond_to do |format|
-      unless new_base_tag == nil
+      if new_base_tag.nil?
+        format.js { flash.now[:success] = "ベースタグを選択してください" }
+      else
         old_base.update(base_tag: false)
         new_base_tag.each do |id|
           tag = Tag.find(id)
           tag.update(base_tag: true)
             format.js { flash.now[:success] = "ベースタグをアップデートしました。" }
         end
-      else
-        format.js { flash.now[:success] = "ベースタグを選択してください" }
       end
       set_tag
     end
@@ -70,7 +70,7 @@ class TagsController < ApplicationController
     @tags = @current_user.tag.where(wcm: @transition_value)
     respond_to do |format|
       if @transition_value == "will" || @transition_value == "can" || @transition_value == "must"
-        format.js { render template: "users/modal/transition_destination" }
+        format.js { render template: "users/wcm_seat/modal/transition_destination" }
       else
         render template: "users/show"
         flash.now[:success] = "不正な遷移指定です"
@@ -81,7 +81,7 @@ class TagsController < ApplicationController
   private
 
   def tags_params
-    params.require(:tag).permit(:id, :question_body, :tag, :wcm, :base_tag)
+    params.require(:tag).permit(:id, :question_body, :tag, :wcm)
   end
 
   def select_tags_params

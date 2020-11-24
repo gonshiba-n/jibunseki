@@ -8,7 +8,7 @@
     </h3>
     <%= form_with model: @tag, url: tag_delete_user_path(transition_value: @transition_value), method: :delete do |f| %>
       <div class="tags-container" id="tagContainer">
-        <%= render partial: "tags/tags_show", locals: { instance: @tags, f: f } %>
+        <%= render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags, f: f } %>
       </div>
       <div class="col-12 text-right">
         <input type="button" class="btn btn-success" id="select-btn" value="選択" data-display="false" onclick="selectDisplay()">
@@ -31,9 +31,6 @@
       <%= f.label :name, "質問の編集:", for: "edit-textarea" %>
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
       <%= f.text_field :tag, placeholder: "解答タグの編集", class: "form-control", id: "edit-textfield" %>
-      <p class="m-0">ベースタグ</p>
-      <label><%= f.radio_button :base_tag, "true" %>する</label>
-      <label><%= f.radio_button :base_tag, "false", checked: true %>しない</label>
       <div class="col-12 text-right">
         <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit", disabled: true, onclick: "editEnter()" %>
       </div>
@@ -51,6 +48,7 @@
       <%= f.text_area :question_body, class: 'form-control', id: 'create-textarea' %>
       <%= f.text_field :tag, placeholder: '解答タグの新規作成', class: 'form-control', id: 'create-textfield' %>
       <%= f.hidden_field :wcm, value: @transition_value %>
+      <%= f.hidden_field :base_tag, value: false %>
       <div class="col-12 text-right">
         <%= f.submit "作成", class: 'btn btn-success' %>
       </div>

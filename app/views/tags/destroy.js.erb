@@ -1,4 +1,4 @@
-$('#tagContainer').html("<%= j(render partial: "tags_show", locals: { instance: @tags }) %>");
+$('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags }) %>");
 <% if @value == "will" %>
   $('#will-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "will" }) %>");
 <% elsif @value == "can" %>
