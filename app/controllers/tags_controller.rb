@@ -50,19 +50,15 @@ class TagsController < ApplicationController
     new_base_tag = base_tags_params
     old_base = @current_user.tag.where(base_tag: true)
     respond_to do |format|
-      if old_base.update(base_tag: false)
+      unless new_base_tag == nil
+        old_base.update(base_tag: false)
         new_base_tag.each do |id|
           tag = Tag.find(id)
-          if tag.update(base_tag: true)
-            format.js {flash.now[:success] = "ベースタグをアップデートしました。"}
-          else
-            format.js { render template: "users/show" }
-            flash.now[:alert] = "ベースタグをアップデートできませんでした。"
-          end
+          tag.update(base_tag: true)
+            format.js { flash.now[:success] = "ベースタグをアップデートしました。" }
         end
       else
-        format.js { render template: "users/show" }
-        flash.now[:alert] = "ベースタグをアップデートできませんでした。"
+        format.js { flash.now[:success] = "ベースタグを選択してください" }
       end
       set_tag
     end

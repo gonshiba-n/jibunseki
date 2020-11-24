@@ -3,9 +3,17 @@
 // user_showページ===========================================
 .btn{
   font-size: 1rem;
+  border-radius: 30px;
   @include sp{
     font-size: 0.8rem;
   }
+}
+
+.base-tag{
+  border-radius: 30px!important;
+  display: block!important;
+  width: 90%!important;
+  margin: 0 auto;
 }
 
 .h2{
