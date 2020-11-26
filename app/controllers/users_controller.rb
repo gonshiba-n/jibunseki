@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_tag
+    set_instance
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def set_tag
+  def set_instance
     @tag = Tag.new
     @will_tags = @current_user.tag.where(wcm: 'will')
     @can_tags = @current_user.tag.where(wcm: 'can')
@@ -41,5 +41,6 @@ class UsersController < ApplicationController
     @will_base = @current_user.tag.find_by(wcm: 'will', base_tag: true)
     @can_base = @current_user.tag.find_by(wcm: 'can', base_tag: true)
     @must_base = @current_user.tag.find_by(wcm: 'must', base_tag: true)
+    @guideline = Guideline.find_or_initialize_by(user_id: @current_user.id).presence || Guideline.new
   end
 end

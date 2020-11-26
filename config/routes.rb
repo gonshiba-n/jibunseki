@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'page_transition' => 'tags#page_transition', as: 'page_transition'
+      post 'post_guideline' => 'guidelines#create'
+      patch 'post_guideline' => 'guidelines#create'
       post 'tag_new' => 'tags#create'
       post 'tag_edit' => 'tags#update'
       post 'base_tag_edit' => 'tags#update_base_tag'

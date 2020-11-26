@@ -186,6 +186,11 @@ window.checkJude = function () {
   }
 }
 
+window.areaClear = function () {
+  let area = document.getElementById("guideline-area")
+  area.value = ""
+}
+
 
 // ==========イベント発火ここまで==========
 

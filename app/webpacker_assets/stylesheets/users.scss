@@ -76,7 +76,7 @@
   }
 }
 
-.behavioral-index{
+.guideline{
   margin: 30px 0;
   @include sp{
     margin: 15px 0;
@@ -85,6 +85,14 @@
     padding-top: 15px;
     line-height: 30px;
   }
+  .guideline-container{
+    cursor: pointer;
+  }
+}
+
+.base-tag-edit, .guideline-edit{
+  padding-bottom: 10px;
+  border-bottom: 1px solid $main_color;
 }
 
 // ここまでwcmワークスペース
