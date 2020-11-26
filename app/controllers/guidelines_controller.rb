@@ -4,7 +4,7 @@ class GuidelinesController < ApplicationController
       case Guideline.exists?(user_id: @current_user.id)
       when false
         @guideline = Guideline.new(guideline_params)
-        if @guideline.save
+        if @guideline.save(context: :user)
           format.js {flash.now[:success] = "行動指針を作成しました。"}
         else
           format.js { render :create_errors }

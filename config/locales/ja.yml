@@ -4,6 +4,7 @@ ja:
     models:
       user: ユーザー
       tag: タグ
+      guideline: 行動指針
     attributes:
       user:
         id: ID
@@ -21,6 +22,10 @@ ja:
         tag: タグ
         wcm: Will,Can,Must
         base_tag: ベースタグ
+      guideline:
+        id: ID
+        text: 行動指針
+        user_id: 行動指針
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
