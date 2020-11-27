@@ -229,7 +229,7 @@ RSpec.describe "Users", type: :system, js: true do
 
         it "行動指針を登録するとフラッシュが表示されること" do
           click_modal_base_tag
-          fill_in "行動指針の編集:",	with: "行動指針のテスト"
+          fill_in "行動指針の編集:", with: "行動指針のテスト"
           click_button "行動指針を更新"
           expect(page).to have_content "行動指針を作成しました。"
         end
@@ -237,7 +237,7 @@ RSpec.describe "Users", type: :system, js: true do
         it "行動指針を登録するとshowページに反映されること" do
           click_modal_base_tag
           container = find("#guideline-container")
-          fill_in "行動指針の編集:",	with: "行動指針のテスト"
+          fill_in "行動指針の編集:", with: "行動指針のテスト"
           click_button "行動指針を更新"
           click_button "閉じる"
           expect(container).to have_content "行動指針のテスト"
@@ -246,7 +246,7 @@ RSpec.describe "Users", type: :system, js: true do
         it "行動指針を更新すると編集モーダルに反映されること" do
           click_modal_base_tag
           container = find("#guideline-modal-container")
-          fill_in "行動指針の編集:",	with: "行動指針のテスト"
+          fill_in "行動指針の編集:", with: "行動指針のテスト"
           click_button "行動指針を更新"
           expect(container).to have_content "行動指針のテスト"
         end
@@ -304,7 +304,7 @@ RSpec.describe "Users", type: :system, js: true do
 
         it "行動指標を空白で登録するとエラー文が表示されること" do
           click_modal_base_tag
-          fill_in "行動指針の編集:",	with: ""
+          fill_in "行動指針の編集:", with: ""
           click_button "行動指針を更新"
           expect(page).to have_content "行動指針を入力してください"
         end
@@ -320,6 +320,5 @@ end
 def click_modal_base_tag
   find("#base-will").click
 end
-
 
 # save_and_open_page

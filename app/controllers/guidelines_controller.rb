@@ -5,16 +5,16 @@ class GuidelinesController < ApplicationController
       when false
         @guideline = Guideline.new(guideline_params)
         if @guideline.save(context: :user)
-          format.js {flash.now[:success] = "行動指針を作成しました。"}
+          format.js { flash.now[:success] = "行動指針を作成しました。" }
         else
           format.js { render :create_errors }
         end
       when true
         @guideline = Guideline.find_by(user_id: @current_user.id)
         if @guideline.update(guideline_params)
-          format.js {flash.now[:success] = "行動指針をアップデートしました。"}
+          format.js { flash.now[:success] = "行動指針をアップデートしました。" }
         else
-          format.js{render :create_errors}
+          format.js { render :create_errors }
         end
       else
         redirect_to root_path, notice: "不正な操作がされました。"
