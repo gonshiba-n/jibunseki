@@ -12,6 +12,7 @@ AllCops:
     - 'vendor/**/**/*'
     - 'spec/*'
     - 'Gemfile'
+    - 'node_modules/**/**'
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false

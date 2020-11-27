@@ -1,0 +1,90 @@
+<%# ベースタグセクションのモーダルビュー %>
+<% @placeholder = "HTMLでも使用可能です。行動指針を記入していきましょう。" %>
+
+<div class="modal fade bd-example-modal-xl"tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="h3">
+          <i class="fas fa-tags"></i>
+          ベースタグの編集・行動指針の編集
+        </h3>
+      </div>
+      <div class="col-12" id="base-tags-flash">
+      <% if flash[:success].present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+      </div>
+      <div class="modal-body">
+        <div class="mx-3">
+          <div class="base-tag-edit">
+            <h3 class="h3">
+              <i class="fas fa-dot-circle"></i>
+              ベースタグの編集
+            </h3>
+            <%= form_with model: @tag, url: base_tag_edit_user_path, class: "row js-form" do |f| %>
+              <div class="col-12">
+                <p>Will</p>
+                <% @will_tags.each do |t| %>
+                  <label>
+                    <%= f.check_box :base_tag, {type: 'checkbox', multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "will-check", data:{wcm: "will"}}, t.id, false %>
+                    <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn will <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+                  </label>
+                <% end %>
+              </div>
+              <div class="col-12">
+                <p>Can</p>
+                <% @can_tags.each do |t| %>
+                  <label>
+                    <%= f.check_box :base_tag, { type: "checkbox", multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "can-check", data:{wcm: "can"}}, t.id, false %>
+                    <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn can <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+                  </label>
+                <% end %>
+              </div>
+              <div class="col-12">
+                <p>Must</p>
+                <% @must_tags.each do |t| %>
+                  <label>
+                    <%= f.check_box :base_tag, { type: "checkbox", multiple: true, checked: t.base_tag, onclick: "checkJude()", class: "must-check", data:{wcm: "must"}}, t.id, false %>
+                    <a type="button" value="<%= t.tag %>" class="btn <%= t.wcm %>-color modal-btn show-btn must <%= t.base_tag %>-flag" id="<%= t.id %>"><%= t.tag %></a>
+                  </label>
+                <% end %>
+              </div>
+              <div class="col-12 text-right">
+                <%= f.submit "ベースタグを更新", class: 'btn btn-success', id: "edit-submit" %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="guideline-edit">
+            <h3 class="h3">
+              <i class="fas fa-compass"></i>
+              行動指針の編集
+            </h3>
+            <div class="guideline-modal-show" id="guideline-modal-container">
+              <%= render "users/guideline/modal/modal_guideline_text", text: @guideline.text %>
+            </div>
+            <div class="create-js-message-errors"></div>
+            <%= form_with model: @guideline, url: post_guideline_user_path, class: "row js-form" do |f| %>
+              <div class="col-12">
+                <%= f.label :guideline, "行動指針の編集:", for: "guideline-area" %>
+                <%= button_tag "クリア", type: "button", class: "btn btn-outline-success btn-sm", id: "area-clear", onclick: "areaClear()" %>
+              </div>
+              <%= f.text_area :text, class: "form-control mx-2", id: "guideline-area", value: @guideline.text.gsub(/(\s|　)+/, ''), placeholder: @placeholder %>
+              <div class="col-12 pt-3 text-right">
+                <%= f.submit "行動指針を更新", class: 'btn btn-success', id: "guideline-submit" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
 			<h2>あなたのなりたい「じぶん」を見つけよう</h2>
 			<hr>
 			<h3>やりたいことを明確にして目標に向かって頑張る「あなた」をサポート</h3>
-			<%= link_to "なりたいじぶんを見つける", new_user_path, class: 'btn btn-success btn-lg' %>
+			<%= link_to "なりたいじぶんを見つける", new_user_path, data: {"turbolinks" => false}, class: 'btn btn-success btn-lg' %>
 		</div>
 	</div>
 </section>
@@ -37,6 +37,7 @@
 			<span class="section-title">Services</span>
 		</h2>
 	</div>
+	<div class="row m-2">
 	<div class="col-12 col-md-4 analysis">
 		<i class="fas fa-chart-line icon"></i>
 		<h3>自己分析</h3>
@@ -55,7 +56,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="col-12 col-md-4 target">
+	<div class="col-12 col-md-4 target m-0">
 		<i class="fas fa-check icon"></i>
 		<h3>目標設定管理</h3>
 		<div class="text-left">
@@ -90,6 +91,7 @@
 				評価基準を基に志望度を自動で算出します。
 			</p>
 		</div>
+		</div>
 	</div>
 	<div class="col-12">
 		<h3>「あなた」の自己分析から目標達成までをサポートします。</h3>
@@ -100,7 +102,7 @@
 	<div class="col-12 text-center start">
 		<h2>さあ、やりたいことを見つけよう！</h2>
 		<p>登録はこちらから</p>
-		<%= link_to "Signup", new_user_path, class: 'btn btn-outline-success btn-lg section-signup' %>
+		<%= link_to "Signup", new_user_path, data: {"turbolinks" => false}, class: 'btn btn-outline-success btn-lg section-signup' %>
 	</div>
 </section>
-<%= javascript_pack_tag 'src/index' %>
+<%= javascript_pack_tag 'src/static_pages' %>

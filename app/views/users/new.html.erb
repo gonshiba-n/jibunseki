@@ -1,13 +1,7 @@
 <div class="row signup">
 	<%= form_with model: @user, url: users_path, local: true, class: 'col-12 col-md-6' do |f| %>
 		<h2>Signup</h2>
-		<% if @user.errors.present? %>
-			<ul> <%# エラー内容出力 %>
-				<% @user.errors.full_messages.each do |message| %>
-					<li class="mb-2 error"><%= message %></li>
-				<% end %>
-			</ul>
-		<% end %>
+		<%= render partial: 'layouts/errors', locals: {instance: @user} %>
 		<div class="form-group">
 			<%= f.label :name, 'ユーザー名', for: 'InputName' %>
 			<%= f.text_field :name, class: "form-control", id: 'InputName' %>

@@ -1,0 +1,9 @@
+<% if instance.errors.full_messages.present? %>
+  <div class="validates js-message-errors ml-4">
+    <ul>
+      <% instance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

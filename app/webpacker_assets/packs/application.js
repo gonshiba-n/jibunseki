@@ -15,8 +15,11 @@
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 
+import Turbolinks from 'turbolinks'
+Turbolinks.start()
 import Rails from 'rails-ujs'
 Rails.start()
-import '../stylesheets/application'
 import 'bootstrap'
 import 'jquery'
+import '../stylesheets/application'
+import '../src/user_show'

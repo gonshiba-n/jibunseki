@@ -1,0 +1,23 @@
+<%# users/showのベースタグセクションボタン %>
+
+<div class="col-md-4 my-1">
+  <% if @will_base == nil %>
+    <%= button_tag 'none', class: "btn btn-secondary col-12 base-tag", id: "base-will", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% else %>
+    <%= button_tag @will_base.tag, class: "btn will-color col-12 base-tag", id: "base-will", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% end %>
+</div>
+<div class="col-md-4 my-1">
+  <% if @can_base == nil %>
+    <%= button_tag "none", class: "btn btn-secondary col-12 base-tag", id: "base-can", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% else %>
+    <%= button_tag @can_base.tag, class: "btn can-color col-12 base-tag", id: "base-can", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% end %>
+</div>
+<div class="col-md-4 my-1">
+  <% if @must_base == nil %>
+    <%= button_tag "none", class: "btn btn-secondary col-12 base-tag", id: "base-must", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% else %>
+    <%= button_tag @must_base.tag, class: "btn must-color col-12 base-tag", id: "base-must", data: { toggle: "modal", target: ".bd-example-modal-xl" } %>
+  <% end %>
+</div>

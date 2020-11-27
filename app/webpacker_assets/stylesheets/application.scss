@@ -16,7 +16,6 @@
 
 @import "./default.scss";
 @import "./variable";
-@import "./default.scss";
 @import "./static_pages.scss";
 @import "./users";
 @import "~bootstrap/scss/bootstrap";
@@ -49,7 +48,6 @@
         font-size: 18px;
         @include sp {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.3);
             text-shadow: 1px 1px 0 #000;
             padding: 5% 0 5% 0;
         }
