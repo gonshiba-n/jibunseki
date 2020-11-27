@@ -7,6 +7,7 @@ $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show",
   $('#must-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "must" }) %>");
 <% end %>
 $('.js-message-errors').empty();
+$('.flash').empty();
 
 function initForm() {
   let textarea = document.getElementById("create-textarea")

@@ -28,9 +28,15 @@ RSpec.describe Tag, type: :model do
         expect(tag.errors[:tag]).to include "は10文字以内で入力してください"
       end
 
-      it "ベースタグはwill,can,mustでひとつずつ以上tureを保持しないこと"
-
-      it "Will,Can,Mustで6件ずつ以上は登録できないこと"
+      it "Will,Can,Mustで6件ずつ以上は登録できないこと" do
+        tag = FactoryBot.build_list(:tag, 6)
+        tag.each do |n|
+          n.save
+        end
+        last_tag = FactoryBot.build(:tag)
+        last_tag.valid?
+        expect(last_tag.errors[:wcm]).to include "のタグの登録は、それぞれ６件までです"
+      end
 
       it "wcmにwill,can,must以外のデータであればエラーを返すこと" do
         tag = FactoryBot.build(:tag, :none)
