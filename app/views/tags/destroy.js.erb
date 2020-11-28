@@ -1,4 +1,6 @@
+<%# モーダルの表示タグ置き換え %>
 $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags }) %>");
+<%# 条件分岐でshowページのタグ置き換え %>
 <% if @value == "will" %>
   $('#will-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "will" }) %>");
 <% elsif @value == "can" %>
@@ -6,5 +8,10 @@ $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show",
 <% elsif @value == "must" %>
   $('#must-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "must" }) %>");
 <% end %>
+<%# モーダルのベースタグ置き換え %>
+$('#base-tag-edit-container').html("<%= j(render partial: "users/guideline/modal/form_base_tag") %>");
+<%# users/showのベースタグを置き換え %>
+$('#base-tags').html("<%= j(render partial: "users/base_tags/base_tags_btn") %>");
+<%# エラーの表示のリフレッシュ %>
 $('.js-message-errors').empty();
 $('.flash').empty();

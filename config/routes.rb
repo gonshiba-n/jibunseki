@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post 'tag_new' => 'tags#create'
       post 'tag_edit' => 'tags#update'
       post 'base_tag_edit' => 'tags#update_base_tag'
+      patch 'base_tag_edit' => 'tags#update_base_tag'
       delete 'tag_delete' => 'tags#destroy'
     end
   end

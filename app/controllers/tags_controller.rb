@@ -9,6 +9,7 @@ class TagsController < ApplicationController
         format.js { render :create_errors }
       end
     end
+    set_tag
   end
 
   def update
@@ -21,6 +22,7 @@ class TagsController < ApplicationController
         format.js { render :edit_errors }
       end
     end
+    set_tag
   end
 
   def destroy
@@ -44,6 +46,7 @@ class TagsController < ApplicationController
       @tags = @current_user.tag.where(wcm: @transition_value)
       flash.now[:success] = "タグを選択してください"
     end
+    set_tag
   end
 
   def update_base_tag

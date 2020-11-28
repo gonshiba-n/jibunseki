@@ -1,4 +1,6 @@
+<%# モーダルの表示タグ置き換え %>
 $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags }) %>");
+<%# 条件分岐でshowページのタグ置き換え %>
 <% if @tag.wcm == "will" %>
   $('#will-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags,tags_wcm: "will" }) %>");
 <% elsif @tag.wcm == "can" %>
@@ -6,9 +8,13 @@ $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show",
 <% else %>
   $('#must-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "must" }) %>");
 <% end %>
+<%# モーダルのベースタグ置き換え %>
+$('#base-tag-edit-container').html("<%= j(render partial: "users/guideline/modal/form_base_tag") %>");
+<%# エラーの表示のリフレッシュ %>
 $('.js-message-errors').empty();
 $('.flash').empty();
 
+<%# 新規作成フォームの初期化 %>
 function initForm() {
   let textarea = document.getElementById("create-textarea")
   let textfield = document.getElementById("create-textfield")
