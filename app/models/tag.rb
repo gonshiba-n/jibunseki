@@ -6,6 +6,15 @@ class Tag < ApplicationRecord
   validate :wcm, :wcm_check
   validate :wcm, :limit_check, on: :create
 
+  # スコープ
+  scope :tags, -> (wcm) { where(wcm: wcm) }
+  scope :sorted, -> { order(created_at: :desc) }
+  scope :recent, -> (wcm) { tags(wcm).sorted }
+  # nil許容のため、scopeではなくメソッド定義とした
+  def self.base(wcm)
+    find_by(wcm: wcm, base_tag: true)
+  end
+
   private
 
   def wcm_check
