@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_instance
+    set_tags
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def set_instance
+  def set_tags
     @tag = Tag.new
     @will_tags = @current_user.tag.where(wcm: 'will')
     @can_tags = @current_user.tag.where(wcm: 'can')

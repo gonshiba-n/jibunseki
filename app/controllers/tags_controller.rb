@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
   def create
     @tag = @current_user.tag.new(tags_params)
-    @tags = @current_user.tag.where(wcm: @tag.wcm)
     respond_to do |format|
       if @tag.save
         format.js { flash.now[:success] = "タグを作成しました。" }
@@ -9,12 +8,12 @@ class TagsController < ApplicationController
         format.js { render :create_errors }
       end
     end
-    set_tag
+    @tags = @current_user.tag.where(wcm: @tag.wcm)
+    set_tags
   end
 
   def update
     @tag = @current_user.tag.find(tags_params[:id])
-    @tags = @current_user.tag.where(wcm: @tag.wcm)
     respond_to do |format|
       if @tag.update(tags_params)
         format.js { flash.now[:success] = "タグを更新しました。" }
@@ -22,7 +21,8 @@ class TagsController < ApplicationController
         format.js { render :edit_errors }
       end
     end
-    set_tag
+    @tags = @current_user.tag.where(wcm: @tag.wcm)
+    set_tags
   end
 
   def destroy
@@ -46,24 +46,24 @@ class TagsController < ApplicationController
       @tags = @current_user.tag.where(wcm: @transition_value)
       flash.now[:success] = "タグを選択してください"
     end
-    set_tag
+    set_tags
   end
 
   def update_base_tag
-    new_base_tag = base_tags_params
-    old_base = @current_user.tag.where(base_tag: true)
+    new_base_tag = base_tag_params
+    old_base_tag = @current_user.tag.where(base_tag: true)
     respond_to do |format|
-      if new_base_tag.nil?
-        format.js { flash.now[:success] = "ベースタグを選択してください" }
-      else
-        old_base.update(base_tag: false)
+      if new_base_tag
+        old_base_tag.update(base_tag: false)
         new_base_tag.each do |id|
           tag = Tag.find(id)
           tag.update(base_tag: true)
             format.js { flash.now[:success] = "ベースタグをアップデートしました。" }
         end
+      else
+        format.js { flash.now[:success] = "ベースタグを選択してください" }
       end
-      set_tag
+      set_tags
     end
   end
 
@@ -92,12 +92,12 @@ class TagsController < ApplicationController
     ids.values[0]
   end
 
-  def base_tags_params
+  def base_tag_params
     ids = params.fetch(:tag, {}).permit(base_tag: [])
     ids.values[0]
   end
 
-  def set_tag
+  def set_tags
     @will_tags = @current_user.tag.where(wcm: "will")
     @can_tags = @current_user.tag.where(wcm: "can")
     @must_tags = @current_user.tag.where(wcm: "must")
