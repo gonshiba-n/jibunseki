@@ -1,6 +1,6 @@
 class Tags::BaseTagsController < ApplicationController
 
-  def create
+  def update
     new_base_tag = base_tag_params
     old_base_tag = @current_user.tag.where(base_tag: true)
     respond_to do |format|

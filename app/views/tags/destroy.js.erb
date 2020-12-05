@@ -9,7 +9,7 @@ $('#tagContainer').html("<%= j(render partial: "users/wcm_seat/modal/tags_show",
   $('#must-seat').html("<%= j(render partial: "users/wcm_seat/wcm_seat_tags", locals: { instance: @tags, tags_wcm: "must" }) %>");
 <% end %>
 <%# モーダルのベースタグ置き換え %>
-$('#base-tag-edit-container').html("<%= j(render partial: "users/guideline/modal/form_base_tag") %>");
+$('#base-tag-edit-container').html("<%= j(render partial: "users/base_tags/modal/form_base_tag") %>");
 <%# users/showのベースタグを置き換え %>
 $('#base-tags').html("<%= j(render partial: "users/base_tags/base_tags_btn") %>");
 <%# エラーの表示のリフレッシュ %>

@@ -1,5 +1,5 @@
 <%# modalのベースタグフォーム %>
-<%= form_with model: @tag, url: base_tags_path, class: "row js-form", method: :post do |f| %>
+<%= form_with model: @tag, url: base_tags_path, class: "row js-form", method: :patch do |f| %>
   <div class="col-12">
     <p>Will</p>
     <% @will_tags.each do |t| %>

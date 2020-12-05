@@ -1,0 +1,2 @@
+module Tags::PageTransitionsHelper
+end
