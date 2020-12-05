@@ -206,6 +206,7 @@ RSpec.describe "Users", type: :system, js: true do
           click_button "選択"
           check "tag1"
           click_button "削除"
+          page.driver.browser.switch_to.alert.accept
           expect(page).to have_content "タグを削除しました。"
           expect(page).not_to have_button "will_tag"
         end
@@ -293,6 +294,7 @@ RSpec.describe "Users", type: :system, js: true do
           click_modal
           click_button "選択"
           click_button "削除"
+          page.driver.browser.switch_to.alert.accept
           expect(page).to have_content "タグを選択してください"
         end
 
