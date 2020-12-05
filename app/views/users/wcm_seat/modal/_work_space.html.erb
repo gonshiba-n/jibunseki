@@ -6,13 +6,13 @@
       <i class="far fa-eye"></i>
       表示タグ
     </h3>
-    <%= form_with model: @tag, url: tag_delete_user_path(transition_value: @transition_value), method: :delete do |f| %>
+    <%= form_with model: @tag, url: tag_path(transition_value: @transition_value), method: :delete do |f| %>
       <div class="tags-container" id="tagContainer">
         <%= render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags, f: f } %>
       </div>
       <div class="col-12 text-right">
         <input type="button" class="btn btn-success" id="select-btn" value="選択" data-display="false" onclick="selectDisplay()">
-        <%= f.submit "削除",class: 'btn btn-danger d-none', id: 'delete-btn', onclick: "deleteEnter()" %>
+        <%= f.submit "削除",class: 'btn btn-danger d-none', id: 'delete-btn', onclick: "deleteEnter()", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>
@@ -26,7 +26,7 @@
     <div id="blank-tag-container">
       <button type="button" class="btn btn-secondary modal-btn" id="blank-tag">none</button>
     </div>
-    <%= form_with model: @tag, url: tag_edit_user_path, class: "js-form" do |f| %>
+    <%= form_with model: @tag, url: tag_path, class: "js-form", method: :patch do |f| %>
       <%= f.hidden_field :id %>
       <%= f.label :name, "質問の編集:", for: "edit-textarea" %>
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
@@ -43,7 +43,7 @@
       新規作成
     </h3>
     <div class="create-js-message-errors"></div>
-    <%= form_with model: @tag, url: tag_new_user_path(@current_user.id) do |f| %>
+    <%= form_with model: @tag, url: tags_path(@current_user.id) do |f| %>
       <%= f.label :name, '質問の新規作成', for: 'create-textarea' %>
       <%= f.text_area :question_body, class: 'form-control', id: 'create-textarea' %>
       <%= f.text_field :tag, placeholder: '解答タグの新規作成', class: 'form-control', id: 'create-textfield' %>

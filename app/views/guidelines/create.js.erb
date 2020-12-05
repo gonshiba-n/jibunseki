@@ -1,7 +1,7 @@
 <%# show %>
-$('.guideline-container').html("<%= j(render partial: "users/guideline/modal/modal_guideline_text", locals: { text: @guideline.text }) %>");
+$('.guideline-container').html("<%= j(render partial: "users/base_tags/modal/modal_guideline_text", locals: { text: @guideline.text }) %>");
 <%# modal %>
-$('.guideline-modal-show').html("<%= j(render partial: "users/guideline/modal/modal_guideline_text", locals: { text: @guideline.text }) %>");
+$('.guideline-modal-show').html("<%= j(render partial: "users/base_tags/modal/modal_guideline_text", locals: { text: @guideline.text }) %>");
 <%# flash %>
 $('#base-tags-flash').html("<%= j(render partial: "users/base_tags/modal/base_tags_flash") %>");
 

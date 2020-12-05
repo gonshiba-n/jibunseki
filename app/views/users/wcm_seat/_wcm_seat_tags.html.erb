@@ -5,7 +5,7 @@
   <% instance.each do |tag| %>
     <% count += 1 %>
     <div class="col-6 will-tag tag">
-      <%= link_to tag.tag, page_transition_user_path(transition_value: tags_wcm),
+      <%= link_to tag.tag, page_transitions_path(transition_value: tags_wcm),
                   type: "button", class: "btn #{tags_wcm}-color nav-link",
                   data: { toggle: "modal", target: "#wcm-tagsModal" },
                   role: "tab", aria: { selected: true }, onclick: "activeLink('#{tags_wcm}')", remote: true %>
@@ -17,7 +17,7 @@
   <% after_count = 6 - count %>
   <% after_count.times do %>
     <div class="col-6 tag">
-      <%= link_to "none", page_transition_user_path(transition_value: tags_wcm),
+      <%= link_to "none", page_transitions_path(transition_value: tags_wcm),
                   type: "button", class: "btn btn-secondary nav-link",
                   data: { toggle: "modal", target: "#wcm-tagsModal" },
                   role: "tab", aria: { selected: true }, onclick: "activeLink('#{tags_wcm}')", remote: true %>
