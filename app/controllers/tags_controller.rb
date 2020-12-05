@@ -50,24 +50,6 @@ class TagsController < ApplicationController
     set_tags
   end
 
-  def update_base_tag
-    new_base_tag = base_tag_params
-    old_base_tag = @current_user.tag.where(base_tag: true)
-    respond_to do |format|
-      if new_base_tag
-        old_base_tag.update(base_tag: false)
-        new_base_tag.each do |id|
-          tag = Tag.find(id)
-          tag.update(base_tag: true)
-            format.js { flash.now[:success] = "ベースタグをアップデートしました。" }
-        end
-      else
-        format.js { flash.now[:success] = "ベースタグを選択してください" }
-      end
-      set_tags
-    end
-  end
-
   def page_transition
     @tag = @current_user.tag.new
     @transition_value = params[:transition_value]
@@ -90,11 +72,6 @@ class TagsController < ApplicationController
 
   def select_tags_params
     ids = params.fetch(:tag, {}).permit(tags_ids: [])
-    ids.values[0]
-  end
-
-  def base_tag_params
-    ids = params.fetch(:tag, {}).permit(base_tag: [])
     ids.values[0]
   end
 
