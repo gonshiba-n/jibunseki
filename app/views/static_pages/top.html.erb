@@ -7,6 +7,9 @@
 			<%= link_to "なりたいじぶんを見つける", new_user_path, data: {"turbolinks" => false}, class: 'btn btn-success btn-lg' %>
 		</div>
 	</div>
+			<div class="col-12 pt-3 text-left text-md-center">
+				<%= link_to "ゲストログイン", login_path(user_id: 1), data: {"turbolinks" => false}, class: 'btn btn-warning btn-lg' %>
+			</div>
 </section>
 
 <section class="row missions">
