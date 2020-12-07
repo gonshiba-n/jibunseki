@@ -1,5 +1,4 @@
 class Tags::PageTransitionsController < ApplicationController
-
   def show
     @tag = @current_user.tag.new
     @transition_value = params[:transition_value]
@@ -13,5 +12,4 @@ class Tags::PageTransitionsController < ApplicationController
       end
     end
   end
-
 end

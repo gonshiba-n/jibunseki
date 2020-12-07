@@ -1,5 +1,4 @@
 class Tags::BaseTagsController < ApplicationController
-
   def update
     new_base_tag = base_tag_params
     old_base_tag = @current_user.tag.where(base_tag: true)
@@ -32,6 +31,5 @@ class Tags::BaseTagsController < ApplicationController
     @will_base = @current_user.tag.base("will")
     @can_base = @current_user.tag.base("can")
     @must_base = @current_user.tag.base("must")
-end
-
+  end
 end

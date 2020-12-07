@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-
   def create
     @tag = @current_user.tag.build(tags_params)
     respond_to do |format|
