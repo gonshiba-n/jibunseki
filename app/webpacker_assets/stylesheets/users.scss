@@ -120,10 +120,23 @@
 }
 
 .target-edit{
-  width: 100%;
-  text-align: right;
-  margin:  20px 0;
-  padding: 0 15px;
+
+}
+
+.target-body{
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  max-width: 330px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.separation{
+  padding: 20px 2%;
+  border-bottom: 1px solid $main_color;
 }
 
 // ここまでwcmターゲット

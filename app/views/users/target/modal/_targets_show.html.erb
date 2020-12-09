@@ -1,0 +1,12 @@
+<% @targets.each do |target| %>
+  <div class="row my-3">
+    <div class="col-12 col-lg-6">
+      <input type="checkbox" class="checkbox-select" id="checkbox<%= target.id %>" value="<%= target.id %>" name="target[targets_ids][]">
+      <label class="m-0 target-body" for="checkbox<%= target.id %>"><%= target.target_body %></label>
+    </div>
+    <p class="col-8 col-lg-4 m-0"><%= DateTime.now %></p>
+    <div class="col-4 col-lg-2 text-center">
+      <button type="button" class="btn btn-success w-100"><%= target.achieve %></button>
+    </div>
+  </div>
+<% end %>

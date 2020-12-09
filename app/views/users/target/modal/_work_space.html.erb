@@ -1,0 +1,73 @@
+<%# targetのモーダルメインビュー %>
+
+<div class="row mx-3">
+  <div class="col-12 target separation">
+    <h3 class="h3">
+      <i class="fas fa-dot-circle"></i>
+      目標の一覧
+    </h3>
+    <div class="target-container" id="tagetContainer">
+      <%= render partial: "users/target/modal/targets_show" %>
+    </div>
+  </div>
+
+  <div class="col-12 target-edit separation">
+    <h3 class="h3">
+      <i class="fas fa-pen-square"></i>
+      目標の編集
+    </h3>
+    <div class="target-edit-container">
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :target_body, "目標の設定:" %>
+          <%= f.text_field :target_body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :start, "いつから:" %>
+          <%= f.datetime_field :start, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :deadline, "いつまで:" %>
+          <%= f.datetime_field :deadline, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :period, "期間設定:" %>
+          <%= f.select :period, [["長期目標", 1],["中期目標", 2],["短期目標", 3]] , { selected: 1 }, { class: "form-control" } %>
+        </div>
+        <div class="col-12 text-right p-0">
+          <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-12 target-edit separation">
+    <h3 class="h3">
+      <i class="fas fa-pen-square"></i>
+      目標の新規作成
+    </h3>
+    <div class="target-edit-container">
+      <%= form_with model:@target, url: target_path(@current_user.id), class: "js-form", method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :target_body, "目標の設定:" %>
+          <%= f.text_field :target_body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :start, "いつから:" %>
+          <%= f.datetime_field :start, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :deadline, "いつまで:" %>
+          <%= f.datetime_field :deadline, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :period, "期間設定:" %>
+          <%= f.select :period, [["長期目標", 1],["中期目標", 2],["短期目標", 3]] , { selected: 1 }, { class: "form-control" } %>
+        </div>
+        <div class="col-12 text-right p-0">
+          <%= f.submit "作成", class: 'btn btn-success', id: "edit-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
