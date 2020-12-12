@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     set_instance
+    @target = Target.new
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存
