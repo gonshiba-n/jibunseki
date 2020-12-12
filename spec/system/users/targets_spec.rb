@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users", type: :system, js: true do
   describe "show wcmを基にした目標" do
     let(:user) { FactoryBot.create(:user) }
+
     before do
       login_for_app(user)
     end

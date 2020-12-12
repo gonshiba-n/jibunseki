@@ -54,6 +54,7 @@ RSpec.describe "Users", type: :system, js: true do
 
   describe "show" do
     let!(:user) { FactoryBot.create(:user) }
+
     before do
       login_for_app(user)
     end
