@@ -17,7 +17,14 @@
       目標の編集
     </h3>
     <div class="target-edit-container">
-      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch do |f| %>
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch, local: true do |f| %>
+        <%= f.hidden_field :id, id: "target_id" %>
+        <div class="form-group">
+          <%= f.label :achieve_goal, "達成" %>
+          <%= f.radio_button :achieve, :goal %>
+          <%= f.label :achieve_un_goal, "未達成" %>
+          <%= f.radio_button :achieve, :un_goal %>
+        </div>
         <div class="form-group">
           <%= f.label :target_body, "目標の設定:" %>
           <%= f.text_field :target_body, class: "form-control" %>
@@ -32,10 +39,10 @@
         </div>
         <div class="form-group">
           <%= f.label :period, "期間設定:" %>
-          <%= f.select :period, [["長期目標", 1],["中期目標", 2],["短期目標", 3]] , { selected: 1 }, { class: "form-control" } %>
+          <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control" } %>
         </div>
         <div class="col-12 text-right p-0">
-          <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit" %>
+          <%= f.submit "更新", class: 'btn btn-success', id: "target-edit-submit", disabled: true %>
         </div>
       <% end %>
     </div>
@@ -46,26 +53,26 @@
       <i class="fas fa-pen-square"></i>
       目標の新規作成
     </h3>
-    <div class="target-edit-container">
-      <%= form_with model:@target, url: target_path(@current_user.id), class: "js-form", method: :patch do |f| %>
+    <div class="target-new-container">
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :post, local: true do |f| %>
         <div class="form-group">
-          <%= f.label :target_body, "目標の設定:" %>
-          <%= f.text_field :target_body, class: "form-control" %>
+          <%= f.label :target_body, "目標の設定:", for: "create-target-body" %>
+          <%= f.text_field :target_body, class: "form-control", id: "create-target-body" %>
         </div>
         <div class="form-group">
-          <%= f.label :start, "いつから:" %>
-          <%= f.datetime_field :start, class: "form-control" %>
+          <%= f.label :start, "いつから:", for: "create-start" %>
+          <%= f.datetime_field :start, class: "form-control", id: "create-start" %>
         </div>
         <div class="form-group">
-          <%= f.label :deadline, "いつまで:" %>
-          <%= f.datetime_field :deadline, class: "form-control" %>
+          <%= f.label :deadline, "いつまで:", for: "create-deadline" %>
+          <%= f.datetime_field :deadline, class: "form-control", id: "create-deadline" %>
         </div>
         <div class="form-group">
-          <%= f.label :period, "期間設定:" %>
-          <%= f.select :period, [["長期目標", 1],["中期目標", 2],["短期目標", 3]] , { selected: 1 }, { class: "form-control" } %>
+          <%= f.label :period, "期間設定:", for: "create-period" %>
+          <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control", id: "create-period" } %>
         </div>
         <div class="col-12 text-right p-0">
-          <%= f.submit "作成", class: 'btn btn-success', id: "edit-submit" %>
+          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
         </div>
       <% end %>
     </div>

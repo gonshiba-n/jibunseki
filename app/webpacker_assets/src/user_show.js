@@ -8,9 +8,10 @@ let tagContainer,
     editTextArea,
     editTextField,
     hidden_field,
-    editSubmit
+    editSubmit,
+    targetDeleteSubmit
 
-// ==========表示タグセクションここから==========
+// ==========wcm表示タグここから==========
 
 // チェックボックスとボタンをリンクしてトグル化
 function checkBoxLink(tag) {
@@ -68,9 +69,9 @@ function checkBoxToggle() {
     }
   })
 }
-// ==========表示タグセクションここまで==========
+// ==========wcm表示タグここまで==========
 
-// ==========編集セクションここから==========
+// ==========wcm編集セクションここから==========
 
 // 選択タグを編集項目へ反映する
 function tagChange(tag) {
@@ -100,14 +101,14 @@ function ConvertNewTag() {
   }
 }
 
-// ==========編集セクションここまで==========
+// ==========wcm編集セクションここまで==========
 
-// ==========イベント発火ここから==========
+// ==========wcmイベント発火ここから==========
 
 // 表示セクション タグを条件分岐でイベント変更 data-branchをフラグとする
 window.bindEvent = function () {
   let target = event.target
-  initialize()
+  wcmInitialize()
   if (target.dataset.branch === "select-tag-change") {
     return tagChange(target)
   }else{
@@ -125,7 +126,7 @@ window.selectDisplay = function () {
     displayTarget.dataset.display = "false"
     displayTarget.value = "選択"
   }
-  initialize()
+  wcmInitialize()
   deleteBtnToggle()
   deleteToggle()
   checkBoxToggle()
@@ -133,7 +134,7 @@ window.selectDisplay = function () {
 
 // 削除ボタン
 window.deleteEnter = function () {
-  initialize()
+  wcmInitialize()
   resetEdit()
 }
 
@@ -142,10 +143,11 @@ window.editEnter = function () {
   setTimeout('delayedConversion()', 300);
 }
 delayedConversion = function() {
-  initialize()
+  wcmInitialize()
   ConvertNewTag()
 }
 
+// modalのタブ表示
 window.activeLink = function(wcm) {
   let will = document.getElementById("will-active")
   let can = document.getElementById("can-active")
@@ -175,6 +177,7 @@ window.checkJude = function () {
   let target = event.target
   let wcm = target.dataset.wcm
   let checkBoxs = document.querySelectorAll(`.${wcm}-check`)
+
   if (target.checked = true){
     checkBoxs.forEach(function (e){
       if (target != e){
@@ -191,12 +194,91 @@ window.areaClear = function () {
   area.value = ""
 }
 
+// ==========wcmイベント発火ここまで==========
 
-// ==========イベント発火ここまで==========
+// ==========target編集セクションここから==========
+
+// 選択目標を編集項目へ反映する
+function editTargetChange(editTarget) {
+  if(editTarget.achieve === "goal"){
+    goalInput.checked = true
+  }else{
+    unGoalInput.checked = true
+  }
+  targetId.value = editTarget.id
+  targetTextField.value = editTarget.target_body
+  startDateField.value = editTarget.start.substr(0, 16)
+  deadlineDateField.value = editTarget.deadline.substr(0, 16)
+  Array.from(periodOptions).filter(ele => ele.value === editTarget.period)[0].selected = true
+  targetEditSubmit.disabled = false
+}
+// フォームのブランク化
+function formBlank(){
+  goalInput.checked = false
+  unGoalInput.checked = false
+  targetId.value = ""
+  targetTextField.value = ""
+  startDateField.value = ""
+  deadlineDateField.value = ""
+  Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
+  targetEditSubmit.disabled = true
+}
+
+// チェックボックのトグル
+function targetCheckBoxToggle(displayTarget) {
+  let checkBox = document.querySelectorAll(".target-checkbox-select")
+
+  checkBox.forEach(function (t) {
+    if (displayTarget.dataset.selector === "true") {
+      t.classList.remove("d-none")
+    } else {
+      t.classList.add("d-none")
+      t.checked = false
+    }
+  })
+}
+
+// ==========target編集セクションここまで==========
+
+// ==========targetイベント発火ここから==========
+// target編集発火
+window.targetEvent = function() {
+  let t = event.target
+  let target = JSON.parse(document.getElementById(`${t.id}`).dataset.json)
+
+  if (t.dataset.flag === "true"){
+    targetInitialize()
+    formBlank()
+    t.dataset.flag = false
+  }else{
+    targetInitialize()
+    editTargetChange(target)
+    t.dataset.flag = true
+  }
+}
+
+// 選択ボタントグル
+window.targetSelect = function () {
+  targetInitialize()
+  let displayTarget = event.target
+
+  if (displayTarget.dataset.selector === "false") {
+    displayTarget.dataset.selector = "true"
+    displayTarget.value = "解除"
+    targetDeleteSubmit.classList.remove("d-none")
+  } else {
+    displayTarget.dataset.selector = "false"
+    displayTarget.value = "選択"
+    targetDeleteSubmit.classList.add("d-none")
+  }
+
+  targetCheckBoxToggle(displayTarget)
+}
+// ==========targetイベント発火ここまで==========
 
 // ==========初期化ここから==========
 
-function initialize() {
+function wcmInitialize() {
   tagContainer = document.getElementById("tagContainer")
   tags = tagContainer.children
   selectBtn = document.getElementById("select-btn")
@@ -207,6 +289,19 @@ function initialize() {
   editTextField = document.getElementById("edit-textfield")
   hidden_field = document.getElementById("tag_id")
   editSubmit = document.getElementById("edit-submit")
+}
+
+function targetInitialize() {
+  targetId = document.getElementById("target_id")
+  goalInput = document.getElementById("target_achieve_goal")
+  unGoalInput = document.getElementById("target_achieve_un_goal")
+  targetTextField = document.getElementById("target_target_body")
+  startDateField = document.getElementById("target_start")
+  deadlineDateField = document.getElementById("target_deadline")
+  periodSelectBox = document.getElementById("target_period")
+  periodOptions = document.querySelectorAll('#target_period option')
+  targetEditSubmit = document.getElementById("target-edit-submit")
+  targetDeleteSubmit = document.getElementById("target-delete-submit")
 }
 
 // ==========初期化ここまで==========
