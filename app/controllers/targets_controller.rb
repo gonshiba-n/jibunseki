@@ -1,13 +1,14 @@
 class TargetsController < ApplicationController
   def create
     @target = @current_user.target.new(targets_params)
-
-    if @target.save
-      redirect_to root_path, notice: "#{@target.target_body}を目標に設定しました。"
-    else
-      set_instance
-      render template: "users/show"
+    respond_to do |format|
+      if @target.save
+        format.js { flash.now[:success] = "#{@target.target_body}目標を作成しました。" }
+      else
+        format.js { render :create_errors }
+      end
     end
+    set_instance
   end
 
   def update

@@ -1,26 +1,27 @@
-<%= form_with model:@target, url: target_path, method: :delete, local: true do |f| %>
-  <% @targets.each do |target| %>
-    <div class="row my-3">
-      <div class="col-12 col-lg-6">
-        <%# <%= f.check_box :target_ids, {type: 'checkbox' multiple: true}, target.id %>
-        <input type="checkbox" class="target-checkbox-select d-none" id="checkbox<%= target.id %>" value="<%= target.id %>" name="target[targets_ids][]">
-        <label class="m-0 target-body" for="checkbox<%= target.id %>"><%= target.target_body %></label>
-      </div>
-      <p class="col-8 col-lg-4 m-0">
-      <%# メソッド切り出し検討 %>
-        <% if target.time_left.to_i > 0 %>
-          残り<%= target.time_left %>
-        <% else %>
-          期限超過(編集してください)
-        <% end %>
-      </p>
-      <div class="col-4 col-lg-2 text-center">
-        <button type="button" class="btn btn-success w-100" data-flag="false" onclick="targetEvent()" data-json="<%= target.to_json %>" id="target<%= target.id %>"><%= target.achieve_i18n %></button>
-      </div>
+<% if flash[:success].present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+<% instance.each do |target| %>
+  <div class="row my-3">
+    <div class="col-12 col-lg-6">
+      <%# <%= f.check_box :target_ids, {type: 'checkbox' multiple: true}, target.id %>
+      <input type="checkbox" class="target-checkbox-select d-none" id="checkbox<%= target.id %>" value="<%= target.id %>" name="target[targets_ids][]">
+      <label class="m-0 target-body" for="checkbox<%= target.id %>"><%= target.target_body %></label>
     </div>
-  <% end %>
-  <div class="col-12 pt-3 px-0 text-right">
-    <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
-    <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
+    <p class="col-8 col-lg-4 m-0">
+    <%# メソッド切り出し検討 %>
+      <% if target.time_left.to_i > 0 %>
+        残り<%= target.time_left %>
+      <% else %>
+        期限超過(編集してください)
+      <% end %>
+    </p>
+    <div class="col-4 col-lg-2 text-center">
+      <button type="button" class="btn btn-success w-100" data-flag="false" onclick="targetEvent()" data-json="<%= target.to_json %>" id="target<%= target.id %>"><%= target.achieve_i18n %></button>
+    </div>
   </div>
 <% end %>

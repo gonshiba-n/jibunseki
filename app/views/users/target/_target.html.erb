@@ -12,16 +12,6 @@
     </div>
   </div>
 </div>
-<% @targets.each do |target| %>
-  <div class="row w-100 mx-auto my-3 text-md-center target" data-toggle="modal" data-target=".modal_target">
-    <div class="col-12 col-md-4">
-      <h3><%= target.period_i18n %></h3>
-    </div>
-    <div class="col-12 col-md-4">
-      <p><%= target.target_body %></p>
-    </div>
-    <div class="col-12 col-md-4 text-right text-md-center">
-      <button type="button" class="btn btn-success w-60"><%= target.achieve_i18n %></button>
-    </div>
-  </div>
-<% end %>
+<div class="w-100" id="targetShowContainer">
+  <%= render partial: "users/target/targets_show", locals: { instance: @targets } %>
+</div>
