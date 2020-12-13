@@ -5,7 +5,8 @@ class TargetsController < ApplicationController
     if @target.save
       redirect_to root_path, notice: "#{@target.target_body}を目標に設定しました。"
     else
-      redirect_to root_path, notice: "目標を作成できませんでした。"
+      set_instance
+      render template: "users/show"
     end
   end
 
@@ -39,5 +40,17 @@ class TargetsController < ApplicationController
   def select_targets_params
     ids = params.fetch(:target, {}).permit(targets_ids: [])
     ids.values[0]
+  end
+
+  def set_instance
+    @tag = Tag.new
+    @will_tags = @current_user.tag.where(wcm: "will")
+    @can_tags = @current_user.tag.where(wcm: "can")
+    @must_tags = @current_user.tag.where(wcm: "must")
+    @will_base = @current_user.tag.find_by(wcm: "will", base_tag: true)
+    @can_base = @current_user.tag.find_by(wcm: "can", base_tag: true)
+    @must_base = @current_user.tag.find_by(wcm: "must", base_tag: true)
+    @guideline = Guideline.find_or_initialize_by(user_id: @current_user.id).presence || Guideline.new
+    @targets = Target.where(user_id: @current_user)
   end
 end
