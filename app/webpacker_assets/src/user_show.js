@@ -231,6 +231,7 @@ function targetCheckBoxToggle(displayTarget) {
   checkBox.forEach(function (t) {
     if (displayTarget.dataset.selector === "true") {
       t.classList.remove("d-none")
+      t.checked = false
     } else {
       t.classList.add("d-none")
       t.checked = false

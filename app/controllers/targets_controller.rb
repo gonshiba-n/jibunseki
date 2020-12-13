@@ -13,11 +13,14 @@ class TargetsController < ApplicationController
 
   def update
     @target = @current_user.target.find(targets_params[:id])
-    if @target.update(targets_params)
-      redirect_to root_path, notice: "#{@target.target_body}を更新しました。"
-    else
-      redirect_to root_path, notice: "目標を更新できませんでした。"
+    respond_to do |format|
+      if @target.update(targets_params)
+        format.js { flash.now[:success] = "#{@target.target_body}目標を更新しました。" }
+      else
+        format.js { render :update_errors }
+      end
     end
+    set_instance
   end
 
   def destroy

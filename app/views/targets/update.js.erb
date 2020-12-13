@@ -1,0 +1,25 @@
+<%# モーダルの表示目標の置き換え %>
+$('#tagetContainer').html("<%= j(render partial: "users/target/modal/targets_show", locals: { instance: @targets }) %>")
+<%# showの表示目標の置き換え %>
+$('#targetShowContainer').html("<%= j(render partial: "users/target/targets_show", locals: { instance: @targets }) %>")
+<%# エラーの表示のリフレッシュ %>
+$('.js-message-errors').empty();
+$('.flash').empty();
+
+<%# 編集フォームの初期化 %>
+function initForm() {
+  let goalRadio = document.getElementById("target_achieve_goal")
+  let unGoalRadio = document.getElementById("target_achieve_un_goal")
+  let textField = document.getElementById("target_target_body")
+  let startDataField = document.getElementById("target_start")
+  let deadlineDataField = document.getElementById("target_deadline")
+  let periodOptions = document.querySelectorAll('#target_period option')
+
+  goalRadio.checked = false
+  unGoalRadio.checked = false
+  textField.value = ""
+  startDataField.value = ""
+  deadlineDataField.value = ""
+  Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
+}
+initForm()

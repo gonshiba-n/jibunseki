@@ -4,7 +4,7 @@ class Target < ApplicationRecord
   validates :target_body, presence: true, length: { maximum: 50 }
   validates :start, presence: true
   validates :deadline, presence: true
-  validates :achieve, presence: true, inclusion: { in: [true, false] }, on: :update
+  validates :achieve, presence: true, inclusion: { in: ["goal", "un_goal"] }, on: :update
   validates :period, presence: true
   validate :check_times
 

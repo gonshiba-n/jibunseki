@@ -22,8 +22,9 @@
       <i class="fas fa-pen-square"></i>
       目標の編集
     </h3>
+    <div class="update-js-message-errors"></div>
     <div class="target-edit-container">
-      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch, local: true do |f| %>
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch do |f| %>
         <%= f.hidden_field :id, id: "target_id" %>
         <div class="form-group">
           <%= f.label :achieve_goal, "達成" %>
