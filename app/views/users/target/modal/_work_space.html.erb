@@ -6,15 +6,15 @@
       <i class="fas fa-dot-circle"></i>
       目標の一覧
     </h3>
-    <div class="target-container" id="tagetContainer">
-      <%= form_with model:@target, url: target_path, method: :delete, local: true do |f| %>
-        <%= render partial: "users/target/modal/targets_show", locals: { instance: @targets } %>
-        <div class="col-12 pt-3 px-0 text-right">
-          <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
-          <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
-        </div>
-      <% end %>
-    </div>
+    <%= form_with model:@target, url: target_path, method: :delete do |f| %>
+      <div class="target-container" id="tagetContainer">
+        <%= render partial: "users/target/modal/targets_show", locals: { instance: @targets, f: f } %>
+      </div>
+      <div class="col-12 pt-3 px-0 text-right">
+        <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
+        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col-12 target-edit separation">

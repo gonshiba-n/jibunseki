@@ -36,8 +36,7 @@ class TagsController < ApplicationController
           if t.destroy
             format.js { flash.now[:success] = "タグを削除しました。" }
           else
-            format.js { render template: "users/show" }
-            flash.now[:alert] = "タグを削除できませんでした。"
+            format.js { flash.now[:success] = "タグを削除できませんでした。" }
           end
         end
       end
