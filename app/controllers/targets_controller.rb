@@ -53,6 +53,6 @@ class TargetsController < ApplicationController
   end
 
   def set_instance
-    @targets = Target.where(user_id: @current_user)
+    @targets = Target.where(user_id: @current_user).time_order
   end
 end

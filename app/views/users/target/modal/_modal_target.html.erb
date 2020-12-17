@@ -19,6 +19,9 @@
       <div class="modal-body">
         <ul class="nav nav-tabs" id="targetTab" role="tablist">
           <li class="nav-item">
+            <%= link_to "一覧", targets_transitions_path(transition_value: "index"), class: "nav-link active", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, id: "target-active", remote: true %>
+          </li>
+          <li class="nav-item">
             <%= link_to "長期目標", targets_transitions_path(transition_value: "long"), class: "nav-link", data: { toggle: "tab" }, role: "tab", aria: { selected: true }, id: "target-active", remote: true %>
           </li>
           <li class="nav-item">

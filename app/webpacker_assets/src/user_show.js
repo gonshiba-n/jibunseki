@@ -245,6 +245,7 @@ function targetCheckBoxToggle(displayTarget) {
 // target編集発火
 window.targetEvent = function() {
   let t = event.target
+  console.log(t)
   let target = JSON.parse(document.getElementById(`${t.id}`).dataset.json)
 
   if (t.dataset.flag === "true"){

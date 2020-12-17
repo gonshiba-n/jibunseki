@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         end
       resource :target, only: [:create, :update, :destroy]
         scope module: :targets do
-          resource :page_transitions, only: [:show], as: :targets_transitions
+          resource :target_transitions, only: [:show], as: :targets_transitions
         end
     end
   end

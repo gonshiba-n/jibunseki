@@ -43,6 +43,6 @@ class UsersController < ApplicationController
     @can_base = @current_user.tag.find_by(wcm: 'can', base_tag: true)
     @must_base = @current_user.tag.find_by(wcm: 'must', base_tag: true)
     @guideline = Guideline.find_or_initialize_by(user_id: @current_user.id).presence || Guideline.new
-    @targets = Target.where(user_id: @current_user)
+    @targets = Target.where(user_id: @current_user).time_order
   end
 end

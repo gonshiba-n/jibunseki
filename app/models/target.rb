@@ -7,6 +7,9 @@ class Target < ApplicationRecord
   validates :period, presence: true
   validate :check_times
 
+  # スコープ
+  scope :time_order, -> { order(deadline: "DESC") }
+
   enum period: { long: 1, middle: 2, short: 3 }
   enum achieve: { goal: true, un_goal: false }
 
@@ -20,7 +23,11 @@ class Target < ApplicationRecord
 
   # 現在時刻と目標設定期限の差
   def time_left
-    sec_diff = deadline - start
-    (Time.parse("1/1") + sec_diff - (day_diff = sec_diff.to_i / 86400) * 86400).strftime("#{day_diff}日%H時間")
+    if start > Time.now
+      sec_diff = start - Time.now
+    else
+      sec_diff = deadline - Time.now
+    end
+    (Time.parse("1/1") + sec_diff - (day_diff = sec_diff.to_i / 86400) * 86400).strftime("#{day_diff}日%H時間%M分")
   end
 end

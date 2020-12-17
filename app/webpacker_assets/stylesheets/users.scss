@@ -123,6 +123,10 @@
 
 }
 
+.target-modal-show * {
+  pointer-events: none;
+}
+
 .target-select,.target-delete{
   max-width: 80px;
 }
