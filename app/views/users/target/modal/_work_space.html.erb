@@ -37,11 +37,7 @@
           <%= f.text_field :target_body, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :start, "いつから:" %>
-          <%= f.datetime_field :start, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :deadline, "いつまで:" %>
+          <%= f.label :deadline, "目標達成予定日時:" %>
           <%= f.datetime_field :deadline, class: "form-control" %>
         </div>
         <div class="form-group">
@@ -68,11 +64,7 @@
           <%= f.text_field :target_body, class: "form-control", id: "create-target-body" %>
         </div>
         <div class="form-group">
-          <%= f.label :start, "いつから:", for: "create-start" %>
-          <%= f.datetime_field :start, class: "form-control", id: "create-start" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :deadline, "いつまで:", for: "create-deadline" %>
+          <%= f.label :deadline, "目標達成予定日時:", for: "create-deadline" %>
           <%= f.datetime_field :deadline, class: "form-control", id: "create-deadline" %>
         </div>
         <div class="form-group">

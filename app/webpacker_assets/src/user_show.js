@@ -207,7 +207,6 @@ function editTargetChange(editTarget) {
   }
   targetId.value = editTarget.id
   targetTextField.value = editTarget.target_body
-  startDateField.value = editTarget.start.substr(0, 16)
   deadlineDateField.value = editTarget.deadline.substr(0, 16)
   Array.from(periodOptions).filter(ele => ele.value === editTarget.period)[0].selected = true
   targetEditSubmit.disabled = false
@@ -218,7 +217,6 @@ function formBlank(){
   unGoalInput.checked = false
   targetId.value = ""
   targetTextField.value = ""
-  startDateField.value = ""
   deadlineDateField.value = ""
   Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
   targetEditSubmit.disabled = true

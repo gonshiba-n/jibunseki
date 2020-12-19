@@ -54,5 +54,6 @@ class TargetsController < ApplicationController
 
   def set_instance
     @targets = Target.where(user_id: @current_user).time_order
+    @progress = @current_user.target.maximum(:deadline)
   end
 end

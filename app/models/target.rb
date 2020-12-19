@@ -14,20 +14,33 @@ class Target < ApplicationRecord
   enum achieve: { goal: true, un_goal: false }
 
   def check_times
-    if start.nil? || deadline.nil?
-      errors.add(:start, "を入力してください")
+    if deadline.nil?
+      errors.add(:deadline, "を入力してください")
       return
     end
-    errors.add(:start, "は、目標達成予定日時よりも前に設定してください。") if start > deadline
+    errors.add(:deadline, "は、現在時刻よりも後に設定してください。") if Time.now > deadline
   end
 
   # 現在時刻と目標設定期限の差
   def time_left
-    if start > Time.now
-      sec_diff = start - Time.now
-    else
       sec_diff = deadline - Time.now
-    end
     (Time.parse("1/1") + sec_diff - (day_diff = sec_diff.to_i / 86400) * 86400).strftime("#{day_diff}日%H時間%M分")
+  end
+
+  def rate
+    # 全体期間
+    term = deadline.to_f - created_at.to_f
+    # スタートからの日数
+    now = Time.now.to_f - created_at.to_f
+    progress = (now / term) * 100
+    progress.round(1)
+  end
+
+  def over_rate(rate)
+    if rate > 100
+      100.to_s + "%"
+    else
+      rate.to_s + "%"
+    end
   end
 end

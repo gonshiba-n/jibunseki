@@ -8,12 +8,12 @@
 
 <% instance.each do |target| %>
   <div class="row my-3">
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-5">
       <input type="checkbox" class="target-checkbox-select d-none" id="checkbox<%= target.id %>" value="<%= target.id %>" name="target[targets_ids][]">
       <label class="m-0 target-body" for="checkbox<%= target.id %>"><%= target.target_body %></label>
     </div>
-    <p class="col-8 col-lg-4 m-0">
-      <% if target.start > Time.now %>
+    <p class="col-8 col-lg-5 m-0">
+      <% if target.created_at > Time.now %>
         目標開始まで<%= target.time_left %>
       <% elsif target.time_left.to_i < 0 %>
         期限超過(編集してください)
