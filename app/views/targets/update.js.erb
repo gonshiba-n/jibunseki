@@ -11,14 +11,12 @@ function initForm() {
   let goalRadio = document.getElementById("target_achieve_goal")
   let unGoalRadio = document.getElementById("target_achieve_un_goal")
   let textField = document.getElementById("target_target_body")
-  let startDataField = document.getElementById("target_start")
   let deadlineDataField = document.getElementById("target_deadline")
   let periodOptions = document.querySelectorAll('#target_period option')
 
   goalRadio.checked = false
   unGoalRadio.checked = false
   textField.value = ""
-  startDataField.value = ""
   deadlineDataField.value = ""
   Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
 }

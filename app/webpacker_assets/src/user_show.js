@@ -296,7 +296,6 @@ function targetInitialize() {
   goalInput = document.getElementById("target_achieve_goal")
   unGoalInput = document.getElementById("target_achieve_un_goal")
   targetTextField = document.getElementById("target_target_body")
-  startDateField = document.getElementById("target_start")
   deadlineDateField = document.getElementById("target_deadline")
   periodSelectBox = document.getElementById("target_period")
   periodOptions = document.querySelectorAll('#target_period option')

@@ -9,12 +9,10 @@ $('.flash').empty();
 <%# 新規作成フォームの初期化 %>
 function initForm() {
   let textField = document.getElementById("create-target-body")
-  let startDataField = document.getElementById("create-start")
   let deadlineDataField = document.getElementById("create-deadline")
   let periodOptions = document.querySelectorAll('#create-period option')
   console.log(periodOptions)
   textField.value = ""
-  startDataField.value = ""
   deadlineDataField.value = ""
   Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
 }
