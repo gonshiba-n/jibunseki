@@ -12,14 +12,11 @@ RSpec.describe Target, type: :model do
       it "空白なら無効であること" do
         target = FactoryBot.build(:target,
                                   target_body: nil,
-                                  start: nil,
                                   deadline: nil,
                                   achieve: nil,
-                                  period: nil,
-                                )
+                                  period: nil,)
         target.valid?
         expect(target.errors[:target_body]).to include "を入力してください"
-        expect(target.errors[:start]).to include "を入力してください"
         expect(target.errors[:deadline]).to include "を入力してください"
       end
 
@@ -29,13 +26,12 @@ RSpec.describe Target, type: :model do
         expect(target.errors[:target_body]).to include "は50文字以内で入力してください"
       end
 
-      it "startがdeadlineよりも時間軸が前であれば無効であること" do
+      it "created_atがdeadlineよりも時間軸が前であれば無効であること" do
         target = FactoryBot.build(:target,
-                                  start: "2020-12-30 00:00:00",
-                                  deadline: "2020-12-01 00:00:00",
-                                )
+                                  created_at: "2020-12-30 00:00:00",
+                                  deadline: "2020-12-01 00:00:00",)
         target.valid?
-        expect(target.errors[:start]).to include "は、目標達成予定日時よりも前に設定してください。"
+        expect(target.errors[:deadline]).to include "は、現在時刻よりも後に設定してください。"
       end
     end
   end

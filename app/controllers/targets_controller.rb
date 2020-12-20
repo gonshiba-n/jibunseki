@@ -29,9 +29,9 @@ class TargetsController < ApplicationController
         select_targets_params.each do |id|
           @target = @current_user.target.find(id)
           if @target.delete
-            format.js { flash.now[:success] = "目標を削除しました。"  }
+            format.js { flash.now[:success] = "目標を削除しました。" }
           else
-            format.js { flash.now[:success] = "目標を削除できませんでした。"  }
+            format.js { flash.now[:success] = "目標を削除できませんでした。" }
           end
         end
       end

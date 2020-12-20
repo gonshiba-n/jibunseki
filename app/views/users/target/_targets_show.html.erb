@@ -8,11 +8,11 @@
     </div>
     <div class="col-12 col-md-4 text-right text-md-center">
       <% if  target.time_survey? %>
-        <button type="button" class="btn btn-danger w-60"><%= target.achieve_i18n %></button>
+        <button type="button" class="btn btn-danger w-60" id="achieve<%= target.id %>"><%= target.achieve_i18n %></button>
       <% elsif target.un_goal? %>
-        <button type="button" class="btn btn-warning w-60"><%= target.achieve_i18n %></button>
+        <button type="button" class="btn btn-warning w-60" id="achieve<%= target.id %>"><%= target.achieve_i18n %></button>
       <% else %>
-        <button type="button" class="btn btn-success w-60"><%= target.achieve_i18n %></button>
+        <button type="button" class="btn btn-success w-60" id="achieve<%= target.id %>"><%= target.achieve_i18n %></button>
       <% end %>
     </div>
     <div class="row m-auto pt-3 progress-meter">
