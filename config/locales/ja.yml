@@ -5,6 +5,7 @@ ja:
       user: ユーザー
       tag: タグ
       guideline: 行動指針
+      target: 目標
     attributes:
       user:
         id: ID
@@ -26,6 +27,22 @@ ja:
         id: ID
         text: 行動指針
         user_id: 行動指針
+      target:
+        id: ID
+        target_body: 目標文
+        start: 目標開始日時
+        deadline: 目標達成予定日時
+        achieve: 達成状況
+        period: 目標達成状況
+  enums:
+    target:
+      achieve:
+        goal: 達成
+        un_goal: 未達成
+      period:
+        long: 長期目標
+        middle: 中期目標
+        short: 短期目標
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

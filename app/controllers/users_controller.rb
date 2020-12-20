@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_tags
+    set_instance
+    @target = Target.new
   end
 
   # サインアップ処理 => DBにuser_paramsからのデータを保存
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def set_tags
+  def set_instance
     @tag = Tag.new
     @will_tags = @current_user.tag.where(wcm: 'will')
     @can_tags = @current_user.tag.where(wcm: 'can')
@@ -42,5 +43,7 @@ class UsersController < ApplicationController
     @can_base = @current_user.tag.find_by(wcm: 'can', base_tag: true)
     @must_base = @current_user.tag.find_by(wcm: 'must', base_tag: true)
     @guideline = Guideline.find_or_initialize_by(user_id: @current_user.id).presence || Guideline.new
+    @targets = Target.where(user_id: @current_user).time_order
+    @progress = @current_user.target.maximum(:deadline)
   end
 end

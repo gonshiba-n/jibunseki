@@ -1,0 +1,2 @@
+module Targets::PageTransitionsHelper
+end

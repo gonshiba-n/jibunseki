@@ -1,0 +1,7 @@
+<%# モーダルの表示目標の置き換え %>
+$('#tagetContainer').html("<%= j(render partial: "users/target/modal/targets_show", locals: { instance: @targets }) %>")
+<%# showの表示目標の置き換え %>
+$('#targetShowContainer').html("<%= j(render partial: "users/target/targets_show", locals: { instance: @targets }) %>")
+<%# エラーの表示のリフレッシュ %>
+$('.js-message-errors').empty();
+$('.flash').empty();

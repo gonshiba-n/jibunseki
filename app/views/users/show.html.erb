@@ -4,6 +4,7 @@
   </div>
   <%= render partial: 'users/wcm_seat/modal/modal_show' %>
   <%= render partial: 'users/base_tags/modal/base_tags' %>
+  <%= render partial: "users/target/modal/modal_target" %>
 
   <section class="wcm-seat">
     <div class="row wcm-work-space">
@@ -55,40 +56,8 @@
   <section>
 
   <section class="col-12 wcm-target">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="h2">WCMを基にした目標(開発中)</h2>
-      </div>
-
-      <div class="col-12 progress-meter">
-        <div class="col-12">
-          <h3>歩き始めて0日目</h3>
-        </div>
-        <div class="col-10 offset-1 m-auto">
-          <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 d-flex justify-content-around target">
-        <h3>90日後の目標</h3>
-        <p>〇〇する</p>
-        <button type="button" class="btn btn-success">達成</button>
-      </div>
-      <div class="col-12 d-flex justify-content-around target">
-        <h3>90日後の目標</h3>
-        <p>〇〇する</p>
-        <button type="button" class="btn btn-warning">未達成</button>
-      </div>
-      <div class="col-12 d-flex justify-content-around target">
-        <h3>90日後の目標</h3>
-        <p>〇〇する</p>
-        <button type="button" class="btn btn-warning">未達成</button>
-      </div>
-      <div class="target-edit">
-        <button type="button" class="btn btn-success">目標を編集</button>
-      </div>
+    <div class="row mb-3" id="target-show">
+      <%= render 'users/target/target' %>
     </div>
   </section>
 

@@ -1,0 +1,19 @@
+<%# モーダルの表示目標の置き換え %>
+$('#tagetContainer').html("<%= j(render partial: "users/target/modal/targets_show", locals: { instance: @targets }) %>")
+<%# showの表示目標の置き換え %>
+$('#targetShowContainer').html("<%= j(render partial: "users/target/targets_show", locals: { instance: @targets }) %>")
+<%# エラーの表示のリフレッシュ %>
+$('.js-message-errors').empty();
+$('.flash').empty();
+
+<%# 新規作成フォームの初期化 %>
+function initForm() {
+  let textField = document.getElementById("create-target-body")
+  let deadlineDataField = document.getElementById("create-deadline")
+  let periodOptions = document.querySelectorAll('#create-period option')
+  console.log(periodOptions)
+  textField.value = ""
+  deadlineDataField.value = ""
+  Array.from(periodOptions).filter(ele => ele.value === "long")[0].selected = true
+}
+initForm()

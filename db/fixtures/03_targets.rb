@@ -1,0 +1,20 @@
+Target.seed(:id,
+  {
+    :id => 1,
+    :target_body => "エンジニアになる",
+    :start => "2021-01-01 00:00:00",
+    :deadline => "2021-5-01 00:00:00",
+    :achieve => false,
+    :period => 1,
+    :user_id => User.find_by(id: 1).id,
+  },
+  {
+    :id => 2,
+    :target_body => "ポートフォリオを作成する",
+    :start => "2020-11-01 00:00:00",
+    :deadline => "2021-2-01 00:00:00",
+    :achieve => true,
+    :period => 2,
+    :user_id => User.find_by(id: 1).id,
+  },
+)
