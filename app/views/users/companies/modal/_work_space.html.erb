@@ -1,0 +1,80 @@
+<%# companiesのモーダルメインビュー %>
+
+<div class="row mx-3">
+  <div class="col-12 separation">
+    <h3 class="h3">
+      <i class="fas fa-city"></i>
+      企業一覧
+    </h3>
+    <%= form_with model:@company, url: company_path, method: :delete do |f| %>
+      <div class="companies-container" id="companiesContainer">
+        <%= render partial: "users/companies/modal/companies_show", locals: { instance: @companies, f: f } %>
+      </div>
+      <div class="col-12 pt-3 px-0 text-right">
+        <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
+        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-12 target-edit separation">
+    <h3 class="h3">
+      <i class="fas fa-pen-square"></i>
+      目標の編集
+    </h3>
+    <div class="update-js-message-errors"></div>
+    <div class="target-edit-container">
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :patch do |f| %>
+        <%= f.hidden_field :id, id: "target_id" %>
+        <div class="form-group">
+          <%= f.label :achieve_goal, "達成" %>
+          <%= f.radio_button :achieve, :goal %>
+          <%= f.label :achieve_un_goal, "未達成" %>
+          <%= f.radio_button :achieve, :un_goal %>
+        </div>
+        <div class="form-group">
+          <%= f.label :target_body, "目標の設定:" %>
+          <%= f.text_field :target_body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :deadline, "目標達成予定日時:" %>
+          <%= f.datetime_field :deadline, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :period, "期間設定:" %>
+          <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control" } %>
+        </div>
+        <div class="col-12 text-right p-0">
+          <%= f.submit "更新", class: 'btn btn-success', id: "target-edit-submit", disabled: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-12 target-edit separation">
+    <h3 class="h3">
+      <i class="fas fa-pen-square"></i>
+      目標の新規作成
+    </h3>
+    <div class="create-js-message-errors"></div>
+    <div class="target-new-container">
+      <%= form_with model:@target, url: target_path, class: "js-form", method: :post do |f| %>
+        <div class="form-group">
+          <%= f.label :target_body, "目標の設定:", for: "create-target-body" %>
+          <%= f.text_field :target_body, class: "form-control", id: "create-target-body" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :deadline, "目標達成予定日時:", for: "create-deadline" %>
+          <%= f.datetime_field :deadline, class: "form-control", id: "create-deadline" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :period, "期間設定:", for: "create-period" %>
+          <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control", id: "create-period" } %>
+        </div>
+        <div class="col-12 text-right p-0">
+          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
