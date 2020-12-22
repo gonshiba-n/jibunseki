@@ -7,6 +7,8 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.integer :business_fit
       t.text :culture
       t.integer :culture_fit
+      t.text :vision
+      t.integer :vision_fit
       t.text :future
       t.integer :future_fit
       t.text :skill

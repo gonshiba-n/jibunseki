@@ -45,5 +45,6 @@ class UsersController < ApplicationController
     @guideline = Guideline.find_or_initialize_by(user_id: @current_user.id).presence || Guideline.new
     @targets = Target.where(user_id: @current_user).time_order
     @companies = Company.where(user_id: @current_user.id)
+    @company = @current_user.company.new
   end
 end
