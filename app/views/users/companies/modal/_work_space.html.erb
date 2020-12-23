@@ -17,11 +17,11 @@
     </h3>
     <%= form_with model:@company, url: company_path, method: :delete, local: true do |f| %>
       <div class="companies-container" id="companiesContainer">
-        <%= render partial: "users/companies/modal/companies_show", locals: { instance: @companies, f: f } %>
+        <%= render partial: "users/companies/modal/companies_show", locals: { instance: @companies } %>
       </div>
       <div class="col-12 pt-3 px-0 text-right">
         <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
-        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
+        <%= f.submit "削除", class: "btn btn-danger target-delete", id: "target-delete-submit" %>
       </div>
     <% end %>
   </div>
@@ -33,7 +33,7 @@
     </h3>
     <div class="create-js-message-errors"></div>
     <div class="company-create-container">
-      <%= form_with model:@company, url: company_path, class: "js-form", method: :post,local: true  do |f| %>
+      <%= form_with model:@company, url: company_path, class: "js-form", method: :post do |f| %>
         <div class="form-group">
           <%= f.label :name, "企業名:", for: "create-company-name" %>
           <%= f.text_field :name, class: "form-control", id: "create-company-name" %>
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
           <%= f.label :business_fit, "マッチング度", for: "create-business-fit" %>
-          <%= f.select :business_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-business-fit" } %>
+          <%= f.select :business_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-business-fit" } %>
         </div>
         <div class="form-group">
           <%= f.label :culture, "社風/環境:", for: "create-culture" %>
@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <%= f.label :culture_fit, "マッチング度", for: "create-culture-fit" %>
-          <%= f.select :culture_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-culture-fit" } %>
+          <%= f.select :culture_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-culture-fit" } %>
         </div>
         <div class="form-group">
           <%= f.label :vision, "ビジョン:", for: "create-vision" %>
@@ -64,7 +64,7 @@
         </div>
         <div class="form-group">
           <%= f.label :vision_fit, "マッチング度", for: "create-vision-fit" %>
-          <%= f.select :vision_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-vision-fit" } %>
+          <%= f.select :vision_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-vision-fit" } %>
         </div>
         <div class="form-group">
           <%= f.label :future, "将来性:", for: "create-future" %>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
           <%= f.label :future_fit, "マッチング度", for: "create-future-fit" %>
-          <%= f.select :future_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-future-fit" } %>
+          <%= f.select :future_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-future-fit" } %>
         </div>
         <div class="form-group">
           <%= f.label :skill, "スキル:", for: "create-skill" %>
@@ -80,7 +80,7 @@
         </div>
         <div class="form-group">
           <%= f.label :skill_fit, "マッチング度", for: "create-skill-fit" %>
-          <%= f.select :skill_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-skill-fit" } %>
+          <%= f.select :skill_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-skill-fit" } %>
         </div>
         <div class="form-group">
           <%= f.label :treatment, "待遇:", for: "create-treatment" %>
@@ -88,7 +88,7 @@
         </div>
         <div class="form-group">
           <%= f.label :treatment_fit, "マッチング度", for: "create-treatment-fit" %>
-          <%= f.select :treatment_fit, [["A"], ["B"], ["C"], ["D"], ["E"]] , { selected: 1 }, { class: "form-control", id: "create-treatment-fit" } %>
+          <%= f.select :treatment_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-treatment-fit" } %>
         </div>
         <div class="col-12 text-right p-0">
           <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>

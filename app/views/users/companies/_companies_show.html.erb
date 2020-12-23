@@ -1,0 +1,13 @@
+<% instance.each do |company| %>
+  <tr>
+    <td><%= company.name %></td>
+    <td><%= link_to "URL", company.url %></td>
+    <td><%= company.business_fit %></td>
+    <td><%= company.culture_fit %></td>
+    <td><%= company.vision_fit %></td>
+    <td><%= company.future_fit %></td>
+    <td><%= company.skill_fit %></td>
+    <td><%= company.treatment_fit %></td>
+    <td><%= company.aspiration %></td>
+  </tr>
+<% end %>

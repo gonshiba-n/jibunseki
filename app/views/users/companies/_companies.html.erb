@@ -20,18 +20,8 @@
           <th scope="col">志望度</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>〇〇株式会社</td>
-          <td>A</td>
-          <td>A</td>
-          <td>A</td>
-          <td>A</td>
-          <td>A</td>
-          <td>A</td>
-          <td>A</td>
-          <td>35</td>
-        </tr>
+      <tbody class="companies-show">
+        <%= render partial: "users/companies/companies_show", locals: { instance: @companies } %>
       </tbody>
     </table>
   </div>
