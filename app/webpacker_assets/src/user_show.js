@@ -239,6 +239,10 @@ function targetCheckBoxToggle(displayTarget) {
 
 // ==========target編集セクションここまで==========
 
+// ==========company新規作成・削除セクションここから==========
+
+// ==========company新規作成・削除セクションここまで==========
+
 // ==========targetイベント発火ここから==========
 // target編集発火
 window.targetEvent = function() {
@@ -276,6 +280,33 @@ window.targetSelect = function () {
 }
 // ==========targetイベント発火ここまで==========
 
+// ==========companyイベント発火ここから==========
+
+// 選択ボタントグル
+window.companySelect = function () {
+  companyInitialize()
+  let displayTarget = event.target
+
+  if (displayTarget.dataset.selector === "false") {
+    displayTarget.dataset.selector = "true"
+    displayTarget.value = "解除"
+    companyDeleteSubmit.classList.remove("d-none")
+    companyTables.forEach(function (t) {
+      t.classList.remove("d-none")
+    })
+  } else {
+    displayTarget.dataset.selector = "false"
+    displayTarget.value = "選択"
+    companyDeleteSubmit.classList.add("d-none")
+    companyTables.forEach(function (t) {
+      t.classList.add("d-none")
+    })
+  }
+
+  targetCheckBoxToggle(displayTarget)
+}
+// ==========companyイベント発火ここまで==========
+
 // ==========初期化ここから==========
 
 function wcmInitialize() {
@@ -303,4 +334,8 @@ function targetInitialize() {
   targetDeleteSubmit = document.getElementById("target-delete-submit")
 }
 
+function companyInitialize() {
+  companyDeleteSubmit = document.getElementById("company-delete-submit")
+  companyTables = document.querySelectorAll(".company-none")
+}
 // ==========初期化ここまで==========

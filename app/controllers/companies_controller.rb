@@ -13,17 +13,20 @@ class CompaniesController < ApplicationController
 
   def destroy
     if select_companies_params.present?
-      select_companies_params.each do |company|
-        @company = @current_user.company.find(company)
-        if @company.delete
-          redirect_to user_path(@current_user.id), notice: "削除しました。"
-        else
-          redirect_to user_path(@current_user.id), notice: "削除できませんでした。"
+      respond_to do |format|
+        select_companies_params.each do |company|
+          @company = @current_user.company.find(company)
+          if @company.delete
+            format.js { flash.now[:success] = "削除しました。" }
+          else
+            format.js { flash.now[:success] = "削除できませんでした。" }
+          end
         end
       end
     else
-      redirect_to user_path(@current_user.id), notice: "削除項目を選択してください。"
+      flash.now[:success] = "企業を選択してください。"
     end
+    set_instance
   end
 
   private
