@@ -2,3 +2,34 @@
 $('.companies-container').html("<%= j(render partial: "users/companies/modal/companies_show", locals: { instance: @companies }) %>");
 <%# showの企業一覧を置き換え %>
 $('.companies-show').html("<%= j(render partial: "users/companies/companies_show", locals: { instance: @companies }) %>");
+$('.js-message-errors').empty();
+$('.flash').empty();
+
+<%# formの初期化 %>
+function initForm () {
+  let textFields = document.querySelectorAll(".company-create-container input[type=text]")
+  let textAreas = document.querySelectorAll(".company-create-container textarea")
+  let options = document.querySelectorAll(".company-create-container option")
+  let businessFitOptions = document.querySelectorAll("#create-business-fit option")
+  let cultureFitOptions = document.querySelectorAll("#create-culture-fit option")
+  let visionFitOptions = document.querySelectorAll("#create-vision-fit option")
+  let futureFitOptions = document.querySelectorAll("#create-future-fit option")
+  let skillFitOptions = document.querySelectorAll("#create-skill-fit option")
+  let treatmentFitOptions = document.querySelectorAll("#create-treatment-fit option")
+
+  textFields.forEach(function(textField){
+    textField.value = ""
+  })
+  textAreas.forEach(function(textArea){
+    textArea.value = ""
+  })
+  Array.from(businessFitOptions).filter(ele => ele.value === "5")[0].selected = true
+  Array.from(cultureFitOptions).filter(ele => ele.value === "5")[0].selected = true
+  Array.from(visionFitOptions).filter(ele => ele.value === "5")[0].selected = true
+  Array.from(futureFitOptions).filter(ele => ele.value === "5")[0].selected = true
+  Array.from(skillFitOptions).filter(ele => ele.value === "5")[0].selected = true
+  Array.from(treatmentFitOptions).filter(ele => ele.value === "5")[0].selected = true
+
+}
+
+initForm()

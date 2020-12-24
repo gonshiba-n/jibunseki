@@ -3,9 +3,9 @@ class CompaniesController < ApplicationController
     @company = @current_user.company.new(companies_params)
     respond_to do |format|
       if @company.save
-        format.js { flash.now[:success] = "#{@company.name}を登録しました。"  }
+        format.js { flash.now[:success] = "#{@company.name}を登録しました。" }
       else
-        redirect_to user_path(@current_user.id), notice: "登録ができませんでした。"
+        format.js { render :create_errors }
       end
       set_instance
     end
