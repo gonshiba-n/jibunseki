@@ -1,5 +1,5 @@
 <%# modalの企業一覧置き換え %>
-$('.companies-container').html("<%= j(render partial: "users/companies/modal/companies_show", locals: { instance: @companies }) %>");
+$('.companies-container').html("<%= j(render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies }) %>");
 <%# showの企業一覧を置き換え %>
 $('.companies-show').html("<%= j(render partial: "users/companies/companies_show", locals: { instance: @companies }) %>");
 $('.js-message-errors').empty();

@@ -1,0 +1,2 @@
+module Companies::CompanyTransitionsHelper
+end

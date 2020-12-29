@@ -11,6 +11,15 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def update
+    @company = Company.find(companies_params[:id])
+    if @company.update(companies_params)
+      redirect_to user_path(@current_user.id), notice: "#{@company.name}を更新しました。"
+    else
+      redirect_to user_path(@current_user.id), notice: "更新できませんでした。"
+    end
+  end
+
   def destroy
     if select_companies_params.present?
       respond_to do |format|

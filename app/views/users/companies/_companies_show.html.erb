@@ -1,7 +1,11 @@
 <% instance.each do |company| %>
   <tr>
-    <td><%= company.name %></td>
-    <td><%= link_to "URL", company.url %></td>
+    <td>
+      <%= link_to company.name, company_transition_path(transition_value: company.id), data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %>
+    </td>
+    <td>
+      <%= link_to "URL", company.url, target: "blank", rel: "noopener noreferrer" %>
+    </td>
     <td><%= company.business_fit %></td>
     <td><%= company.culture_fit %></td>
     <td><%= company.vision_fit %></td>

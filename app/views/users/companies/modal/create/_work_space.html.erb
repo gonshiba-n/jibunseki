@@ -17,7 +17,7 @@
     </h3>
     <%= form_with model:@company, url: company_path, method: :delete do |f| %>
       <div class="companies-container" id="companiesContainer">
-        <%= render partial: "users/companies/modal/companies_show", locals: { instance: @companies } %>
+        <%= render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies } %>
       </div>
       <div class="col-12 pt-3 px-0 text-right">
         <input type="button" class="btn btn-success" value="選択" data-selector="false" onclick="companySelect()"></input>

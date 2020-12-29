@@ -239,9 +239,29 @@ function targetCheckBoxToggle(displayTarget) {
 
 // ==========target編集セクションここまで==========
 
-// ==========company新規作成・削除セクションここから==========
+// ==========company編集セクションここから==========
+function formToggle(e) {
+  if (flagContainer.dataset.flag === "true"){
+    showContainer.classList.toggle("d-none")
+    editContainer.classList.toggle("d-none")
+  }else{
+    showContainer.classList.toggle("d-none")
+    editContainer.classList.toggle("d-none")
+  }
 
-// ==========company新規作成・削除セクションここまで==========
+  let flagContainers = document.getElementById("company-edit-form").querySelectorAll("[data-flag]")
+  flagContainers.forEach(container => {
+    if (container != flagContainer && container.dataset.flag === "true") {
+      let showContainer = document.getElementById(`${container.dataset.col}Show`)
+      let editContainer = document.getElementById(`${container.dataset.col}Form`)
+      container.dataset.flag = false
+      showContainer.classList.toggle("d-none")
+      editContainer.classList.toggle("d-none")
+    }
+  })
+}
+
+// ==========company編集セクションここまで==========
 
 // ==========targetイベント発火ここから==========
 // target編集発火
@@ -305,6 +325,16 @@ window.companySelect = function () {
 
   targetCheckBoxToggle(displayTarget)
 }
+
+window.companyEdit = function (e) {
+  editCompanyInitialize(e)
+  if (flagContainer.dataset.flag === "true") {
+    flagContainer.dataset.flag = false
+  }else{
+    flagContainer.dataset.flag = true
+  }
+  formToggle(e)
+}
 // ==========companyイベント発火ここまで==========
 
 // ==========初期化ここから==========
@@ -338,4 +368,16 @@ function companyInitialize() {
   companyDeleteSubmit = document.getElementById("company-delete-submit")
   companyTables = document.querySelectorAll(".company-none")
 }
+
+function editCompanyInitialize(e) {
+  // companyEditForm = document.getElementById("company-edit-form").querySelectorAll('[data-flag]')
+  // flagContainers = document.getElementById("company-edit-form").querySelectorAll("[data-flag]")
+  flagContainer = document.getElementById(`company-edit-${e}`)
+  showContainer = document.getElementById(`${e}Show`)
+  editContainer = document.getElementById(`${e}Form`)
+}
 // ==========初期化ここまで==========
+
+// 選択されたの子要素取得
+// 選択された要素以外のdata属性を取得
+// 選択された要素と等しくなければ、data-flag=false クラス書き換え

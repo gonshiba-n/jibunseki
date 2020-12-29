@@ -159,6 +159,18 @@
   margin: 20px 0;
 }
 
+.corporate-edit{
+  text-align: right;
+  margin:  20px 0;
+  padding: 0 15px;
+}
+
+.field-set{
+  h3{
+    font-size: 20px!important;
+  }
+}
+
 // 検索ボックス
 .search_container{
   box-sizing: border-box;
@@ -184,12 +196,6 @@
   outline : none;
   display: inline-block;
   vertical-align: middle;
-}
-
-.corporate-edit{
-  text-align: right;
-  margin:  20px 0;
-  padding: 0 15px;
 }
 // ここまで企業分析
 
