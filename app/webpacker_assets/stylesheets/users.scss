@@ -150,8 +150,12 @@
 // ここまでwcmターゲット
 
 // ここから企業分析
-.corporate-analysis{
+.company-analysis{
   margin-bottom: 4%;
+}
+
+.company-index:hover{
+  text-decoration: none;
 }
 
 .show-table{
@@ -159,13 +163,15 @@
   margin: 20px 0;
 }
 
-.corporate-edit{
+.company-edit{
   text-align: right;
   margin:  20px 0;
   padding: 0 15px;
 }
 
 .field-set{
+  padding: 3%;
+  background-color: #F5F5F5;
   h3{
     font-size: 20px!important;
   }
@@ -188,7 +194,7 @@
 }
 .search_container input[type="submit"]{
   cursor: pointer;
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
   font-size: 1.3em;
   border: none;
   background: none;

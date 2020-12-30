@@ -13,11 +13,14 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(companies_params[:id])
-    if @company.update(companies_params)
-      redirect_to user_path(@current_user.id), notice: "#{@company.name}を更新しました。"
-    else
-      redirect_to user_path(@current_user.id), notice: "更新できませんでした。"
+    respond_to do |format|
+      if @company.update(companies_params)
+        format.js { flash.now[:success] = "#{@company.name}を更新しました。" }
+      else
+        format.js { render :update_errors }
+      end
     end
+    set_instance
   end
 
   def destroy
@@ -65,6 +68,6 @@ class CompaniesController < ApplicationController
   end
 
   def set_instance
-    @companies = Company.where(user_id: @current_user.id)
+    @companies = Company.where(user_id: @current_user.id).sorted
   end
 end

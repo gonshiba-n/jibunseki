@@ -22,6 +22,8 @@ class Company < ApplicationRecord
               :treatment_fit
   end
 
+  scope :sorted, -> { order(aspiration :desc) }
+
   def aspiration
     result = [
             business_fit,

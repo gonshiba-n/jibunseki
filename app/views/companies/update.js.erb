@@ -1,0 +1,8 @@
+<%# modalの企業一覧置き換え %>
+$('.companies-container').html("<%= j(render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies }) %>");
+<%# showの企業一覧を置き換え %>
+$('.companies-show').html("<%= j(render partial: "users/companies/companies_show", locals: { instance: @companies }) %>");
+<%# 企業編集を置き換え %>
+$('#company-edit-content').html("<%= j(render partial: "users/companies/modal/edit/work_space", locals: { instance: @company }) %>");
+$('.js-message-errors').empty();
+$('.flash').empty();

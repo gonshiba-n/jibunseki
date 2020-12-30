@@ -1,17 +1,17 @@
 <% instance.each do |company| %>
   <tr>
-    <td>
-      <%= link_to company.name, company_transition_path(transition_value: company.id), data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %>
+    <td class="p-0">
+      <%= link_to company.name, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %>
     </td>
-    <td>
-      <%= link_to "URL", company.url, target: "blank", rel: "noopener noreferrer" %>
+    <td class="p-0">
+      <%= link_to "URL", company.url, class: "d-block p-2", target: "blank", rel: "noopener noreferrer" %>
     </td>
-    <td><%= company.business_fit %></td>
-    <td><%= company.culture_fit %></td>
-    <td><%= company.vision_fit %></td>
-    <td><%= company.future_fit %></td>
-    <td><%= company.skill_fit %></td>
-    <td><%= company.treatment_fit %></td>
-    <td><%= company.aspiration %></td>
+    <td class="p-0"><%= link_to company.business_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.culture_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.vision_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.future_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.skill_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.treatment_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+    <td class="p-0"><%= link_to company.aspiration, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
   </tr>
 <% end %>

@@ -316,7 +316,7 @@ window.companySelect = function () {
     })
   } else {
     displayTarget.dataset.selector = "false"
-    displayTarget.value = "選択"
+    displayTarget.value = "削除選択"
     companyDeleteSubmit.classList.add("d-none")
     companyTables.forEach(function (t) {
       t.classList.add("d-none")

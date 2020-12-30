@@ -18,17 +18,24 @@
               treatment: "待遇",
             }
 %>
+<% if flash[:success].present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 
 <div class="row mx-3">
   <div class="col-12 target-edit separation">
     <div class="create-js-message-errors"></div>
     <div class="company-edit-container">
-      <%= form_with model:@company, url: company_path, class: "js-form", method: :patch, id: "company-edit-form", local: true do |f| %>
+      <%= form_with model:@company, url: company_path, class: "js-form", method: :patch, id: "company-edit-form" do |f| %>
         <%= f.hidden_field :id %>
 
         <%# data-flagがfalseは編集前 %>
         <%# data-flagがtrueは編集中 %>
-        <div class="row field-set" data-flag="false" data-col="name" id="company-edit-name">
+        <div class="row my-3 field-set" data-flag="false" data-col="name" id="company-edit-name">
           <div class="col-12 row mx-auto" id="nameShow">
             <div class="col-8 col-lg-2 p-0 mt-2">
               <h3>企業名:</h3>
@@ -43,12 +50,12 @@
             <%= f.text_field :name, class: "form-control", id: "create-company-name" %>
             <div class="text-right mt-2">
               <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', id: "create-target-submit", onclick: "companyEdit('name')" %>
-              <%= f.submit "作成", class: 'btn btn-outline-success', id: "create-target-submit" %>
+              <%= f.submit "更新", class: 'btn btn-outline-success', id: "create-target-submit" %>
             </div>
           </div>
         </div>
 
-        <div class="row field-set" data-flag="false" data-col="url" id="company-edit-url">
+        <div class="row my-3 field-set" data-flag="false" data-col="url" id="company-edit-url">
           <div class="col-12 row mx-auto" id="urlShow">
             <div class="col-8 col-lg-2 p-0 mt-2">
               <h3>企業URL:</h3>
@@ -63,13 +70,13 @@
             <%= f.text_field :url, class: "form-control", id: "create-company-url" %>
             <div class="text-right mt-2">
               <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', onclick: "companyEdit('url')" %>
-              <%= f.submit "作成", class: 'btn btn-outline-success' %>
+              <%= f.submit "更新", class: 'btn btn-outline-success' %>
             </div>
           </div>
         </div>
 
         <% @attr.each do |key, value| %>
-          <div class="row field-set" data-flag="false" data-col="<%= key %>" id="company-edit-<%= key %>">
+          <div class="row my-3 field-set" data-flag="false" data-col="<%= key %>" id="company-edit-<%= key %>">
             <div class="col-12 row mx-auto" id="<%= key %>Show">
               <div class="col-8 col-lg-2 p-0 mt-2">
                 <h3><%= value %>:</h3>
@@ -80,7 +87,7 @@
               <p class="col-12"><%= eval("@company.#{key}") %></p>
             </div>
             <div class="col-12 form-group d-none" id="<%= key %>Form">
-              <%= f.label ("#{key}").to_sym, "企業名:", for: "create-company-business" %>
+              <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-business" %>
               <%= f.text_field ("#{key}").to_sym, class: "form-control", id: "create-company-business" %>
               <div class="field-set mt-2">
                 <div class="form-group">
@@ -90,15 +97,11 @@
               </div>
               <div class="text-right mt-2">
                 <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', onclick: "companyEdit('#{key}')" %>
-                <%= f.submit "作成", class: 'btn btn-outline-success' %>
+                <%= f.submit "更新", class: 'btn btn-outline-success' %>
               </div>
             </div>
           </div>
         <% end %>
-
-        <div class="col-12 text-right p-0">
-          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
-        </div>
       <% end %>
     </div>
   </div>

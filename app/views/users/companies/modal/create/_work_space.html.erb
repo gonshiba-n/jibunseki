@@ -20,7 +20,7 @@
         <%= render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies } %>
       </div>
       <div class="col-12 pt-3 px-0 text-right">
-        <input type="button" class="btn btn-success" value="選択" data-selector="false" onclick="companySelect()"></input>
+        <input type="button" class="btn btn-success" value="削除選択" data-selector="false" onclick="companySelect()"></input>
         <%= f.submit "削除", class: "btn btn-danger d-none", id: "company-delete-submit" %>
       </div>
     <% end %>
