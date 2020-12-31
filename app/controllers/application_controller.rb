@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   #ransack
   def set_search
     @q = Company.ransack(params[:q])
-    @search_conpanies = @q.result(distinct: true).order(created_at: "DESC")
+    @search_conpanies = @q.result.order(created_at: "DESC")
   end
 
   private

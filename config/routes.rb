@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resource :company
         scope module: :companies do
           resources :company_transitions, only: [:show], as: :company_transitions
-          resource :company_seraches, only: [:show], as: :company_serach
+          resources :company_seraches, only: [:index, :show], as: :company_serach
         end
     end
   end
