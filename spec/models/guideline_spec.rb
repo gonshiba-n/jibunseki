@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Guideline, type: :model do
   describe "バリデーション" do
-    let(:user) { FactoryBot.create(:user) }
-
     it "バリデーションが有効であること" do
       expect(FactoryBot.build(:guideline)).to be_valid
     end
