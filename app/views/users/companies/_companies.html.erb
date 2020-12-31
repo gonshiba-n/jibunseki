@@ -1,10 +1,10 @@
 <div class="col-12">
   <h2 class="h2">企業分析</h2>
 
-  <form method="get" action="#" class="search_container text-right">
-    <input type="text" size="25" placeholder="キーワード検索">
-    <input type="submit" class="fas" value="&#xf002;">
-  </form>
+  <%= search_form_for @q, url: company_serach_path, remote: true, html: {class: "search_container text-right"} do |f| %>
+    <%= f.search_field :name_cont, type: "text", placeholder: "企業検索" %>
+    <input type="submit" class="fas search_container-submit" value="&#xf002;">
+  <% end %>
   <div class="table-responsive-lg">
     <table class="table table-hover text-center show-table">
       <thead>

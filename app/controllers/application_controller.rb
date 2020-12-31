@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :current_user
   before_action :require_login!
+  before_action :set_search
   helper_method :logged_in?
 
   # cookieからトークンを取得して暗号化
@@ -27,6 +28,12 @@ class ApplicationController < ActionController::Base
   # 値があればtrue
   def logged_in?
     @current_user.present?
+  end
+
+  #ransack
+  def set_search
+    @q = Company.ransack(params[:q])
+    @search_conpanies = @q.result(distinct: true).order(created_at: "DESC")
   end
 
   private
