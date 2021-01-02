@@ -10,7 +10,7 @@ RSpec.describe "Users", type: :system, js: true do
       login_for_app(user)
     end
 
-    context "表示確認" do
+    describe "表示確認" do
       before do
         FactoryBot.create(:target_long, user: user)
         FactoryBot.create(:target_short, user: user)
