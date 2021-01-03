@@ -1,0 +1,36 @@
+<table class="table table-hover text-center show-table" id="company-show-table">
+  <thead>
+    <% url_options = { controller: "companies/company_seraches", action: :index } %>
+    <% html_options = { remote: true, class: "text-white" } %>
+    <tr class="bg-info text-white">
+      <th scope="col"><%= sort_link @q, :name, "企業名",url_options, html_options %></th>
+      <th scope="col">URL</th>
+      <th scope="col"><%= sort_link @q, :business_fit, "事業",url_options, html_options %></th>
+      <th scope="col"><%= sort_link @q, :culture_fit, "社風/環境",url_options, html_options %></th>
+      <th scope="col"><%= sort_link @q, :vision_fit, "ビジョン",url_options, html_options %></th>
+      <th scope="col"><%= sort_link @q, :future_fit, "将来性",url_options, html_options %></th>
+      <th scope="col"><%= sort_link @q, :skill_fit, "スキル",url_options, html_options %></th>
+      <th scope="col"><%= sort_link @q, :treatment_fit, "待遇",url_options, html_options %></th>
+      <th scope="col">志望度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% instance.each do |company| %>
+      <tr>
+        <td class="p-0" id="edit-company-id<%= company.id %>">
+          <%= link_to company.name, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %>
+        </td>
+        <td class="p-0">
+          <%= link_to "URL", company.url, class: "d-block p-2", target: "blank", rel: "noopener noreferrer" %>
+        </td>
+        <td class="p-0"><%= link_to company.business_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.culture_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.vision_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.future_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.skill_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.treatment_fit, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+        <td class="p-0"><%= link_to company.aspiration, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

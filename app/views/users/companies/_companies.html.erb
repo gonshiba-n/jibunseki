@@ -1,0 +1,14 @@
+<div class="col-12">
+  <h2 class="h2">企業分析</h2>
+
+  <%= search_form_for @q, url: company_serach_path, remote: true, html: {class: "search_container text-right"} do |f| %>
+    <%= f.search_field :name_cont, type: "text", placeholder: "企業検索" %>
+    <input type="submit" class="fas search_container-submit" value="&#xf002;">
+  <% end %>
+  <div class="table-responsive-lg companies-show">
+    <%= render partial: "users/companies/companies_show", locals: { instance: @companies } %>
+  </div>
+  <div class="companies-create mt-3 mb-5 text-right">
+    <button type="button" class="btn btn-success" id="company-create" data-toggle="modal" data-target=".modal_companies">新規作成/削除</button>
+  <div>
+</div>

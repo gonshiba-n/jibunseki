@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password validations: true
   has_many :tag, dependent: :destroy
   has_many :target, dependent: :destroy
+  has_many :company, dependent: :destroy
   has_one :guideline, dependent: :destroy
 
   # バリデーション

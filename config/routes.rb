@@ -18,6 +18,11 @@ Rails.application.routes.draw do
         scope module: :targets do
           resource :target_transitions, only: [:show], as: :targets_transitions
         end
+      resource :company
+        scope module: :companies do
+          resources :company_transitions, only: [:show], as: :company_transitions
+          resources :company_seraches, only: [:index, :show], as: :company_serach
+        end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

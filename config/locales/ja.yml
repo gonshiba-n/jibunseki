@@ -6,6 +6,7 @@ ja:
       tag: タグ
       guideline: 行動指針
       target: 目標
+      company: 企業
     attributes:
       user:
         id: ID
@@ -30,10 +31,19 @@ ja:
       target:
         id: ID
         target_body: 目標文
-        start: 目標開始日時
         deadline: 目標達成予定日時
         achieve: 達成状況
         period: 目標達成状況
+      company:
+        id: ID
+        name: 企業名
+        url: URL
+        business: 事業内容
+        culture: 社風/環境
+        vision: ビジョン
+        future: 将来性
+        skill: スキル
+        treatment: 待遇
   enums:
     target:
       achieve:

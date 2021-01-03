@@ -44,7 +44,7 @@ class TargetsController < ApplicationController
   private
 
   def targets_params
-    params.require(:target).permit(:id, :target_body, :start, :deadline, :achieve, :period)
+    params.require(:target).permit(:id, :target_body, :deadline, :achieve, :period)
   end
 
   def select_targets_params

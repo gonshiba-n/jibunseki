@@ -1,0 +1,30 @@
+<div class="modal fade edit_modal_companies" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="h3">
+          <i class="fas fa-building"></i>
+          企業分析の編集
+        </h3>
+      </div>
+      <div class="col-12" id="base-tags-flash">
+      <% if flash[:success].present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+      </div>
+      <div class="modal-body" id="company-edit-modal">
+        <div class="update-js-message-errors"></div>
+        <div class="company-edit-content" id="company-edit-content">
+          <%= render partial: "users/companies/modal/edit/work_space" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

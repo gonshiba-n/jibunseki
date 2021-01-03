@@ -1,0 +1,108 @@
+<%# companiesのモーダルメインビュー %>
+<% @placeholder = {
+                    business: "事業内容のポイントをまとめましょう。",
+                    culture: "社風や労働環境が自分にマッチしているかをまとめましょう。",
+                    vision: "企業理念やビジョン、ミッションへの共感ポイントをまとめましょう。",
+                    future: "企業の将来性や競合企業と比べましょう。どこに優位性があり、どのように企業として成長するのかを自分なりに考えてまとめましょう。",
+                    skill: "現在のスキルをどう活かせるのか、また、どのようなスキルを得られて伸ばしていけるのかをまとめましょう。",
+                    treatment: "給与や福利厚生が自分にとってマッチしているのかをまとめましょう。",
+                  }
+%>
+
+<% @attr = {
+              business: "事業内容",
+              culture: "社風/環境",
+              vision: "ビジョン",
+              future: "将来性",
+              skill: "スキル",
+              treatment: "待遇",
+            }
+%>
+<% if flash[:success].present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<div class="row mx-3">
+  <div class="col-12 target-edit separation">
+    <div class="create-js-message-errors"></div>
+    <div class="company-edit-container">
+      <%= form_with model:@company, url: company_path, class: "js-form", method: :patch, id: "company-edit-form" do |f| %>
+        <%= f.hidden_field :id %>
+
+        <%# data-flagがfalseは編集前 %>
+        <%# data-flagがtrueは編集中 %>
+        <div class="row my-3 field-set" data-flag="false" data-col="name" id="company-edit-name">
+          <div class="col-12 row mx-auto" id="nameShow">
+            <div class="col-8 col-lg-2 p-0 mt-2">
+              <h3>企業名:</h3>
+            </div>
+            <div class="col-4 col-lg-10 text-lg-right">
+              <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('name')">編集する</button>
+            </div>
+            <p class="col-12"><%= @company.name %></p>
+          </div>
+          <div class="col-12 form-group d-none" id="nameForm">
+            <%= f.label :name, "企業名:", for: "create-company-name" %>
+            <%= f.text_field :name, class: "form-control", id: "create-company-name" %>
+            <div class="text-right mt-2">
+              <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', id: "create-target-submit", onclick: "companyEdit('name')" %>
+              <%= f.submit "更新", class: 'btn btn-outline-success', id: "create-target-submit" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row my-3 field-set" data-flag="false" data-col="url" id="company-edit-url">
+          <div class="col-12 row mx-auto" id="urlShow">
+            <div class="col-8 col-lg-2 p-0 mt-2">
+              <h3>企業URL:</h3>
+            </div>
+            <div class="col-4 col-lg-10 text-lg-right">
+              <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('url')">編集する</button>
+            </div>
+            <p class="col-12"><%= link_to @company.url %></p>
+          </div>
+          <div class="col-12 form-group d-none" id="urlForm">
+            <%= f.label :url, "企業URL:", for: "create-company-url" %>
+            <%= f.text_field :url, class: "form-control", id: "create-company-url" %>
+            <div class="text-right mt-2">
+              <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', onclick: "companyEdit('url')" %>
+              <%= f.submit "更新", class: 'btn btn-outline-success' %>
+            </div>
+          </div>
+        </div>
+
+        <% @attr.each do |key, value| %>
+          <div class="row my-3 field-set" data-flag="false" data-col="<%= key %>" id="company-edit-<%= key %>">
+            <div class="col-12 row mx-auto" id="<%= key %>Show">
+              <div class="col-8 col-lg-2 p-0 mt-2">
+                <h3><%= value %>:</h3>
+              </div>
+              <div class="col-4 col-lg-10 text-lg-right">
+                <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('<%= key %>')">編集する</button>
+              </div>
+              <p class="col-12"><%= eval("@company.#{key}") %></p>
+            </div>
+            <div class="col-12 form-group d-none" id="<%= key %>Form">
+              <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-#{key}" %>
+              <%= f.text_field ("#{key}").to_sym, class: "form-control", id: "create-company-#{key}" %>
+              <div class="field-set mt-2">
+                <div class="form-group">
+                  <%= f.label ("#{key}_fit").to_sym, "マッチング度", for: "create-#{key}-fit" %>
+                  <%= f.select ("#{key}_fit").to_sym, [[5], [4], [3], [2], [1]] , { selected: eval("@company.#{key}_fit") }, { class: "form-control", id: "create-#{key}-fit" } %>
+                </div>
+              </div>
+              <div class="text-right mt-2">
+                <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', onclick: "companyEdit('#{key}')" %>
+                <%= f.submit "更新", class: 'btn btn-outline-success' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

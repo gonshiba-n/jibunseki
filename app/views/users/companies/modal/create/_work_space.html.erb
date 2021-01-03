@@ -1,0 +1,99 @@
+<%# companiesのモーダルメインビュー %>
+<% @placeholder = {
+                    business: "事業内容のポイントをまとめましょう。",
+                    culture: "社風や労働環境が自分にマッチしているかをまとめましょう。",
+                    vision: "企業理念やビジョン、ミッションへの共感ポイントをまとめましょう。",
+                    future: "企業の将来性や競合企業と比べましょう。どこに優位性があり、どのように企業として成長するのかを自分なりに考えてまとめましょう。",
+                    skill: "現在のスキルをどう活かせるのか、また、どのようなスキルを得られて伸ばしていけるのかをまとめましょう。",
+                    treatment: "給与や福利厚生が自分にとってマッチしているのかをまとめましょう。",
+                  }
+%>
+
+<div class="row mx-3">
+  <div class="col-12 separation">
+    <h3 class="h3">
+      <i class="fas fa-city"></i>
+      企業一覧
+    </h3>
+    <%= form_with model:@company, url: company_path, method: :delete do |f| %>
+      <div class="companies-container" id="companiesContainer">
+        <%= render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies } %>
+      </div>
+      <div class="col-12 pt-3 px-0 text-right">
+        <input type="button" class="btn btn-success" value="削除選択" data-selector="false" onclick="companySelect()"></input>
+        <%= f.submit "削除", class: "btn btn-danger d-none", id: "company-delete-submit" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-12 target-edit separation">
+    <h3 class="h3">
+      <i class="fas fa-pen-square"></i>
+      企業分析の新規作成
+    </h3>
+    <div class="create-js-message-errors"></div>
+    <div class="company-create-container">
+      <%= form_with model:@company, url: company_path, class: "js-form", method: :post do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "企業名:", for: "create-company-name" %>
+          <%= f.text_field :name, class: "form-control", id: "create-company-name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :url, "企業URL:", for: "create-url" %>
+          <%= f.text_field :url, class: "form-control", id: "create-url" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :business, "事業内容:", for: "create-business" %>
+          <%= f.text_area :business, class: "form-control", id: "create-business", placeholder: @placeholder[:business] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :business_fit, "マッチング度", for: "create-business-fit" %>
+          <%= f.select :business_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-business-fit" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :culture, "社風/環境:", for: "create-culture" %>
+          <%= f.text_area :culture, class: "form-control", id: "create-culture", placeholder: @placeholder[:culture] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :culture_fit, "マッチング度", for: "create-culture-fit" %>
+          <%= f.select :culture_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-culture-fit" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :vision, "ビジョン:", for: "create-vision" %>
+          <%= f.text_area :vision, class: "form-control", id: "create-vision", placeholder: @placeholder[:vision] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :vision_fit, "マッチング度", for: "create-vision-fit" %>
+          <%= f.select :vision_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-vision-fit" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :future, "将来性:", for: "create-future" %>
+          <%= f.text_area :future, class: "form-control", id: "create-future", placeholder: @placeholder[:future] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :future_fit, "マッチング度", for: "create-future-fit" %>
+          <%= f.select :future_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-future-fit" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :skill, "スキル:", for: "create-skill" %>
+          <%= f.text_area :skill, class: "form-control", id: "create-skill", placeholder: @placeholder[:skill] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :skill_fit, "マッチング度", for: "create-skill-fit" %>
+          <%= f.select :skill_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-skill-fit" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :treatment, "待遇:", for: "create-treatment" %>
+          <%= f.text_area :treatment, class: "form-control", id: "create-treatment", placeholder: @placeholder[:treatment] %>
+        </div>
+        <div class="form-group">
+          <%= f.label :treatment_fit, "マッチング度", for: "create-treatment-fit" %>
+          <%= f.select :treatment_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-treatment-fit" } %>
+        </div>
+        <div class="col-12 text-right p-0">
+          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

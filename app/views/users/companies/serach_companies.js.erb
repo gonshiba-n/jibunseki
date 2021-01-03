@@ -1,0 +1,2 @@
+<%# 検索結果の出力 %>
+$('.companies-show').html("<%= j(render partial: "users/companies/companies_show", locals: { instance: @search_conpanies }) %>");

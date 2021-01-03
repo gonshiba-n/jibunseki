@@ -5,6 +5,8 @@
   <%= render partial: 'users/wcm_seat/modal/modal_show' %>
   <%= render partial: 'users/base_tags/modal/base_tags' %>
   <%= render partial: "users/target/modal/modal_target" %>
+  <%= render partial: "users/companies/modal/create/modal_companies" %>
+  <%= render partial: "users/companies/modal/edit/modal_companies" %>
 
   <section class="wcm-seat">
     <div class="row wcm-work-space">
@@ -61,49 +63,9 @@
     </div>
   </section>
 
-  <section class="col-12 corporate-analysis">
+  <section class="col-12 company-analysis">
     <div class="row">
-      <div class="col-12">
-        <h2 class="h2">企業分析(開発中)</h2>
-
-        <form method="get" action="#" class="search_container text-right">
-          <input type="text" size="25" placeholder="キーワード検索">
-          <input type="submit" value="&#xf002">
-        </form>
-        <div class="table-responsive-lg">
-          <table class="table table-hover text-center">
-            <thead>
-              <tr class="bg-success text-white">
-                <th scope="col">企業名</th>
-                <th scope="col">URL</th>
-                <th scope="col">事業</th>
-                <th scope="col">社風/環境</th>
-                <th scope="col">ビジョン</th>
-                <th scope="col">将来性</th>
-                <th scope="col">スキル</th>
-                <th scope="col">待遇</th>
-                <th scope="col">志望度</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>〇〇株式会社</td>
-                <td>A</td>
-                <td>A</td>
-                <td>A</td>
-                <td>A</td>
-                <td>A</td>
-                <td>A</td>
-                <td>A</td>
-                <td>35</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="corporate-edit">
-          <button type="button" class="btn btn-success">企業編集</button>
-        <div>
-      </div>
+      <%= render 'users/companies/companies' %>
     </div>
   </section>
 </div>
