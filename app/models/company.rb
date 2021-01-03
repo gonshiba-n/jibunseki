@@ -13,7 +13,7 @@ class Company < ApplicationRecord
               :skill,
               :treatment
   end
-  with_options numericality: {only_integer: true, greater_than: 0, less_than: 6} do
+  with_options numericality: { only_integer: true, greater_than: 0, less_than: 6 } do
     validates :business_fit,
               :culture_fit,
               :vision_fit,
@@ -26,13 +26,13 @@ class Company < ApplicationRecord
 
   def aspiration
     result = [
-            business_fit,
-            culture_fit,
-            vision_fit,
-            future_fit,
-            skill_fit,
-            treatment_fit,
-          ]
+      business_fit,
+      culture_fit,
+      vision_fit,
+      future_fit,
+      skill_fit,
+      treatment_fit,
+    ]
     result.sum
   end
 end

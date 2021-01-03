@@ -1,4 +1,4 @@
-<table class="table table-hover text-center show-table">
+<table class="table table-hover text-center show-table" id="company-show-table">
   <thead>
     <% url_options = { controller: "companies/company_seraches", action: :index } %>
     <% html_options = { remote: true, class: "text-white" } %>
@@ -17,7 +17,7 @@
   <tbody>
     <% instance.each do |company| %>
       <tr>
-        <td class="p-0">
+        <td class="p-0" id="edit-company-id<%= company.id %>">
           <%= link_to company.name, company_transition_path(transition_value: company.id), class: "d-block p-2 text-dark company-index", data: { toggle: "modal", target: ".edit_modal_companies" }, remote: true %>
         </td>
         <td class="p-0">

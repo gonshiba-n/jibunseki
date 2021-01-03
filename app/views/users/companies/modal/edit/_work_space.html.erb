@@ -41,7 +41,7 @@
               <h3>企業名:</h3>
             </div>
             <div class="col-4 col-lg-10 text-lg-right">
-              <button class="btn btn-outline-secondary btn-sm" type="button" onclick="companyEdit('name')">編集する</button>
+              <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('name')">編集する</button>
             </div>
             <p class="col-12"><%= @company.name %></p>
           </div>
@@ -61,12 +61,12 @@
               <h3>企業URL:</h3>
             </div>
             <div class="col-4 col-lg-10 text-lg-right">
-              <button class="btn btn-outline-secondary btn-sm" type="button" onclick="companyEdit('url')">編集する</button>
+              <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('url')">編集する</button>
             </div>
             <p class="col-12"><%= link_to @company.url %></p>
           </div>
           <div class="col-12 form-group d-none" id="urlForm">
-            <%= f.label :url, "企業名:", for: "create-company-url" %>
+            <%= f.label :url, "企業URL:", for: "create-company-url" %>
             <%= f.text_field :url, class: "form-control", id: "create-company-url" %>
             <div class="text-right mt-2">
               <%= f.submit "キャンセル", type: "button", class: 'btn btn-outline-info', onclick: "companyEdit('url')" %>
@@ -82,13 +82,13 @@
                 <h3><%= value %>:</h3>
               </div>
               <div class="col-4 col-lg-10 text-lg-right">
-                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="companyEdit('<%= key %>')">編集する</button>
+                <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('<%= key %>')">編集する</button>
               </div>
               <p class="col-12"><%= eval("@company.#{key}") %></p>
             </div>
             <div class="col-12 form-group d-none" id="<%= key %>Form">
-              <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-business" %>
-              <%= f.text_field ("#{key}").to_sym, class: "form-control", id: "create-company-business" %>
+              <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-#{key}" %>
+              <%= f.text_field ("#{key}").to_sym, class: "form-control", id: "create-company-#{key}" %>
               <div class="field-set mt-2">
                 <div class="form-group">
                   <%= f.label ("#{key}_fit").to_sym, "マッチング度", for: "create-#{key}-fit" %>

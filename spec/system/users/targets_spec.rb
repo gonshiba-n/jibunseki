@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system, js: true do
+  before do
+    travel_to Date.new(2020, 12, 6)
+  end
+
   describe "show wcmを基にした目標" do
     let!(:user) { FactoryBot.create(:user) }
     let!(:target) { FactoryBot.create(:target, user: user) }
 
     before do
-      travel_to Date.new(2020, 12, 6)
       login_for_app(user)
     end
 

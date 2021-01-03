@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     @current_user.present?
   end
 
-  #ransack
+  # ransack
   def set_search
     @q = Company.ransack(params[:q])
     @search_conpanies = @q.result.order(created_at: "DESC")

@@ -53,13 +53,12 @@ RSpec.describe Company, type: :model do
     context "method" do
       it "aspirationメソッドの合計値が算出すること" do
         company = FactoryBot.build(:company,
-                                    business_fit: 5,
-                                    culture_fit: 5,
-                                    vision_fit: 5,
-                                    future_fit: 5,
-                                    skill_fit: 5,
-                                    treatment_fit: 5,
-        )
+                                   business_fit: 5,
+                                   culture_fit: 5,
+                                   vision_fit: 5,
+                                   future_fit: 5,
+                                   skill_fit: 5,
+                                   treatment_fit: 5,)
         expect(company.aspiration).to eq(30)
       end
     end

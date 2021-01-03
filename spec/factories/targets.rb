@@ -6,6 +6,7 @@ FactoryBot.define do
     achieve { "un_goal" }
     period { "middle" }
     created_at { "2020-12-01 00:00:00" }
+    updated_at { "2020-12-01 00:00:00" }
     association :user
   end
 
@@ -16,6 +17,7 @@ FactoryBot.define do
     achieve { "un_goal" }
     period { "long" }
     created_at { "2020-12-01 00:00:00" }
+    updated_at { "2020-12-01 00:00:00" }
     association :user
   end
 
@@ -26,6 +28,7 @@ FactoryBot.define do
     achieve { "goal" }
     period { "short" }
     created_at { "2020-12-01 00:00:00" }
+    updated_at { "2020-12-01 00:00:00" }
     association :user
   end
 end

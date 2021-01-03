@@ -58,8 +58,7 @@ class CompaniesController < ApplicationController
                                     :skill,
                                     :skill_fit,
                                     :treatment,
-                                    :treatment_fit,
-                                  )
+                                    :treatment_fit,)
   end
 
   def select_companies_params

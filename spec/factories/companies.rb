@@ -1,18 +1,19 @@
 FactoryBot.define do
   factory :company do
+    id { 1 }
     name { "MyString" }
     url { "https://jibunseki.herokuapp.com" }
-    business { "MyText" }
+    business { "MyBusiness" }
     business_fit { 5 }
-    vision { "MyText" }
-    vision_fit { 5 }
-    culture { "MyText" }
+    culture { "MyCulture" }
     culture_fit { 5 }
-    future { "MyText" }
+    vision { "MyVision" }
+    vision_fit { 5 }
+    future { "MyFuture" }
     future_fit { 5 }
-    skill { "MyText" }
+    skill { "MySkill" }
     skill_fit { 5 }
-    treatment { "MyText" }
+    treatment { "MyTreatment" }
     treatment_fit { 5 }
     association :user
   end

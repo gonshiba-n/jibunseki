@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Target, type: :model do
   describe "バリデーション" do
+    before do
+      travel_to Date.new(2020, 12, 6)
+    end
+
     context "valid" do
       it "バリデーションが有効であること" do
         expect(FactoryBot.build(:target)).to be_valid

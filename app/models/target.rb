@@ -5,7 +5,7 @@ class Target < ApplicationRecord
   validates :deadline, presence: true
   validates :achieve, presence: true, inclusion: { in: ["goal", "un_goal"] }, on: :update
   validates :period, presence: true
-  validate :check_times
+  validate :deadline, :check_times
 
   # スコープ
   scope :time_order, -> { order(deadline: "DESC") }
