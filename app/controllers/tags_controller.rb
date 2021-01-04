@@ -9,7 +9,7 @@ class TagsController < ApplicationController
       end
     end
     @tags = @current_user.tag.tags(@tag.wcm)
-    set_tags
+    set_instance
   end
 
   def update
@@ -22,7 +22,7 @@ class TagsController < ApplicationController
       end
     end
     @tags = @current_user.tag.tags(@tag.wcm)
-    set_tags
+    set_instance
   end
 
   def destroy
@@ -45,7 +45,7 @@ class TagsController < ApplicationController
       @tags = @current_user.tag.tags(@transition_value)
       flash.now[:success] = "タグを選択してください"
     end
-    set_tags
+    set_instance
   end
 
   private
@@ -59,7 +59,7 @@ class TagsController < ApplicationController
     ids.values[0]
   end
 
-  def set_tags
+  def set_instance
     @will_tags = @current_user.tag.recent("will")
     @can_tags = @current_user.tag.recent("can")
     @must_tags = @current_user.tag.recent("must")
