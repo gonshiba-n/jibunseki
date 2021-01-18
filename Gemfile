@@ -54,6 +54,11 @@ group :development, :test do
   # デバック
   gem 'ruby-debug-ide'
   gem 'debase'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
