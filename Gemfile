@@ -38,7 +38,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
   gem 'unicorn'
-  gem 'mini_racer'
 end
 
 group :development, :test do
@@ -60,8 +59,11 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano-yarn'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+  gem 'mini_racer'
 end
 
 group :development do

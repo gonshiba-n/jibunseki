@@ -14,6 +14,13 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.7.2'
+set :nvm_type, :user
+set :nvm_node, 'v14.8.0'
+set :yarn_target_path, -> { release_path.join('client') } #
+set :yarn_flags, '--production --silent --no-progress'    # default
+set :yarn_roles, :all                                     # default
+set :yarn_env_variables, {}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system node_modules client/node_modules}
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
