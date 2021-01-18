@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: jibunseki_production
+  template: template0
   username: jibunseki
   password: <%= ENV['JIBUNSEKI_DATABASE_PASSWORD'] %>
