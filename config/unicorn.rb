@@ -33,7 +33,7 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
 
   if run_once
-    run_once = false
+    run_once = false # prevent from firing again
   end
 
   old_pid = "#{server.config[:pid]}.oldbin"
