@@ -11,18 +11,19 @@
 よりユーザーが自己分析に集中できるようなアプリケーション作成を心がけて制作しています。
 
 ##使用技術<br>
-使用言語/FW
+使用言語/FW<br>
 HTML / CSS(SCSS) / JavaScript / Ruby / Ruby on Rails
 
-DB
+DB<br>
 PostgreSQL
 
-インフラ
+インフラ<br>
 AWS: VPC / EC2 / Route53
-デプロイ
+
+デプロイ<br>
 Capistrano
 
-バージョン管理:
+バージョン管理<br>
 Git / GitHub
 
 ## アプリケーション機能
