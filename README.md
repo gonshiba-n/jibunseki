@@ -1,24 +1,39 @@
-# README
+# じぶんセキ
+<br>URL: https://www.jibunseki.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション概要 ※現在制作中
+自己分析サポートアプリです。<br>
+自身の様々な考えからWill,Can,Mustに沿ったアウトプットを行い思考を整理、 <br>
+その中から重要な思考を文章として行動指標へ落とし込みます。<br>
+この行動指標をベースに、目標設定や企業研究を行ってもらい<br>
+自己分析から目標管理まで一貫してサポート可能なように作成しました。<br>
+またシングルページアプリケーションとして,画面遷移のストレスを軽減し<br>
+よりユーザーが自己分析に集中できるようなアプリケーション作成を心がけて制作しています。
 
-Things you may want to cover:
+##使用技術
+使用言語/FW
+HTML / CSS(SCSS) / JavaScript / Ruby / Ruby on Rails
 
-* Ruby version
+DB
+PostgreSQL
 
-* System dependencies
+インフラ
+AWS: VPC / EC2 / Route53
+デプロイ
+Capistrano
 
-* Configuration
+バージョン管理:
+Git / GitHub
 
-* Database creation
+## アプリケーション機能
+・AjaxによるCRUD処理<br>
+・Ajaxによる画面遷移<br>
+・ログイン機能<br>
+・ソート(ransack)<br>
+・検索(ransack)<br>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実装予定
+・自己分析サポート質問機能<br>
+・通知機能<br>
+・目標のシェア機能<br>
+・メール機能<br>
