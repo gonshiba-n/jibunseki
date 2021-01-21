@@ -19,6 +19,8 @@ PostgreSQL
 
 インフラ<br>
 AWS: VPC / EC2 / Route53
+Webサーバー Nginx
+Appサーバー Unicorn
 
 デプロイ<br>
 Capistrano
