@@ -82,9 +82,13 @@
     margin: 15px 0;
   }
   p{
-    padding-top: 15px;
+    padding: 10px;
     line-height: 30px;
   }
+  p:hover{
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+
   .guideline-container{
     cursor: pointer;
   }
@@ -119,8 +123,8 @@
   }
 }
 
-.target-edit{
-
+.target-hover:hover{
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .target-modal-show * {

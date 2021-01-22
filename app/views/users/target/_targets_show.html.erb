@@ -4,7 +4,7 @@
   </div>
 <% else %>
   <% instance.each do |target| %>
-    <div class="row w-100 mx-auto my-3 text-md-center target" data-toggle="modal" data-target=".modal_target" id="target-body">
+    <div class="row w-100 mx-auto py-3 text-md-center target target-hover" data-toggle="modal" data-target=".modal_target" id="target-body">
       <div class="col-12 col-md-4">
         <h3><%= target.period_i18n %></h3>
       </div>

@@ -12,7 +12,7 @@
       </div>
       <div class="col-12 pt-3 px-0 text-right">
         <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
-        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit" %>
+        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>

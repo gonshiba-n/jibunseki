@@ -21,7 +21,7 @@
       </div>
       <div class="col-12 pt-3 px-0 text-right">
         <input type="button" class="btn btn-success" value="削除選択" data-selector="false" onclick="companySelect()"></input>
-        <%= f.submit "削除", class: "btn btn-danger d-none", id: "company-delete-submit" %>
+        <%= f.submit "削除", class: "btn btn-danger d-none", id: "company-delete-submit", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>
