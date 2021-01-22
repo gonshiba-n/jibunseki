@@ -2,7 +2,7 @@
   <thead>
     <% url_options = { controller: "companies/company_seraches", action: :index } %>
     <% html_options = { remote: true, class: "text-white" } %>
-    <tr class="bg-info text-white">
+    <tr class="compnay-color text-white">
       <th scope="col"><%= sort_link @q, :name, "企業名",url_options, html_options %></th>
       <th scope="col">URL</th>
       <th scope="col"><%= sort_link @q, :business_fit, "事業",url_options, html_options %></th>

@@ -11,8 +11,8 @@
         <%= render partial: "users/target/modal/targets_show", locals: { instance: @targets, f: f } %>
       </div>
       <div class="col-12 pt-3 px-0 text-right">
-        <input type="button" class="btn btn-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
-        <%= f.submit "削除", class: "btn btn-danger target-delete d-none", id: "target-delete-submit", data: { confirm: "本当に削除しますか？"} %>
+        <input type="button" class="btn btn-outline-success target-select" value="選択" data-selector="false" onclick="targetSelect()"></input>
+        <%= f.submit "削除", class: "btn btn-outline-danger target-delete d-none", id: "target-delete-submit", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>
@@ -45,7 +45,7 @@
           <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control" } %>
         </div>
         <div class="col-12 text-right p-0">
-          <%= f.submit "更新", class: 'btn btn-success', id: "target-edit-submit", disabled: true %>
+          <%= f.submit "更新", class: 'btn btn-outline-success', id: "target-edit-submit", disabled: true %>
         </div>
       <% end %>
     </div>
@@ -72,7 +72,7 @@
           <%= f.select :period, [["長期目標", "long"],["中期目標", "middle"],["短期目標", "short"]] , { selected: 1 }, { class: "form-control", id: "create-period" } %>
         </div>
         <div class="col-12 text-right p-0">
-          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
+          <%= f.submit "作成", class: 'btn btn-outline-success', id: "create-target-submit" %>
         </div>
       <% end %>
     </div>

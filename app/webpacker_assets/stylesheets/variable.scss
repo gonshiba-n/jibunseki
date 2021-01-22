@@ -4,26 +4,26 @@ $h3: 24px;
 $p: 18px;
 
 // じぶんセキのイメージカラー
-$main_color: #58CAB4;
+$main_color: #5ACABD;
 
 // will,can,mustのイメージカラー
-$will_color: #81d8deff;
-$can_color: #50e00aff;
-$must_color: #fa8f14ff;
-$will_hover_color: #168ad6;
-$can_hover_color: #49920e;
-$must_hover_color: #854b08;
+$will_color: #338ABB;
+$can_color: #4AA451;
+$must_color: #EBA43E;
+$will_hover_color: #5FB1D5;
+$can_hover_color: #57C292;
+$must_hover_color: #F1B975;
 
 $wcm_colors: (
-    will: #81d8deff,
-    can: #50e00aff,
-    must: #fa8f14ff
+    will: #338ABB,
+    can: #4AA451,
+    must: #EBA43E
 );
 
 $wcm_hover_colors: (
-    will: #168ad6,
-    can: #49920e,
-    must: #cc7817
+    will: #5FB1D5,
+    can: #57C292,
+    must: #F1B975
 );
 
 // ここからメディアクエリ

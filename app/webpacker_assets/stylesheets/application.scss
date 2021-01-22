@@ -62,7 +62,7 @@
 }
 
 .bg-black{
-    background-color: rgba(52, 58, 64, 0.8);
+    background-color: rgba(90, 202, 189, 0.8);
     -webkit-transition: all 2s ease;
     -moz-transition: all 2s ease;
     -o-transition: all 2s ease;
@@ -73,16 +73,15 @@
 .footer {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    background-color: #343a40 !important;
-    padding: 30px 3%;
     .copyright {
+        border-top: 1px solid $main_color;
+        margin: auto;
         .footer-logo {
             width: 120px;
             height: 45px;
-            margin-bottom: 2%;
+            margin-top: 15px;
         }
         p {
-            color: #fff;
             font-size: 18px;
         }
     }

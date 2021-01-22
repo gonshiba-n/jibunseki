@@ -47,7 +47,7 @@
               </div>
               <%= f.text_area :text, class: "form-control mx-2", id: "guideline-area", value: @guideline.text.gsub(/(\s|　)+/, ''), placeholder: @placeholder %>
               <div class="col-12 pt-3 text-right">
-                <%= f.submit "行動指針を更新", class: 'btn btn-success', id: "guideline-submit" %>
+                <%= f.submit "行動指針を更新", class: 'btn btn-outline-success', id: "guideline-submit" %>
               </div>
             <% end %>
           </div>

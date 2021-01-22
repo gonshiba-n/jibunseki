@@ -11,8 +11,8 @@
         <%= render partial: "users/wcm_seat/modal/tags_show", locals: { instance: @tags, f: f } %>
       </div>
       <div class="col-12 text-right">
-        <input type="button" class="btn btn-success" id="select-btn" value="選択" data-display="false" onclick="selectDisplay()">
-        <%= f.submit "削除",class: 'btn btn-danger d-none', id: 'delete-btn', onclick: "deleteEnter()", data: { confirm: "本当に削除しますか？"} %>
+        <input type="button" class="btn btn-outline-success" id="select-btn" value="選択" data-display="false" onclick="selectDisplay()">
+        <%= f.submit "削除",class: 'btn btn-outline-danger d-none', id: 'delete-btn', onclick: "deleteEnter()", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>
@@ -32,7 +32,7 @@
       <%= f.text_area :question_body, class: "form-control", id: "edit-textarea"%>
       <%= f.text_field :tag, placeholder: "解答タグの編集", class: "form-control", id: "edit-textfield" %>
       <div class="col-12 text-right">
-        <%= f.submit "更新", class: 'btn btn-success', id: "edit-submit", disabled: true, onclick: "editEnter()" %>
+        <%= f.submit "更新", class: 'btn btn-outline-success', id: "edit-submit", disabled: true, onclick: "editEnter()" %>
       </div>
     <% end %>
   </div>
@@ -50,7 +50,7 @@
       <%= f.hidden_field :wcm, value: @transition_value %>
       <%= f.hidden_field :base_tag, value: false %>
       <div class="col-12 text-right">
-        <%= f.submit "作成", class: 'btn btn-success' %>
+        <%= f.submit "作成", class: 'btn btn-outline-success' %>
       </div>
     <% end %>
   </div>

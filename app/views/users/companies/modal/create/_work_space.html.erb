@@ -20,8 +20,8 @@
         <%= render partial: "users/companies/modal/create/companies_show", locals: { instance: @companies } %>
       </div>
       <div class="col-12 pt-3 px-0 text-right">
-        <input type="button" class="btn btn-success" value="削除選択" data-selector="false" onclick="companySelect()"></input>
-        <%= f.submit "削除", class: "btn btn-danger d-none", id: "company-delete-submit", data: { confirm: "本当に削除しますか？"} %>
+        <input type="button" class="btn btn-outline-success" value="削除選択" data-selector="false" onclick="companySelect()"></input>
+        <%= f.submit "削除", class: "btn btn-outline-danger d-none", id: "company-delete-submit", data: { confirm: "本当に削除しますか？"} %>
       </div>
     <% end %>
   </div>
@@ -91,7 +91,7 @@
           <%= f.select :treatment_fit, [[5], [4], [3], [2], [1]] , { selected: 5 }, { class: "form-control", id: "create-treatment-fit" } %>
         </div>
         <div class="col-12 text-right p-0">
-          <%= f.submit "作成", class: 'btn btn-success', id: "create-target-submit" %>
+          <%= f.submit "作成", class: 'btn btn-outline-success', id: "create-target-submit" %>
         </div>
       <% end %>
     </div>
