@@ -1,4 +1,4 @@
-module QuestionAssistancesHelper
+module Tags::QuestionAssistancesHelper
     def any_of_wcm
     [
       "will",
