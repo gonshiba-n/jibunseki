@@ -1,0 +1,51 @@
+<div class="row mt-5 pt-5 row">
+  <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" data-interval="false">
+    <div class="col-8 m-auto">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h4 class="mb-5">Will,Can,Mustに沿った質問に答えてカンタンに単語をアウトプットしましょう</h4>
+            <p>・質問は<%= questions_count %>問です</p>
+            <p>・なるべく単語でアウトプットしましょう(10文字以内)</p>
+            <p>・答えかねる質問はスキップしましょう</p>
+            <p>・答えた解答はそのままユーザーページのタグとして生成されます</p>
+            <p>・タグはユーザーページから、自由に編集と作成できます</p>
+            <h5>では、始めましょう！右側の > ボタンを押してスタート</h5>
+          </div>
+          <% questions.each.with_index(offset = 1) do |(k, v), i| %>
+            <div class="carousel-item w-100">
+              <h3 class="mb-5"><%= v %></h3>
+                <%= label_tag :name, "解答タグ: #{k}", for: "question_assistances" %>
+                <%= text_field_tag :tag, nil, class: "form-control", id: "question_assistances#{i}" %>
+            </div>
+          <% end %>
+          <div class="carousel-item w-100">
+            <h2 class="mb-3">入力結果確認</h2>
+            <%= form_with model: @tag, url: tags_path(@current_user.id), local: true do |f| %>
+              <% questions.each.with_index(offset = 1) do |(k, v), i| %>
+                <%= f.hidden_field :question_body, id: i + 1 %>
+                <%= f.label v %>
+                <%= f.text_field :tag, class: "form-control mb-3", id: "question_result#{i + 1}" %>
+              <% end %>
+              <div class="col-12 text-right">
+                <%= f.submit "作成", class: 'btn btn-outline-success' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
+      <% questions.each.with_index do |h, c| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= c + 1 %>" class="bg-dark"></li>
+      <% end %>
+    </ol>
+    <div class="col-12 mb-5">
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <i class="fas fa-chevron-left fa-2x text-dark"></i>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <i class="fas fa-chevron-right fa-2x text-dark"></i>
+      </a>
+    </div>
+  </div>
+</div>

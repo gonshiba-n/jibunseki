@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       resource :guidelines, only: [:create]
+      resource :question_assistances, only: [:show, :create]
       resources :tags, only: [:create, :update, :destroy]
         scope module: :tags do
           resource :base_tags, only: [:update]
