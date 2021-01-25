@@ -20,9 +20,10 @@
           <% end %>
           <div class="carousel-item w-100">
             <h2 class="mb-3">入力結果確認</h2>
-            <%= form_with model: @tag, url: tags_path(@current_user.id), local: true do |f| %>
+            <%= form_with model: @tags, url: question_assistances_path, local: true do |f| %>
               <% questions.each.with_index(offset = 1) do |(k, v), i| %>
-                <%= f.hidden_field :question_body, id: i + 1 %>
+                <%= f.hidden_field :question_body, id: i + 1, value: v %>
+                <%= f.hidden_field :wcm, id: i + 1, value: any_of_wcm[i - 1] %>
                 <%= f.label v %>
                 <%= f.text_field :tag, class: "form-control mb-3", id: "question_result#{i + 1}" %>
               <% end %>
@@ -43,7 +44,7 @@
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <i class="fas fa-chevron-left fa-2x text-dark"></i>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" onclick="nextDecision()">
         <i class="fas fa-chevron-right fa-2x text-dark"></i>
       </a>
     </div>

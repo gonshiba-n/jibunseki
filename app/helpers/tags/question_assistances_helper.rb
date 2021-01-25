@@ -1,5 +1,5 @@
 module Tags::QuestionAssistancesHelper
-    def any_of_wcm
+  def any_of_wcm
     [
       "will",
       "will",
