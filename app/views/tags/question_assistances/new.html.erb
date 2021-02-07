@@ -13,25 +13,19 @@
           </div>
           <% questions.each.with_index(offset = 1) do |(k, v), i| %>
             <div class="carousel-item w-100">
+            <%= form_with model: @tags, url: question_assistances_path, local: true do |f| %>
               <h3 class="mb-5"><%= v %></h3>
-                <%= label_tag :name, "解答タグ: #{k}", for: "question_assistances" %>
-                <%= text_field_tag :tag, nil, class: "form-control", id: "question_assistances#{i}" %>
+              <button type="button" value="" class="btn <%= any_of_wcm[i - 1] %>-color modal-btn show-btn will" ><%= any_of_wcm[i - 1] %></button>
+                <%= f.label :name, "解答タグ: #{k}", for: "question_assistances" %>
+                <%= f.text_field :tag, class: "form-control", id: "question_assistances#{i}" %>
+                <%= f.hidden_field :question_body, value: k %>
+                <%= f.hidden_field :wcm, value: any_of_wcm[i - 1] %>
+                <div class="text-right mt-3">
+                  <%= f.submit "作成", class: 'btn btn-outline-success' %>
+                </div>
+            <% end %>
             </div>
           <% end %>
-          <div class="carousel-item w-100">
-            <h2 class="mb-3">入力結果確認</h2>
-            <%= form_with model: @tags, url: question_assistances_path, local: true do |f| %>
-              <% questions.each.with_index(offset = 1) do |(k, v), i| %>
-                <%= f.hidden_field :question_body, id: i + 1, value: v %>
-                <%= f.hidden_field :wcm, id: i + 1, value: any_of_wcm[i - 1] %>
-                <%= f.label v %>
-                <%= f.text_field :tag, class: "form-control mb-3", id: "question_result#{i + 1}" %>
-              <% end %>
-              <div class="col-12 text-right">
-                <%= f.submit "作成", class: 'btn btn-outline-success' %>
-              </div>
-            <% end %>
-          </div>
         </div>
     </div>
     <ol class="carousel-indicators">
