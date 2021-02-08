@@ -11,17 +11,27 @@
             <p>・タグはユーザーページから、自由に編集と作成できます</p>
             <h5>では、始めましょう！右側の > ボタンを押してスタート</h5>
           </div>
+          <div id="assistancesTagContainer">
+            <% if flash[:success].present? %>
+              <div class="alert alert-success alert-dismissible fade show" role="alert"><%= flash[:success] %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <% end %>
+          </div>
           <% questions.each.with_index(offset = 1) do |(k, v), i| %>
             <div class="carousel-item w-100">
-            <%= form_with model: @tags, url: question_assistances_path, local: true do |f| %>
+            <%= form_with model: @tag, url: question_assistances_path do |f| %>
               <h3 class="mb-5"><%= v %></h3>
+              <div class="create-js-message-errors"></div>
               <button type="button" value="" class="btn <%= any_of_wcm[i - 1] %>-color modal-btn show-btn will" ><%= any_of_wcm[i - 1] %></button>
                 <%= f.label :name, "解答タグ: #{k}", for: "question_assistances" %>
                 <%= f.text_field :tag, class: "form-control", id: "question_assistances#{i}" %>
                 <%= f.hidden_field :question_body, value: k %>
                 <%= f.hidden_field :wcm, value: any_of_wcm[i - 1] %>
                 <div class="text-right mt-3">
-                  <%= f.submit "作成", class: 'btn btn-outline-success' %>
+                  <%= f.submit "作成", class: 'btn btn-outline-success', data: { disabled_with: '作成中' } %>
                 </div>
             <% end %>
             </div>
@@ -35,7 +45,7 @@
       <% end %>
     </ol>
     <div class="col-12 mb-5">
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" onclick="prevDecision()">
         <i class="fas fa-chevron-left fa-2x text-dark"></i>
       </a>
       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" onclick="nextDecision()">

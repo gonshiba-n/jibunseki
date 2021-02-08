@@ -1,11 +1,17 @@
 class Tags::QuestionAssistancesController < ApplicationController
   def new
-    @tags = Tag.new
+    @tag = Tag.new
   end
 
   def create
-    @tags = @current_user.tag.build(assistances_tags_params)
-    @tags.save
+    @tag = @current_user.tag.build(assistances_tags_params)
+    respond_to do |format|
+      if @tag.save
+        format.js { flash.now[:notice] = "タグを作成しました。" }
+      else
+        format.js { render :create_errors }
+      end
+    end
   end
 
   def update
