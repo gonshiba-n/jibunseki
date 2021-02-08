@@ -36,12 +36,16 @@
             <% end %>
             </div>
           <% end %>
+          <div class="carousel-item">
+            戻る
+          </div>
         </div>
     </div>
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
-      <% questions.each.with_index do |h, c| %>
-        <li data-target="#carouselExampleIndicators" data-slide-to="<%= c + 1 %>" class="bg-dark"></li>
+      <% questions_count.times do %>
+        <% count = 0 %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= count =+ 1 %>" class="bg-dark"></li>
       <% end %>
     </ol>
     <div class="col-12 mb-5">

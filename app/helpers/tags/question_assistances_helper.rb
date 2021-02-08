@@ -1,4 +1,5 @@
 module Tags::QuestionAssistancesHelper
+  # 質問にリンクしたwcm
   def any_of_wcm
     [
       "will",
@@ -13,6 +14,7 @@ module Tags::QuestionAssistancesHelper
     ]
   end
 
+  # questionの質問とヒント
   def questions
     {
       "理想の将来像を入力しましょう" => "あなたは将来、なりたいものはありますか？",
@@ -27,7 +29,8 @@ module Tags::QuestionAssistancesHelper
     }
   end
 
+  # carousel-indicatorsの制御
   def questions_count
-    questions.length
+    questions.length + 1
   end
 end
