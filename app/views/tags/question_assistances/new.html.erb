@@ -1,8 +1,8 @@
-<div class="row mt-5 pt-5 row">
+<div class="row mt-5 mb-5 pt-5 row">
   <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel" data-interval="false">
     <div class="col-8 m-auto">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active mb-3">
             <h4 class="mb-5">Will,Can,Mustに沿った質問に答えてカンタンに単語をアウトプットしましょう</h4>
             <p>・質問は<%= questions_count %>問です</p>
             <p>・なるべく単語でアウトプットしましょう(10文字以内)</p>
@@ -37,13 +37,19 @@
             </div>
           <% end %>
           <div class="carousel-item">
-            戻る
+            <h4 class="mb-5">おつかれさまでした！</h4>
+            <p>WCM簡単アウトプットは、これにて終了です。</p>
+            <p>戻るボタンから、<%= @current_user.name %>さんのワークスペースに戻り</p>
+            <p>ベースタグの設定や、目標設定を行っていきましょう！</p>
+            <div class="text-right m-5">
+              <%= link_to "戻る", user_path(@current_user), class: "btn btn-outline-success" %>
+            </div>
           </div>
         </div>
     </div>
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
-      <% questions_count.times do %>
+      <% indicators_count.times do %>
         <% count = 0 %>
         <li data-target="#carouselExampleIndicators" data-slide-to="<%= count =+ 1 %>" class="bg-dark"></li>
       <% end %>

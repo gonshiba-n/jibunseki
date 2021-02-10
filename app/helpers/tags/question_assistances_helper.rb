@@ -29,8 +29,13 @@ module Tags::QuestionAssistancesHelper
     }
   end
 
-  # carousel-indicatorsの制御
+  # 質問数の制御
   def questions_count
-    questions.length + 1
+    questions.length
+  end
+
+  # インディケータの制御
+  def indicators_count
+    questions_count + 1
   end
 end
