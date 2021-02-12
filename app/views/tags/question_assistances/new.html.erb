@@ -23,10 +23,10 @@
           <% questions.each.with_index(offset = 1) do |(k, v), i| %>
             <div class="carousel-item w-100">
             <%= form_with model: @tag, url: question_assistances_path do |f| %>
-              <h3 class="mb-5"><%= v %></h3>
+              <h3 class="mb-5" id="question"><%= v %></h3>
               <div class="create-js-message-errors"></div>
               <button type="button" value="" class="btn <%= any_of_wcm[i - 1] %>-color modal-btn show-btn will" ><%= any_of_wcm[i - 1] %></button>
-                <%= f.label :name, "解答タグ: #{k}", for: "question_assistances" %>
+                <%= f.label :name, "解答タグ: #{k}", for: "question_assistances#{i}" %>
                 <%= f.text_field :tag, class: "form-control", id: "question_assistances#{i}" %>
                 <%= f.hidden_field :question_body, value: k %>
                 <%= f.hidden_field :wcm, value: any_of_wcm[i - 1] %>
@@ -48,18 +48,19 @@
         </div>
     </div>
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active bg-dark"></li>
+      <% data_count = 1 %>
       <% indicators_count.times do %>
-        <% count = 0 %>
-        <li data-target="#carouselExampleIndicators" data-slide-to="<%= count =+ 1 %>" class="bg-dark"></li>
+      <% data_count += 1 %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= data_count %>" class="bg-dark" id="indicators<%= data_count %>"></li>
       <% end %>
     </ol>
     <div class="col-12 mb-5">
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" onclick="prevDecision()">
-        <i class="fas fa-chevron-left fa-2x text-dark"></i>
+        <i class="fas fa-chevron-left fa-2x text-dark" id="prev"></i>
       </a>
       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" onclick="nextDecision()">
-        <i class="fas fa-chevron-right fa-2x text-dark"></i>
+        <i class="fas fa-chevron-right fa-2x text-dark" id="next"></i>
       </a>
     </div>
   </div>
