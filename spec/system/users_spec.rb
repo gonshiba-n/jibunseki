@@ -66,6 +66,10 @@ RSpec.describe "Users", type: :system, js: true do
     it "ログアウトリンクが表示れていること" do
       expect(page).to have_link "Logout"
     end
+
+    it "wcm簡単アウトプットのリンクが表示れていること" do
+      expect(page).to have_link "WCM簡単アウトプット"
+    end
   end
 end
 # save_and_open_page

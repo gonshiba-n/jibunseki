@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         scope module: :tags do
           resource :base_tags, only: [:update]
           resource :page_transitions, only: [:show], as: :tags_transitions
+          resource :question_assistances, only: [:new, :create, :update]
         end
       resource :target, only: [:create, :update, :destroy]
         scope module: :targets do

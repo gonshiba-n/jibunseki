@@ -1,0 +1,6 @@
+<%# モーダルの表示タグ置き換え %>
+$('#assistancesTagContainer').html("<%= j(render partial: "layouts/flash", locals: { instance: @tags }) %>");
+
+<%# エラーの表示のリフレッシュ %>
+$('.js-message-errors').empty();
+$('.flash').empty();
