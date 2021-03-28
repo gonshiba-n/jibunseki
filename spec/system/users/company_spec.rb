@@ -126,6 +126,7 @@ RSpec.describe "Users", type: :system, js: true do
         click_button "削除選択"
         check "checkbox1"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
 
         expect(page).to have_content "削除しました。"
       end
@@ -133,6 +134,7 @@ RSpec.describe "Users", type: :system, js: true do
         click_button "削除選択"
         check "checkbox1"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
         show_table = find "#company-show-table"
         modal_table = find "#company-modal-table"
 
@@ -201,6 +203,7 @@ RSpec.describe "Users", type: :system, js: true do
       it "選択せずに削除ボタンを押すとフラッシュが表示されること" do
         click_button "削除選択"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
 
         expect(page).to have_content "企業を選択してください。"
       end

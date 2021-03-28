@@ -88,7 +88,7 @@
             </div>
             <div class="col-12 form-group d-none" id="<%= key %>Form">
               <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-#{key}" %>
-              <%= f.text_field ("#{key}").to_sym, class: "form-control", id: "create-company-#{key}" %>
+              <%= f.text_area ("#{key}").to_sym, class: "form-control", id: "create-company-#{key}" %>
               <div class="field-set mt-2">
                 <div class="form-group">
                   <%= f.label ("#{key}_fit").to_sym, "マッチング度", for: "create-#{key}-fit" %>

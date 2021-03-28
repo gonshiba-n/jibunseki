@@ -106,6 +106,7 @@ RSpec.describe "Users", type: :system, js: true do
         click_button "選択"
         check "MiddleTarget"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
         expect(page).to have_content "目標を削除しました。"
         expect(page).not_to have_content "MiddleTarget"
       end
@@ -114,6 +115,7 @@ RSpec.describe "Users", type: :system, js: true do
         click_button "選択"
         check "MiddleTarget"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
         click_button "閉じる"
         expect(page).not_to have_content "MiddleTarget"
       end
@@ -156,6 +158,7 @@ RSpec.describe "Users", type: :system, js: true do
       it "選択せずに削除ボタンを押すとフラッシュが表示されること" do
         click_button "選択"
         click_button "削除"
+        page.driver.browser.switch_to.alert.accept
         expect(page).to have_content "目標を選択してください。"
       end
     end

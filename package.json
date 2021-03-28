@@ -5,6 +5,7 @@
     "@rails/webpacker": "5.2.1",
     "bootstrap": "^4.5.3",
     "import-glob-loader": "^1.1.0",
+    "install-missing": "^1.1.52",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "rails-ujs": "^5.2.4-4",
