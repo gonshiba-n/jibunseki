@@ -9,6 +9,7 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "rails-ujs": "^5.2.4-4",
+    "source-map": "^0.7.3",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {

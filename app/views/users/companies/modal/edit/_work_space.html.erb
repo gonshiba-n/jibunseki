@@ -84,7 +84,7 @@
               <div class="col-4 col-lg-10 text-lg-right">
                 <button class="btn btn-outline-secondary btn-sm company-edit-button" type="button" onclick="companyEdit('<%= key %>')">編集する</button>
               </div>
-              <p class="col-12"><%= eval("@company.#{key}") %></p>
+              <p class="col-12"><%= simple_format(eval("@company.#{key}")) %></p>
             </div>
             <div class="col-12 form-group d-none" id="<%= key %>Form">
               <%= f.label ("#{key}").to_sym, "#{value}:", for: "create-company-#{key}" %>
