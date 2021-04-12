@@ -5,7 +5,7 @@ class Company < ApplicationRecord
   validates :url, presence: true
   validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
-  with_options length: { maximum: 800 } do
+  with_options length: { maximum: 3000 } do
     validates :business,
               :culture,
               :vision,
